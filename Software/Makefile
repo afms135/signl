@@ -2,7 +2,7 @@
 NAME = signl
 
 #C++ Sources
-SRCS = main.cpp jack.cpp
+SRCS = main.cpp signl.cpp jack.cpp
 
 #Include directories
 INCS = -I.
