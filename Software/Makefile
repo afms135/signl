@@ -2,7 +2,7 @@
 NAME = signl
 
 #C++ Sources
-SRCS = main.cpp
+SRCS = main.cpp jack.cpp
 
 #Include directories
 INCS = -I.
@@ -29,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo '[LINK] $@'
-	@g++ -o $@ $^
+	@g++ -o $@ $^ `pkg-config --cflags --libs jack`
 
 %.o: %.cpp
 	@echo '[C++ ] $@'
