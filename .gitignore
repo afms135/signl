@@ -1,3 +1,7 @@
 Software/signl
 *.o
 *.d
+*.csv
+*.tsv
+*.xml
+*.bak
