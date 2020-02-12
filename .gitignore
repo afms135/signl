@@ -5,3 +5,4 @@ Software/signl
 *.tsv
 *.xml
 *.bak
+.DS_Store
