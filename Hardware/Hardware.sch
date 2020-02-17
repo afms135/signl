@@ -2,7 +2,7 @@ EESchema Schematic File Version 4
 LIBS:Hardware-cache
 EELAYER 30 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr A3 16535 11693
 encoding utf-8
 Sheet 1 1
 Title ""
@@ -42,7 +42,7 @@ U 1 1 5E448C27
 P 2000 2600
 F 0 "J?" H 2650 3850 50  0000 C CNN
 F 1 "Raspberry_Pi_2_3" H 2000 3300 50  0000 C CNN
-F 2 "" H 2000 2600 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x20_P2.54mm_Vertical" H 2000 2600 50  0001 C CNN
 F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 2000 2600 50  0001 C CNN
 	1    2000 2600
 	1    0    0    -1  
@@ -493,8 +493,8 @@ $Comp
 L Device:CP C?
 U 1 1 5E4A86BA
 P 4600 4350
-F 0 "C?" V 4500 4550 50  0000 C CNN
-F 1 "1u" V 4400 4550 50  0000 C CNN
+F 0 "C?" V 4850 4350 50  0000 C CNN
+F 1 "1u" V 4750 4350 50  0000 C CNN
 F 2 "" H 4638 4200 50  0001 C CNN
 F 3 "~" H 4600 4350 50  0001 C CNN
 	1    4600 4350
@@ -506,8 +506,8 @@ $Comp
 L Device:C C?
 U 1 1 5E4B5C73
 P 4350 4550
-F 0 "C?" H 4465 4596 50  0000 L CNN
-F 1 "220p" H 4465 4505 50  0000 L CNN
+F 0 "C?" H 4450 4600 50  0000 L CNN
+F 1 "220p" H 4450 4500 50  0000 L CNN
 F 2 "" H 4388 4400 50  0001 C CNN
 F 3 "~" H 4350 4550 50  0001 C CNN
 	1    4350 4550
@@ -517,8 +517,8 @@ $Comp
 L Device:R R?
 U 1 1 5E4B664C
 P 4050 4550
-F 0 "R?" H 4120 4596 50  0000 L CNN
-F 1 "5.6k" H 4120 4505 50  0000 L CNN
+F 0 "R?" H 4100 4600 50  0000 L CNN
+F 1 "5.6k" H 4100 4500 50  0000 L CNN
 F 2 "" V 3980 4550 50  0001 C CNN
 F 3 "~" H 4050 4550 50  0001 C CNN
 	1    4050 4550
@@ -621,8 +621,8 @@ $Comp
 L Device:R R?
 U 1 1 5E4F190B
 P 4050 5350
-F 0 "R?" H 4120 5396 50  0000 L CNN
-F 1 "5.6k" H 4120 5305 50  0000 L CNN
+F 0 "R?" H 4100 5400 50  0000 L CNN
+F 1 "5.6k" H 4100 5300 50  0000 L CNN
 F 2 "" V 3980 5350 50  0001 C CNN
 F 3 "~" H 4050 5350 50  0001 C CNN
 	1    4050 5350
@@ -707,17 +707,6 @@ F 2 "" V 4630 5850 50  0001 C CNN
 F 3 "~" H 4700 5850 50  0001 C CNN
 	1    4700 5850
 	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R?
-U 1 1 5E4FD37A
-P 4700 6050
-F 0 "R?" V 4800 6050 50  0000 C CNN
-F 1 "Rmic" V 4900 6050 50  0000 C CNN
-F 2 "" V 4630 6050 50  0001 C CNN
-F 3 "~" H 4700 6050 50  0001 C CNN
-	1    4700 6050
-	0    1    1    0   
 $EndComp
 $Comp
 L Device:CP C?
@@ -1414,7 +1403,7 @@ L Device:R R?
 U 1 1 5E87B495
 P 7350 4900
 F 0 "R?" V 7143 4900 50  0000 C CNN
-F 1 "R" V 7234 4900 50  0000 C CNN
+F 1 "100" V 7234 4900 50  0000 C CNN
 F 2 "" V 7280 4900 50  0001 C CNN
 F 3 "~" H 7350 4900 50  0001 C CNN
 	1    7350 4900
@@ -1457,4 +1446,58 @@ Wire Notes Line
 	3250 6750 3250 4000
 Text Notes 3950 6850 0    50   ~ 0
 INPUT STAGE
+Text Label 800  2200 0    50   ~ 0
+BCLK
+Wire Wire Line
+	800  2200 1200 2200
+Text Label 800  2600 0    50   ~ 0
+DACDAT
+Wire Wire Line
+	800  2600 1200 2600
+Text Label 800  2400 0    50   ~ 0
+LRC
+Wire Wire Line
+	800  2400 1200 2400
+Text Label 800  2500 0    50   ~ 0
+ADCDAT
+Wire Wire Line
+	800  2500 1200 2500
+Text Label 5600 4600 0    50   ~ 0
+BCLK
+Wire Wire Line
+	5600 4600 5900 4600
+Text Label 5600 4500 0    50   ~ 0
+LRC
+Wire Wire Line
+	5600 4500 5900 4500
+Text Label 5600 4200 0    50   ~ 0
+LRC
+Wire Wire Line
+	5600 4200 5900 4200
+Text Label 5600 4400 0    50   ~ 0
+ADCDAT
+Wire Wire Line
+	5600 4400 5900 4400
+Text Label 5600 4300 0    50   ~ 0
+DACDAT
+Wire Wire Line
+	5600 4300 5900 4300
+$Comp
+L Device:R_POT RV?
+U 1 1 5E50B9EA
+P 4850 6200
+F 0 "RV?" H 4780 6154 50  0000 R CNN
+F 1 "R_POT" H 4780 6245 50  0000 R CNN
+F 2 "" H 4850 6200 50  0001 C CNN
+F 3 "~" H 4850 6200 50  0001 C CNN
+	1    4850 6200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4700 6200 4550 6200
+Wire Wire Line
+	4550 6200 4550 6050
+NoConn ~ 4850 6350
+NoConn ~ 6350 5500
+NoConn ~ 6500 5500
 $EndSCHEMATC
