@@ -6,3 +6,4 @@ Software/signl
 *.xml
 *.bak
 .DS_Store
+*.ipynb_checkpoints
