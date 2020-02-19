@@ -13,7 +13,8 @@ public:
 	void start();
 
 private:
-	volatile sig_atomic_t running;
+	static void sigterm_handler(int sig);
+	static volatile sig_atomic_t running;
 };
 
 #endif /*SIGNL_H*/
