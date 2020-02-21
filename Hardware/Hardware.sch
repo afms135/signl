@@ -1389,7 +1389,7 @@ P 3400 6400
 F 0 "DS1" H 3400 6725 50  0000 C CNN
 F 1 "DOGM128W-6" H 3400 6634 50  0000 C CNN
 F 2 "signl:DOGM128W" H 3450 6500 50  0001 C CNN
-F 3 "" H 3450 6500 50  0001 C CNN
+F 3 "https://www.mouser.co.uk/datasheet/2/127/dogm128e-8350.pdf" H 3450 6500 50  0001 C CNN
 	1    3400 6400
 	1    0    0    -1  
 $EndComp
