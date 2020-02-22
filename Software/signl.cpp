@@ -19,6 +19,7 @@ signl::signl() :
 		throw std::runtime_error("sigaction(): Could not register SIGINT handler: " + std::string(strerror(errno)));
 
 	running = 1;
+	activate();
 }
 
 signl::~signl()

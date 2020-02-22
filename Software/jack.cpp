@@ -5,7 +5,7 @@ jack_client::jack_client(std::string name)
 {
 	//Try and connect to the JACK server
 	jack_status_t status;
-	const char **ports;
+
 	client = jack_client_open(name.c_str(), JackNoStartServer, &status);
 	if(client == nullptr)
 		throw std::runtime_error("jack_client_open(): Could not connect to server code: " + std::to_string(status));
@@ -24,12 +24,22 @@ jack_client::jack_client(std::string name)
 	if(jack_set_process_callback(client, callback_forwarder, this))
 		throw std::runtime_error("jack_set_process_callback(): Could not set callback");
 	jack_on_shutdown(client, shutdown_forwarder, this);
+}
 
+jack_client::~jack_client()
+{
+	//Disconnect from JACK server
+	jack_client_close(client);
+}
+
+void jack_client::activate()
+{
 	//Activate client
 	if(jack_activate(client))
 		throw std::runtime_error("jack_activate(): Could not activate client");
 
 	//Connect capture port to input port
+	const char **ports;
 	ports = jack_get_ports(client, nullptr, nullptr, JackPortIsPhysical | JackPortIsOutput);
 	if(ports == nullptr)
 		throw std::runtime_error("jack_get_ports(): No physical capture ports");
@@ -44,12 +54,6 @@ jack_client::jack_client(std::string name)
 	if(jack_connect(client, jack_port_name(output_port), ports[0]))
 		throw std::runtime_error("jack_connect(): Could not connect output port to physical input port");
 	free(ports);
-}
-
-jack_client::~jack_client()
-{
-	//Disconnect from JACK server
-	jack_client_close(client);
 }
 
 jack_nframes_t jack_client::rate()
