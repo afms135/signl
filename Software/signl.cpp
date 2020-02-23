@@ -1,12 +1,15 @@
 #include "signl.h"
+#include "effects/null.h"
 #include <iostream>
 #include <stdexcept>
 #include <cstring> //strerror()
 
+constexpr auto NUM_EFFECTS = 5;
 volatile sig_atomic_t signl::running = 0;
 
 signl::signl() :
-	jack_client("signl")
+	jack_client("signl"),
+	effect_chain(NUM_EFFECTS)
 {
 	//Register signal handlers
 	struct sigaction s;
@@ -18,6 +21,10 @@ signl::signl() :
 	if(sigaction(SIGINT, &s, NULL))
 		throw std::runtime_error("sigaction(): Could not register SIGINT handler: " + std::string(strerror(errno)));
 
+	//Create blank effect chain
+	for(auto &e : effect_chain)
+		e = std::unique_ptr<null>(new null());
+
 	running = 1;
 	activate();
 }
@@ -28,6 +35,8 @@ signl::~signl()
 
 jack_client::sample_t signl::process(sample_t in)
 {
+	for(const auto &e : effect_chain)
+		in = (*e)(in);
     return in;
 }
 
