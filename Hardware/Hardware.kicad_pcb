@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 25)
+    (drawings 26)
     (tracks 497)
     (zones 0)
     (modules 70)
@@ -3340,6 +3340,9 @@
     )
   )
 
+  (gr_text JLCJLCJLCJLC (at 123.19 55.88) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_text "Rev 1.\nAlexander Strachan\nRobert Norris\nSimon Ridley" (at 164.592 65.786) (layer B.SilkS)
     (effects (font (size 1 1) (thickness 0.125)) (justify mirror))
   )
