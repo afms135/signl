@@ -9,6 +9,10 @@ public:
 	{
 		return in;
 	}
+
+	void paramset(param p, float v) override
+	{
+	}
 };
 
 #endif /*NULL_H*/
