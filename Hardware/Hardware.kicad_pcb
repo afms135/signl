@@ -1,4 +1,4 @@
-(kicad_pcb (version 20171130) (host pcbnew 5.1.4+dfsg1-1)
+(kicad_pcb (version 20171130) (host pcbnew "(5.1.5-0-10_14)")
 
   (general
     (thickness 1.6)
@@ -2800,6 +2800,11 @@
       (net 48 /CTRLDOWN))
     (pad "" np_thru_hole circle (at 3 -3) (size 1.6 1.6) (drill 1) (layers *.Cu *.Mask))
     (pad "" np_thru_hole circle (at -3 3) (size 1.6 1.6) (drill 1) (layers *.Cu *.Mask))
+    (model ${KIPRJMOD}/signl.pretty/js5208.wrl
+      (offset (xyz 0 0 2.5))
+      (scale (xyz 0.4 0.4 0.4))
+      (rotate (xyz 0 0 180))
+    )
   )
 
   (module Package_SO:SOIC-14_3.9x8.7mm_P1.27mm (layer B.Cu) (tedit 5C97300E) (tstamp 5E4D7E23)
