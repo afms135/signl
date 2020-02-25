@@ -248,7 +248,7 @@
     (tags "solder jumper open")
     (path /5E4D8A21)
     (attr virtual)
-    (fp_text reference JP1 (at 0 -2.54 90) (layer F.SilkS)
+    (fp_text reference JP1 (at 0 -2.54 90) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value SolderJumper_2_Open (at 2.54 0 90) (layer B.Fab)
@@ -294,10 +294,10 @@
   (gr_text "signl 1/4” Conn" (at 57.404 39.116 90) (layer F.Cu)
     (effects (font (size 1 1) (thickness 0.15)))
   )
-  (gr_line (start 22.86 45.72) (end 22.86 24.384) (layer Edge.Cuts) (width 0.05) (tstamp 5E4DC7F7))
-  (gr_line (start 57.404 45.72) (end 22.86 45.72) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 23.368 45.72) (end 23.368 24.384) (layer Edge.Cuts) (width 0.05) (tstamp 5E4DC7F7))
+  (gr_line (start 57.404 45.72) (end 23.368 45.72) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 58.928 24.384) (end 58.928 45.72) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 22.86 24.384) (end 57.404 24.384) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 23.368 24.384) (end 57.404 24.384) (layer Edge.Cuts) (width 0.05))
 
   (segment (start 52.07 30.48) (end 48.26 30.48) (width 1) (layer B.Cu) (net 4))
   (segment (start 48.26 30.48) (end 45.72 33.02) (width 1) (layer B.Cu) (net 4))
