@@ -1,4 +1,4 @@
-16282627952615258
+16282628301918258
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -72905,9 +72905,9 @@ JS5208
 6
 6
 signl
-Raspberry_Pi_2_3_Offboard
-Molex KK-254 Interconnect System, old/engineering part number: AE-6410-10A example for new part number: 22-27-2101, 10 Pins (http://www.molex.com/pdm_docs/sd/022272021_sd.pdf), generated with kicad-footprint-generator
-connector Molex KK-254 side entry
+signl_logo
+
+
 0
-10
-10
+0
+0
