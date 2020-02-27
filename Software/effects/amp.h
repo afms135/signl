@@ -34,6 +34,13 @@ public:
 		return "Amplifier";
 	}
 
+	std::string paramname(param p) override
+	{
+		if(p == PARAM_A)
+			return "Gain";
+		return "";
+	}
+
 private:
 	float gain;
 };

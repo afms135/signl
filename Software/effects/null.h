@@ -18,6 +18,11 @@ public:
 	{
 		return "Null";
 	}
+
+	std::string paramname(param p) override
+	{
+		return "";
+	}
 };
 
 #endif /*NULL_H*/

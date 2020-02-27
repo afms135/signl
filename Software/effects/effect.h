@@ -16,6 +16,7 @@ struct effect
 	virtual float operator()(float in) = 0;
 	virtual void paramset(param p, float v) = 0;
 	virtual std::string name() = 0;
+	virtual std::string paramname(param p) = 0;
 };
 
 #endif /*EFFECT_H*/
