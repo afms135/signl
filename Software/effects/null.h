@@ -13,6 +13,11 @@ public:
 	void paramset(param p, float v) override
 	{
 	}
+
+	std::string name() override
+	{
+		return "Null";
+	}
 };
 
 #endif /*NULL_H*/

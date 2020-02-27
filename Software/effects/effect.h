@@ -1,5 +1,6 @@
 #ifndef EFFECT_H
 #define EFFECT_H
+#include <string>
 
 struct effect
 {
@@ -14,6 +15,7 @@ struct effect
 	virtual ~effect() {}
 	virtual float operator()(float in) = 0;
 	virtual void paramset(param p, float v) = 0;
+	virtual std::string name() = 0;
 };
 
 #endif /*EFFECT_H*/

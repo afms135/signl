@@ -29,6 +29,11 @@ public:
 			gain = v;
 	}
 
+	std::string name() override
+	{
+		return "Amplifier";
+	}
+
 private:
 	float gain;
 };
