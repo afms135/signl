@@ -2,6 +2,7 @@
 #define SIGNL_H
 #include "jack.h"
 #include "effects/effect.h"
+#include "hw/lcd.h"
 #include <memory>
 #include <vector>
 #include <signal.h>
@@ -17,6 +18,7 @@ public:
 
 private:
 	std::vector<std::unique_ptr<effect>> effect_chain;
+	lcd display;
 	static void sigterm_handler(int sig);
 	static volatile sig_atomic_t running;
 };

@@ -5,11 +5,14 @@
 #include <cstring> //strerror()
 
 constexpr auto NUM_EFFECTS = 5;
+const std::string GPIO = "/dev/gpiochip0";
+const std::string SPI = "/dev/spidev0.1";
 volatile sig_atomic_t signl::running = 0;
 
 signl::signl() :
 	jack_client("signl"),
-	effect_chain(NUM_EFFECTS)
+	effect_chain(NUM_EFFECTS),
+	display(SPI, GPIO, 12, 13)
 {
 	//Register signal handlers
 	struct sigaction s;
@@ -45,6 +48,8 @@ void signl::start()
 	std::cout << "Starting..." << std::endl;
 	while(running)
 	{
+		display.clear();
+		display.flip();
 	}
 	std::cout << "Stopping..." << std::endl;
 }
