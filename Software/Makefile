@@ -3,7 +3,7 @@ NAME = signl
 
 #C++ Sources
 SRCS  = main.cpp signl.cpp jack.cpp
-SRCS += hw/gpio.cpp hw/spi.cpp
+SRCS += hw/gpio.cpp hw/spi.cpp hw/lcd.cpp
 
 #Include directories
 INCS = -I.
