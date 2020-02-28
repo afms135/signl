@@ -1,11 +1,11 @@
 #include <vector>
 
-typedef struct sprite {
+typedef struct Sprite {
 	const std::vector<bool> art;
 	uint8_t width;
-} sprite;
+} Sprite;
 
-sprite empty =
+Sprite empty =
 {
 .art =
 	{
@@ -29,7 +29,7 @@ sprite empty =
 .width = 20
 };
 
-sprite amp =
+Sprite amp =
 {
 .art =
 	{
@@ -53,7 +53,7 @@ sprite amp =
 .width = 20
 };
 
-sprite pedal =
+Sprite pedal =
 {
 .art =
 	{
@@ -77,7 +77,7 @@ sprite pedal =
 .width = 20
 };
 
-sprite faders =
+Sprite faders =
 {
 .art =
 	{
@@ -101,7 +101,7 @@ sprite faders =
 .width = 20
 };
 
-sprite arrow =
+Sprite arrow =
 {
 .art =
 	{
