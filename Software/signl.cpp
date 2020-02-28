@@ -5,14 +5,19 @@
 #include <cstring> //strerror()
 
 constexpr auto NUM_EFFECTS = 5;
+//Device names
 const std::string GPIO = "/dev/gpiochip0";
-const std::string SPI = "/dev/spidev0.1";
+const std::string SPI  = "/dev/spidev0.1";
+//Pins
+const auto LCD_A0  = 12;
+const auto LCD_RES = 13;
+
 volatile sig_atomic_t signl::running = 0;
 
 signl::signl() :
 	jack_client("signl"),
 	effect_chain(NUM_EFFECTS),
-	display(SPI, GPIO, 12, 13)
+	display(SPI, GPIO, LCD_A0, LCD_RES)
 {
 	//Register signal handlers
 	struct sigaction s;
