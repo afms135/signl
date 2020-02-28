@@ -18,4 +18,20 @@ private:
 	int fd;
 };
 
+class gpioin
+{
+public:
+	gpioin(std::string gpiochip, int pin, std::string label = "");
+	explicit operator bool();
+
+	gpioin(const gpioin& other) = delete;
+	gpioin& operator=(const gpioin& other) = delete;
+	gpioin(gpioin&& other);
+	gpioin& operator=(gpioin&& other);
+	~gpioin();
+
+private:
+	int fd;
+};
+
 #endif /*GPIO_H*/
