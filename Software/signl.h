@@ -11,7 +11,6 @@ class signl : jack_client
 {
 public:
 	signl();
-	~signl();
 	sample_t process(sample_t in);
 	void shutdown();
 	void start();

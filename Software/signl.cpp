@@ -32,10 +32,6 @@ signl::signl() :
 	activate();
 }
 
-signl::~signl()
-{
-}
-
 jack_client::sample_t signl::process(sample_t in)
 {
 	for(const auto &e : effect_chain)
