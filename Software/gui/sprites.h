@@ -5,7 +5,7 @@ typedef struct sprite {
 	uint8_t width;
 } sprite;
 
-struct empty = 
+sprite empty =
 {
 .art =
 	{
@@ -29,7 +29,7 @@ struct empty =
 .width = 20
 };
 
-struct amp = 
+sprite amp =
 {
 .art =
 	{
@@ -53,9 +53,9 @@ struct amp =
 .width = 20
 };
 
-struct pedal = 
+sprite pedal =
 {
-.art = 
+.art =
 	{
 	0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 	0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0,
@@ -77,9 +77,9 @@ struct pedal =
 .width = 20
 };
 
-sprite faders = 
+sprite faders =
 {
-.art = 
+.art =
 	{
 	0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,
         0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
@@ -101,9 +101,9 @@ sprite faders =
 .width = 20
 };
 
-sprite arrow = 
+sprite arrow =
 {
-.art = 
+.art =
 	{
 	0,0,0,1,1,0,0,0,
 	0,0,1,1,1,1,0,0,
