@@ -1,5 +1,6 @@
 Software/signl
 *.o
+*.so
 *.d
 *.csv
 *.tsv
