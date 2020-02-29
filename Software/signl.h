@@ -3,6 +3,7 @@
 #include "jack.h"
 #include "effects/effect.h"
 #include "hw/lcd.h"
+#include "hw/debounce.h"
 #include <memory>
 #include <vector>
 #include <signal.h>
@@ -18,6 +19,11 @@ public:
 private:
 	std::vector<std::unique_ptr<effect>> effect_chain;
 	lcd display;
+	debounce joy_up;
+	debounce joy_down;
+	debounce joy_left;
+	debounce joy_right;
+	debounce joy_push;
 	static void sigterm_handler(int sig);
 	static volatile sig_atomic_t running;
 };

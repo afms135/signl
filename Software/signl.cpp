@@ -9,15 +9,26 @@ constexpr auto NUM_EFFECTS = 5;
 const std::string GPIO = "/dev/gpiochip0";
 const std::string SPI  = "/dev/spidev0.1";
 //Pins
-const auto LCD_A0  = 12;
-const auto LCD_RES = 13;
+const auto LCD_A0    = 12;
+const auto LCD_RES   = 13;
+const auto JOY_UP    = 24;
+const auto JOY_DOWN  = 26;
+const auto JOY_LEFT  = 22;
+const auto JOY_RIGHT = 25;
+const auto JOY_PUSH  = 23;
+const auto DEBOUNCE_TIME = 20;
 
 volatile sig_atomic_t signl::running = 0;
 
 signl::signl() :
 	jack_client("signl"),
 	effect_chain(NUM_EFFECTS),
-	display(SPI, GPIO, LCD_A0, LCD_RES)
+	display(SPI, GPIO, LCD_A0, LCD_RES),
+	joy_up(GPIO, JOY_UP, false, DEBOUNCE_TIME, "JOY_UP"),
+	joy_down(GPIO, JOY_DOWN, false, DEBOUNCE_TIME, "JOY_DOWN"),
+	joy_left(GPIO, JOY_LEFT, false, DEBOUNCE_TIME, "JOY_LEFT"),
+	joy_right(GPIO, JOY_RIGHT, false, DEBOUNCE_TIME, "JOY_RIGHT"),
+	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH")
 {
 	//Register signal handlers
 	struct sigaction s;
@@ -49,6 +60,22 @@ void signl::start()
 	std::cout << "Starting..." << std::endl;
 	while(running)
 	{
+		if(joy_up)
+		{
+		}
+		if(joy_down)
+		{
+		}
+		if(joy_left)
+		{
+		}
+		if(joy_right)
+		{
+		}
+		if(joy_push)
+		{
+		}
+
 		display.clear();
 		display.flip();
 	}
