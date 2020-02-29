@@ -19,4 +19,27 @@ struct effect
 	virtual std::string paramname(param p) = 0;
 };
 
+class null : public effect
+{
+public:
+	float operator()(float in) override
+	{
+		return in;
+	}
+
+	void paramset(param p, float v) override
+	{
+	}
+
+	std::string name() override
+	{
+		return "Null";
+	}
+
+	std::string paramname(param p) override
+	{
+		return "";
+	}
+};
+
 #endif /*EFFECT_H*/

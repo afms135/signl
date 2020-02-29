@@ -1,5 +1,4 @@
 #include "effect_manager.h"
-#include "effects/null.h"
 #include "effects/amp.h"
 #include "effects/overdrive.h"
 #include <stdexcept>
