@@ -1,5 +1,3 @@
-#ifndef AMP_H
-#define AMP_H
 #include "effect.h"
 
 class amp : public effect
@@ -44,5 +42,3 @@ public:
 private:
 	float gain;
 };
-
-#endif /*AMP_H*/

@@ -1,5 +1,3 @@
-#ifndef OVERDRIVE_H
-#define OVERDRIVE_H
 #include "effect.h"
 #include <cmath>
 
@@ -32,5 +30,3 @@ public:
 		return "";
 	}
 };
-
-#endif /*OVERDRIVE_H*/
