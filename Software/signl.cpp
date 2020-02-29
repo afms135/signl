@@ -1,5 +1,4 @@
 #include "signl.h"
-#include "effects/null.h"
 #include <iostream>
 #include <stdexcept>
 #include <cstring> //strerror()
@@ -44,7 +43,7 @@ signl::signl() :
 
 	//Create blank effect chain
 	for(auto &e : effect_chain)
-		e = std::unique_ptr<null>(new null());
+		e = effects(effects.EFFECT_NULL);
 
 	running = 1;
 	activate();

@@ -1,7 +1,7 @@
 #ifndef SIGNL_H
 #define SIGNL_H
 #include "jack.h"
-#include "effects/effect.h"
+#include "effect_manager.h"
 #include "hw/lcd.h"
 #include "hw/debounce.h"
 #include "hw/adc.h"
@@ -26,6 +26,7 @@ private:
 	debounce joy_left;
 	debounce joy_right;
 	debounce joy_push;
+	effect_manager effects;
 	static void sigterm_handler(int sig);
 	static volatile sig_atomic_t running;
 };
