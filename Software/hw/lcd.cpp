@@ -114,6 +114,11 @@ bool lcd::getpixel(unsigned int x, unsigned int y)
 	return fbuf[(page * width) + x] & (1 << pageoff);
 }
 
+void lcd::invpixel(unsigned int x, unsigned int y)
+{
+	putpixel(x, y, !getpixel(x,y));
+}
+
 void lcd::command()
 {
 	A0 = 0;
