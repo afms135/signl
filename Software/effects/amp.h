@@ -1,9 +1,9 @@
 #include "effect.h"
 
-class amp : public effect
+class plugin : public effect
 {
 public:
-	amp()
+	plugin()
 	{
 		gain = 1;
 	}
