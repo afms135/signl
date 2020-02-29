@@ -1,3 +1,5 @@
+#ifndef SPRITES_H
+#define SPRITES_H
 #include <vector>
 
 typedef struct Sprite {
@@ -112,3 +114,5 @@ Sprite arrow =
 	},
 .width = 8
 };
+
+#endif /* SPRITES_H */
