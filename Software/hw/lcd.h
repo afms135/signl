@@ -15,6 +15,7 @@ public:
     void clear();
     void flip();
     void putpixel(unsigned int x, unsigned int y, bool val = true);
+    bool getpixel(unsigned int x, unsigned int y);
 
 private:
     void command();

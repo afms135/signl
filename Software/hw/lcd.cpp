@@ -103,6 +103,17 @@ void lcd::putpixel(unsigned int x, unsigned int y, bool val)
 		fbuf[(page * width) + x] &= ~(1 << pageoff);
 }
 
+bool lcd::getpixel(unsigned int x, unsigned int y)
+{
+	if(x >= width || y >= height)
+		return false;
+
+	uint8_t page = y / 8;
+	uint8_t pageoff = y % 8;
+
+	return fbuf[(page * width) + x] & (1 << pageoff);
+}
+
 void lcd::command()
 {
 	A0 = 0;
