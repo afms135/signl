@@ -42,4 +42,8 @@ public:
 	}
 };
 
+//Type definition of plugin create/destroy functions
+typedef effect *(*plugin_ctor_t)(void);
+typedef void (*plugin_dtor_t)(effect*);
+
 #endif /*EFFECT_H*/
