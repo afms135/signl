@@ -7,7 +7,8 @@
 constexpr auto NUM_EFFECTS = 5;
 //Device names
 const std::string GPIO = "/dev/gpiochip0";
-const std::string SPI  = "/dev/spidev0.1";
+const std::string SPI_ADC = "/dev/spidev0.0";
+const std::string SPI_LCD = "/dev/spidev0.1";
 //Pins
 const auto LCD_A0    = 12;
 const auto LCD_RES   = 13;
@@ -23,7 +24,8 @@ volatile sig_atomic_t signl::running = 0;
 signl::signl() :
 	jack_client("signl"),
 	effect_chain(NUM_EFFECTS),
-	display(SPI, GPIO, LCD_A0, LCD_RES),
+	display(SPI_LCD, GPIO, LCD_A0, LCD_RES),
+	param(SPI_ADC),
 	joy_up(GPIO, JOY_UP, false, DEBOUNCE_TIME, "JOY_UP"),
 	joy_down(GPIO, JOY_DOWN, false, DEBOUNCE_TIME, "JOY_DOWN"),
 	joy_left(GPIO, JOY_LEFT, false, DEBOUNCE_TIME, "JOY_LEFT"),
@@ -60,6 +62,13 @@ void signl::start()
 	std::cout << "Starting..." << std::endl;
 	while(running)
 	{
+		//Parameter input
+		float A = param(adc::CH0);
+		float B = param(adc::CH1);
+		float C = param(adc::CH2);
+		float D = param(adc::CH3);
+
+		//Joystick input
 		if(joy_up)
 		{
 		}
@@ -76,6 +85,7 @@ void signl::start()
 		{
 		}
 
+		//Display update
 		display.clear();
 		display.flip();
 	}

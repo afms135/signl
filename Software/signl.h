@@ -4,6 +4,7 @@
 #include "effects/effect.h"
 #include "hw/lcd.h"
 #include "hw/debounce.h"
+#include "hw/adc.h"
 #include <memory>
 #include <vector>
 #include <signal.h>
@@ -19,6 +20,7 @@ public:
 private:
 	std::vector<std::unique_ptr<effect>> effect_chain;
 	lcd display;
+	adc param;
 	debounce joy_up;
 	debounce joy_down;
 	debounce joy_left;
