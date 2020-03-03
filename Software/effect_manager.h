@@ -2,6 +2,7 @@
 #define EFFECTMANAGER_H
 #include "effects/effect.h"
 #include <string>
+#include <vector>
 #include <memory>
 
 class effect_manager
@@ -15,6 +16,15 @@ public:
 
 	effect_manager(const effect_manager& other) = delete;
 	effect_manager& operator=(const effect_manager& other) = delete;
+
+private:
+	struct plugin
+	{
+		void *handle;
+		plugin_ctor_t create;
+		plugin_dtor_t destroy;
+	};
+	std::vector<struct plugin> plugins;
 };
 
 #endif /*EFFECTMANAGER_H*/

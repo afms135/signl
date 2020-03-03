@@ -32,6 +32,13 @@ effect_manager::effect_manager(std::string path, std::string ext)
 			dlclose(handle);
 			continue;
 		}
+
+		//Add to plugin list
+		plugin p;
+		p.handle  = handle;
+		p.create  = reinterpret_cast<plugin_ctor_t>(create);
+		p.destroy = reinterpret_cast<plugin_dtor_t>(destroy);
+		plugins.push_back(p);
 	}
 
 	globfree(&b);
@@ -39,15 +46,19 @@ effect_manager::effect_manager(std::string path, std::string ext)
 
 std::unique_ptr<effect, plugin_dtor_t> effect_manager::operator()(int idx)
 {
-	switch(idx)
-	{
-	case 0: return std::unique_ptr<effect, plugin_dtor_t>(new null(), [](effect *e){delete e;});
-	default:
+	if(idx >= size())
 		throw std::runtime_error("Effect index out of range");
+
+	if(idx == 0)
+		return std::unique_ptr<effect, plugin_dtor_t>(new null(), [](effect *e){delete e;});
+	else
+	{
+		plugin p = plugins[idx - 1];
+		return std::unique_ptr<effect, plugin_dtor_t>(p.create(), p.destroy);
 	}
 }
 
 int effect_manager::size()
 {
-	return 1;
+	return plugins.size() + 1; //+1 for NULL plugin
 }
