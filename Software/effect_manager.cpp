@@ -62,3 +62,10 @@ int effect_manager::size()
 {
 	return plugins.size() + 1; //+1 for NULL plugin
 }
+
+effect_manager::~effect_manager()
+{
+	for(auto p : plugins)
+		dlclose(p.handle);
+	plugins.clear();
+}

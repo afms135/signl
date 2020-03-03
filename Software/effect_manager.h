@@ -16,6 +16,7 @@ public:
 
 	effect_manager(const effect_manager& other) = delete;
 	effect_manager& operator=(const effect_manager& other) = delete;
+	~effect_manager();
 
 private:
 	struct plugin
