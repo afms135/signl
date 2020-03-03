@@ -16,6 +16,8 @@ public:
 
 	effect_manager(const effect_manager& other) = delete;
 	effect_manager& operator=(const effect_manager& other) = delete;
+	effect_manager(effect_manager&& other);
+	effect_manager& operator=(effect_manager&& other);
 	~effect_manager();
 
 private:

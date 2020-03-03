@@ -63,6 +63,23 @@ int effect_manager::size()
 	return plugins.size() + 1; //+1 for NULL plugin
 }
 
+effect_manager::effect_manager(effect_manager&& other)
+{
+	plugins = std::move(other.plugins);
+}
+
+effect_manager& effect_manager::operator=(effect_manager&& other)
+{
+	if(this != &other)
+	{
+		for(auto p : plugins)
+			dlclose(p.handle);
+		plugins.clear();
+		plugins = std::move(other.plugins);
+	}
+	return *this;
+}
+
 effect_manager::~effect_manager()
 {
 	for(auto p : plugins)
