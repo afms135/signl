@@ -30,7 +30,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo '[LINK] $@'
-	@g++ -o $@ $^ `pkg-config --cflags --libs jack`
+	@g++ -o $@ $^ `pkg-config --cflags --libs jack` -ldl
 
 %.o: %.cpp
 	@echo '[C++ ] $@'

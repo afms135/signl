@@ -1,6 +1,8 @@
 #include "effect_manager.h"
 #include <stdexcept>
 #include <glob.h>  //glob(), globfree()
+#include <dlfcn.h> //dlopen(), dlsym(), dlclose(), dlerror()
+#include <iostream>
 
 effect_manager::effect_manager(std::string path, std::string ext)
 {
@@ -13,6 +15,23 @@ effect_manager::effect_manager(std::string path, std::string ext)
 	//Open each found plugin
 	for(unsigned long i = 0; i < b.gl_pathc; i++)
 	{
+		//Open plugin
+		void *handle = dlopen(b.gl_pathv[i], RTLD_NOW);
+		if(handle == nullptr)
+		{
+			std::cerr << "dlopen(): " + std::string(b.gl_pathv[i]) + ": " + std::string(dlerror()) << std::endl;
+			continue;
+		}
+
+		//Find create/destroy functions
+		void *create = dlsym(handle, "plugin_create");
+		void *destroy = dlsym(handle, "plugin_destroy");
+		if(create == nullptr || destroy == nullptr)
+		{
+			std::cerr << "dlsym(): " << std::string(b.gl_pathv[i]) + ": " + std::string(dlerror()) << std::endl;
+			dlclose(handle);
+			continue;
+		}
 	}
 
 	globfree(&b);
