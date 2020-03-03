@@ -31,15 +31,4 @@ public:
 	}
 };
 
-extern "C"
-{
-	effect *plugin_create(void)
-	{
-		return new plugin();
-	}
-
-	void plugin_destroy(effect *e)
-	{
-		delete e;
-	}
-}
+PLUGIN_API
