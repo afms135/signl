@@ -14,7 +14,7 @@ all: $(OBJS)
 
 %.so: %.cpp
 	@echo '[C++] $@'
-	@g++ $(CPP_OPTS) $(WARNS) -c $< -o $@
+	@g++ $(CPP_OPTS) $(WARNS) $< -o $@
 
 clean:
 	rm -f $(OBJS)
