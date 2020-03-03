@@ -18,11 +18,11 @@ effect_manager::effect_manager(std::string path, std::string ext)
 	globfree(&b);
 }
 
-std::unique_ptr<effect> effect_manager::operator()(int idx)
+std::unique_ptr<effect, plugin_dtor_t> effect_manager::operator()(int idx)
 {
 	switch(idx)
 	{
-	case 0: return std::unique_ptr<effect>(new null());
+	case 0: return std::unique_ptr<effect, plugin_dtor_t>(new null(), [](effect *e){delete e;});
 	default:
 		throw std::runtime_error("Effect index out of range");
 	}

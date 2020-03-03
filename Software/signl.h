@@ -18,7 +18,7 @@ public:
 	void start();
 
 private:
-	std::vector<std::unique_ptr<effect>> effect_chain;
+	std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_chain;
 	lcd display;
 	adc param;
 	debounce joy_up;

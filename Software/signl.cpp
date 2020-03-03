@@ -22,7 +22,6 @@ volatile sig_atomic_t signl::running = 0;
 
 signl::signl() :
 	jack_client("signl"),
-	effect_chain(NUM_EFFECTS),
 	display(SPI_LCD, GPIO, LCD_A0, LCD_RES),
 	param(SPI_ADC),
 	joy_up(GPIO, JOY_UP, false, DEBOUNCE_TIME, "JOY_UP"),
@@ -43,8 +42,8 @@ signl::signl() :
 		throw std::runtime_error("sigaction(): Could not register SIGINT handler: " + std::string(strerror(errno)));
 
 	//Create blank effect chain
-	for(auto &e : effect_chain)
-		e = effects(effects.EFFECT_NULL);
+	for(int i = 0; i < NUM_EFFECTS; i++)
+		effect_chain.push_back(effects(effects.EFFECT_NULL));
 
 	running = 1;
 	activate();
