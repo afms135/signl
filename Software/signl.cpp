@@ -29,7 +29,8 @@ signl::signl() :
 	joy_down(GPIO, JOY_DOWN, false, DEBOUNCE_TIME, "JOY_DOWN"),
 	joy_left(GPIO, JOY_LEFT, false, DEBOUNCE_TIME, "JOY_LEFT"),
 	joy_right(GPIO, JOY_RIGHT, false, DEBOUNCE_TIME, "JOY_RIGHT"),
-	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH")
+	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH"),
+	effects("./effects")
 {
 	//Register signal handlers
 	struct sigaction s;
