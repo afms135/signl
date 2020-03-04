@@ -7,8 +7,7 @@ void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin,
 	{
 		for(unsigned int x_index = 0; x_index < sprite.width; ++x_index)
 		{
-			putpixel(x_origin+x_index, 
-y_origin+y_index), sprite.art[x_index+(y_index*sprite.width)]-inv);
+			putpixel(x_origin+x_index, y_origin+y_index, sprite.art[x_index+(y_index*sprite.width)]-inv);
 		}
 	}
 }
@@ -34,7 +33,7 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 			case 58: font_index = 39; break;	// :
 			case 59: font_index = 38; break;	// ;
 			case 64: font_index = 43; break;	// ?
-			default: return 1;
+			default: break;
 		}
 	}
 
@@ -42,7 +41,7 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 
 }
 
-void gui::putstring(char* string, x_origin, y_origin)
+void gui::putstring(char* string, unsigned int x_origin, unsigned int y_origin)
 {
 	// NOTE: pixels going off screen are handled by afms135's
 	//       lcd class, but I think a string long enough would
@@ -52,11 +51,13 @@ void gui::putstring(char* string, x_origin, y_origin)
 
 	for(char* ch = string; *ch; ++ch)
 	{
-		if (*ch = ' ')
+		if (*ch == ' ')
 			x_index = x_index + 7;
-		else if (*ch = '\n')
+		else if (*ch == '\n')
+		{
 			x_index = x_origin;
 			y_index = y_index + 7;
+		}
 		else
 			putchar(*ch, x_index, y_index);
 		x_index = x_index + 7;
@@ -64,21 +65,18 @@ void gui::putstring(char* string, x_origin, y_origin)
 }
 
 // Puts a rectangle on top of the current fbuf (uses invpixel)
-void gui::putrect(unsigned int x_origin, unsigned int y_origin, unsigned 
-int width, unsigned int height)
+void gui::putrect(unsigned int x_origin, unsigned int y_origin, unsigned int width, unsigned int height)
 {
-	for(unsigned y_index = y_origin; y_index < y_origin + height; 
-++y_index)
+	for(unsigned y_index = y_origin; y_index < y_origin + height; ++y_index)
 	{
-		for(unsigned x_index = x_origin; x_index < x_origin + width; 
-++x_index)
+		for(unsigned x_index = x_origin; x_index < x_origin + width; ++x_index)
 		{
 			invpixel(x_index,y_index);
 		}
 	}
 }
 
-void gui::signl_view(std::vector<std::unique_ptr<effect>> effect_chain)
+void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> effect_chain)
 {
 	unsigned int cursor = 4;
 	for(auto &e : effect_chain)
