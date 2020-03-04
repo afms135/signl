@@ -3,7 +3,7 @@
 void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin, bool inv)
 {
 	unsigned int rows = sprite.width/sprite.art.size();
-	for(unsigned int y_index = 0; y_index < rows ; ++y_index) 
+	for(unsigned int y_index = 0; y_index < rows ; ++y_index)
 	{
 		for(unsigned int x_index = 0; x_index < sprite.width; ++x_index)
 		{
@@ -21,7 +21,7 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 		font_index = ch - 97;
 	else if(ch > 47 && ch < 58) 	// 0-9
 		font_index = ch - 22;
-	else 
+	else
 	{
 		switch(ch)
 		{
@@ -76,7 +76,7 @@ void gui::putrect(unsigned int x_origin, unsigned int y_origin, unsigned int wid
 	}
 }
 
-void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> effect_chain)
+void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain)
 {
 	unsigned int cursor = 4;
 	for(auto &e : effect_chain)
