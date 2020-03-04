@@ -4,14 +4,11 @@
 #include "font.h"
 #include "../hw/lcd.h"
 
-class gui
+class gui : public lcd
 {
 public:
 
-	gui(lcd lcd_in);
-
 private:
-	lcd* lcdPtr;
 	void putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin, bool inv = 
 false);  
 	void putchar(char ch, unsigned int x_origin, unsigned int 
