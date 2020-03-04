@@ -40,7 +40,7 @@ void spidev::setmaxspeed(uint32_t speed)
 
 void spidev::xfer(const void *send, void *recv, uint32_t len)
 {
-	struct spi_ioc_transfer msg[1] = {0};
+	struct spi_ioc_transfer msg[1] = {};
 
 	//Setup transmit and recieve buffers
 	msg[0].tx_buf = reinterpret_cast<__u64>(send);
