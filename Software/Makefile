@@ -10,7 +10,7 @@ SRCS += hw/gpio.cpp hw/spi.cpp hw/lcd.cpp hw/debounce.cpp hw/adc.cpp
 INCS = -I.
 
 #Compiler defines
-DEFS = 
+DEFS =
 
 #Warnings
 WARNS = -Wall -Wextra -Wpedantic -Wno-unused-parameter

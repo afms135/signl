@@ -53,7 +53,7 @@ jack_client::sample_t signl::process(sample_t in)
 {
 	for(const auto &e : effect_chain)
 		in = (*e)(in);
-    return in;
+	return in;
 }
 
 void signl::start()
