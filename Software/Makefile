@@ -2,9 +2,9 @@
 NAME = signl
 
 #C++ Sources
-SRCS  = main.cpp signl.cpp jack.cpp
+SRCS  = main.cpp signl.cpp jack.cpp effect_manager.cpp
 SRCS += gui/gui.cpp
-SRCS += hw/gpio.cpp hw/spi.cpp hw/lcd.cpp
+SRCS += hw/gpio.cpp hw/spi.cpp hw/lcd.cpp hw/debounce.cpp hw/adc.cpp
 
 #Include directories
 INCS = -I.
@@ -31,7 +31,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo '[LINK] $@'
-	@g++ -o $@ $^ `pkg-config --cflags --libs jack`
+	@g++ -o $@ $^ `pkg-config --cflags --libs jack` -ldl
 
 %.o: %.cpp
 	@echo '[C++ ] $@'

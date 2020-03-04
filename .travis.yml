@@ -1,0 +1,9 @@
+language: cpp
+os: linux
+dist: bionic
+compiler: gcc
+sudo: required
+install:
+  - sudo apt-get update
+  - sudo apt-get -y install jackd2 libjack-jackd2-dev
+script: make -C ./Software

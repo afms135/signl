@@ -8,7 +8,7 @@
 #include <unistd.h>    //close()
 #include <linux/gpio.h>
 
-gpioout::gpioout(std::string gpiochip, int pin, bool value, std::string label)
+static int req_gpio(std::string gpiochip, int pin, std::string label = "", bool value = 0)
 {
 	//Open gpiochip device file
 	int req_fd = open(gpiochip.c_str(), O_RDWR | O_NONBLOCK);
@@ -29,8 +29,15 @@ gpioout::gpioout(std::string gpiochip, int pin, bool value, std::string label)
 		throw std::runtime_error("Could not request gpio pin " + std::to_string(pin) + ": " + std::string(strerror(errno)));
 
 	//Success
-	fd = req.fd;
 	close(req_fd);
+	return req.fd;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+gpioout::gpioout(std::string gpiochip, int pin, bool value, std::string label)
+{
+	fd = req_gpio(gpiochip, pin, label, value);
 }
 
 void gpioout::operator=(bool v)
@@ -59,6 +66,43 @@ gpioout& gpioout::operator=(gpioout&& other)
 }
 
 gpioout::~gpioout()
+{
+	close(fd);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+gpioin::gpioin(std::string gpiochip, int pin, std::string label)
+{
+	fd = req_gpio(gpiochip, pin, label);
+}
+
+gpioin::operator bool()
+{
+	struct gpiohandle_data data = {0};
+	if(ioctl(fd, GPIOHANDLE_GET_LINE_VALUES_IOCTL, &data) < 0)
+		throw std::runtime_error("Could not get GPIO: " + std::string(strerror(errno)));
+	return data.values[0];
+}
+
+gpioin::gpioin(gpioin&& other)
+{
+	fd = other.fd;
+	other.fd = -1;
+}
+
+gpioin& gpioin::operator=(gpioin&& other)
+{
+	if(this != &other)
+	{
+		close(fd);
+		fd = other.fd;
+		other.fd = -1;
+	}
+	return *this;
+}
+
+gpioin::~gpioin()
 {
 	close(fd);
 }

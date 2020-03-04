@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 #include "signl.h"
 
 int main()
@@ -7,11 +8,11 @@ int main()
 	{
 		signl s;
 		s.start();
-		return 0;
+		return EXIT_SUCCESS;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
-		return -1;
+		return EXIT_FAILURE;
 	}
 }
