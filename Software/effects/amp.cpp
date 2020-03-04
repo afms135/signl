@@ -1,11 +1,9 @@
-#ifndef AMP_H
-#define AMP_H
 #include "effect.h"
 
-class amp : public effect
+class plugin : public effect
 {
 public:
-	amp()
+	plugin()
 	{
 		gain = 1;
 	}
@@ -45,4 +43,4 @@ private:
 	float gain;
 };
 
-#endif /*AMP_H*/
+PLUGIN_API

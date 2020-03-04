@@ -1,9 +1,7 @@
-#ifndef OVERDRIVE_H
-#define OVERDRIVE_H
 #include "effect.h"
 #include <cmath>
 
-class overdrive : public effect
+class plugin : public effect
 {
 public:
 	float operator()(float in) override
@@ -33,4 +31,4 @@ public:
 	}
 };
 
-#endif /*OVERDRIVE_H*/
+PLUGIN_API

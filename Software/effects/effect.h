@@ -19,4 +19,45 @@ struct effect
 	virtual std::string paramname(param p) = 0;
 };
 
+class null : public effect
+{
+public:
+	float operator()(float in) override
+	{
+		return in;
+	}
+
+	void paramset(param p, float v) override
+	{
+	}
+
+	std::string name() override
+	{
+		return "Null";
+	}
+
+	std::string paramname(param p) override
+	{
+		return "";
+	}
+};
+
+//Type definition of plugin create/destroy functions
+typedef effect *(*plugin_ctor_t)(void);
+typedef void (*plugin_dtor_t)(effect*);
+
+#define PLUGIN_API             \
+extern "C"                     \
+{                              \
+effect *plugin_create(void)    \
+{                              \
+return new plugin();           \
+}                              \
+                               \
+void plugin_destroy(effect *e) \
+{                              \
+delete e;                      \
+}                              \
+}
+
 #endif /*EFFECT_H*/
