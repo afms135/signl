@@ -39,7 +39,7 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 	putsprite(font[font_index], x_origin, y_origin);
 }
 
-void gui::putstring(char* string, unsigned int x_origin, unsigned int y_origin)
+void gui::putstring(std::string str, unsigned int x_origin, unsigned int y_origin)
 {
 	// NOTE: pixels going off screen are handled by afms135's
 	//       lcd class, but I think a string long enough would
@@ -47,17 +47,17 @@ void gui::putstring(char* string, unsigned int x_origin, unsigned int y_origin)
 	unsigned int x_index = x_origin;
 	unsigned int y_index = y_origin;
 
-	for(char* ch = string; *ch; ++ch)
+	for(auto ch : str)
 	{
-		if (*ch == ' ')
+		if (ch == ' ')
 			x_index = x_index + 7;
-		else if (*ch == '\n')
+		else if (ch == '\n')
 		{
 			x_index = x_origin;
 			y_index = y_index + 7;
 		}
 		else
-			putchar(*ch, x_index, y_index);
+			putchar(ch, x_index, y_index);
 		x_index = x_index + 7;
 	}
 }
