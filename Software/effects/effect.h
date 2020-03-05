@@ -12,11 +12,20 @@ struct effect
 		PARAM_D
 	};
 
+	enum gui_icon
+	{
+		ICON_NONE  = 0,
+		ICON_AMP   = 1,
+		ICON_PEDAL = 2,
+		ICON_FADER = 3
+	};
+
 	virtual ~effect() {}
 	virtual float operator()(float in) = 0;
 	virtual void paramset(param p, float v) = 0;
 	virtual std::string name() = 0;
 	virtual std::string paramname(param p) = 0;
+	virtual gui_icon icon() = 0;
 };
 
 class null : public effect
@@ -39,6 +48,11 @@ public:
 	std::string paramname(param p) override
 	{
 		return "";
+	}
+
+	gui_icon icon() override
+	{
+		return ICON_NONE;
 	}
 };
 

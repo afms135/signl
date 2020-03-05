@@ -29,6 +29,11 @@ public:
 	{
 		return "";
 	}
+
+	gui_icon icon() override
+	{
+		return ICON_PEDAL;
+	}
 };
 
 PLUGIN_API

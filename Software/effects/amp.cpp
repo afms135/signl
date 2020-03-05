@@ -38,6 +38,11 @@ public:
 		return "";
 	}
 
+	gui_icon icon() override
+	{
+		return ICON_AMP;
+	}
+
 private:
 	float gain;
 };
