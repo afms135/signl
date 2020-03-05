@@ -3,9 +3,8 @@
 class plugin : public effect
 {
 public:
-	plugin()
+	plugin() : gain(1)
 	{
-		gain = 1;
 	}
 
 	float operator()(float in) override
