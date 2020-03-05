@@ -33,7 +33,7 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 			case 58: font_index = 39; break;	// :
 			case 59: font_index = 38; break;	// ;
 			case 64: font_index = 43; break;	// ?
-			default: break;
+			default: return;
 		}
 	}
 	putsprite(font[font_index], x_origin, y_origin);
