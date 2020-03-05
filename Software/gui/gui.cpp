@@ -15,24 +15,24 @@ void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin,
 void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 {
 	unsigned int font_index = 0;
-	if(ch > 64 && ch < 91) 			// A-Z
-		font_index = ch - 65;
-	else if(ch > 96 && ch < 123) 	// a-z (mapped to A-Z)
-		font_index = ch - 97;
-	else if(ch > 47 && ch < 58) 	// 0-9
-		font_index = ch - 22;
+	if(ch >= 'A' && ch <= 'Z')
+		font_index = ch - 'A';
+	else if(ch >= 'a' && ch <= 'z') // (mapped to A-Z)
+		font_index = ch - 'a';
+	else if(ch >= '0' && ch <= '9')
+		font_index = 26 + (ch - '0');
 	else
 	{
 		switch(ch)
 		{
-			case 33: font_index = 41; break;	// !
-			case 34: font_index = 42; break;	// "
-			case 39: font_index = 40; break;	// '
-			case 44: font_index = 37; break;	// ,
-			case 46: font_index = 36; break;	// .
-			case 58: font_index = 39; break;	// :
-			case 59: font_index = 38; break;	// ;
-			case 64: font_index = 43; break;	// ?
+			case '.':  font_index = 36; break;
+			case ',':  font_index = 37; break;
+			case ';':  font_index = 38; break;
+			case ':':  font_index = 39; break;
+			case '\'': font_index = 40; break;
+			case '!':  font_index = 41; break;
+			case '"':  font_index = 42; break;
+			case '?':  font_index = 43; break;
 			default: return;
 		}
 	}
