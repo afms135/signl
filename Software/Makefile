@@ -25,7 +25,7 @@ OBJS = $(SRCS:%.cpp=%.o)
 DEPS = $(SRCS:%.cpp=%.d)
 CPPFLAGS += $(CPP_OPTS) $(WARNS) $(DEFS) $(INCS)
 
-.PHONY: all clean
+.PHONY: all clean effects
 
 all: $(NAME)
 
@@ -38,6 +38,9 @@ $(NAME): $(OBJS)
 	@g++ $(CPPFLAGS) -MMD -MP -c $< -o $@
 
 -include $(DEPS)
+
+effects:
+	make -C ./effects
 
 clean:
 	rm -f $(OBJS) $(DEPS) $(NAME)
