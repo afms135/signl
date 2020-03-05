@@ -41,6 +41,11 @@ signl::signl() :
 	if(sigaction(SIGINT, &s, NULL))
 		throw std::runtime_error("sigaction(): Could not register SIGINT handler: " + std::string(strerror(errno)));
 
+	//Print list of loaded plugins
+	std::cout << "Loaded plugins:" << std::endl;
+	for(int i = 0; i < effects.size(); i++)
+		std::cout << '\t' << effects(i)->name() << std::endl;
+
 	//Create blank effect chain
 	for(int i = 0; i < NUM_EFFECTS; i++)
 		effect_chain.push_back(effects(effects.EFFECT_NULL));
