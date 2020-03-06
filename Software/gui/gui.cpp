@@ -79,7 +79,7 @@ void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 	unsigned int cursor = 4;
 	for(auto &e : effect_chain)
 	{
-		putsprite(empty,cursor,4);
+		putsprite(icons[e->icon],cursor,4);
 		cursor = cursor + 24;
 	}
 }

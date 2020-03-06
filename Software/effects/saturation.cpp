@@ -50,7 +50,7 @@ public:
 
 	gui_icon icon() override
 	{
-		return ICON_PEDAL;
+		return ICON_VUMETER;
 	}
 
 private:
