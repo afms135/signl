@@ -4,25 +4,22 @@
 class plugin : public effect
 {
 public:
-	plugin() : thresh(1.0), drive(2.0)
+	plugin() : thresh(0.5), drive(2.0)
 	{
 	}
 
 	float operator()(float in) override
 	{
-        int inv = 1;
-        if (in < 0)
-        {
-            in = -1*in;
-            inv = -1;
-        }
+        float abs_in = abs(in);
+
         if (in < thresh)
         {
-            return in*inv;
+            return in;
         }
         else
         {
-            return (thresh + (in-thresh) / (1+pow( (in-thresh)/(1-thresh),drive )))*inv;
+            float ret = (thresh + (abs_in-thresh) / (1+pow( (abs_in-thresh)/(1-thresh),drive )));
+            return (in > 0) ? ret : -ret;
         }
 	}
 
@@ -43,7 +40,7 @@ public:
 	{
 		if(p == PARAM_A)
 			return "Threshold";
-        else if(p == PARAM_A)
+        else if(p == PARAM_B)
         	return "Drive";
 		return "";
 	}
