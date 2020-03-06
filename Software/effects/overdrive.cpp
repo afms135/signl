@@ -4,20 +4,29 @@
 class plugin : public effect
 {
 public:
+	plugin() : threshold(1.0/3.0)
+	{
+	}
+
 	float operator()(float in) override
 	{
-		if(in >= 0 && in < 1.0/3.0)
+		float abs_in = abs(in);
+
+		if(abs_in < threshold)
 			return 2 * in;
-		else if(in >= 1.0/3.0 && in < 2.0/3.0)
-			return (3 - pow(2 - 3 * in, 2)) / 3.0;
-		else if(in >= 2.0/3.0 && in <= 1.0)
-			return 1;
+		else if(abs_in >= threshold && abs_in < 2*threshold)
+		{
+			float ret = (3 - pow(2 - abs_in * 3, 2)) / 3.0;
+			return (in > 0) ? ret : -ret;
+		}
 		else
-			return in;
+			return (in > 0) ? 1 : -1;
 	}
 
 	void paramset(param p, float v) override
 	{
+		if(p == PARAM_A)
+			threshold = v;
 	}
 
 	std::string name() override
@@ -27,6 +36,8 @@ public:
 
 	std::string paramname(param p) override
 	{
+		if(p == PARAM_A)
+			return "Threshold";
 		return "";
 	}
 
@@ -34,6 +45,9 @@ public:
 	{
 		return ICON_PEDAL;
 	}
+
+private:
+	float threshold;
 };
 
 PLUGIN_API
