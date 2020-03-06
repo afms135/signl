@@ -4,7 +4,7 @@
 class plugin : public effect
 {
 public:
-	plugin() : thresh(1.0)
+	plugin() : thresh(1.0), drive(2.0)
 	{
 	}
 
@@ -22,7 +22,7 @@ public:
         }
         else
         {
-            return (thresh + (in-thresh) / (1+pow( (in-thresh)/(1-thresh),2 )))*inv;
+            return (thresh + (in-thresh) / (1+pow( (in-thresh)/(1-thresh),drive )))*inv;
         }
 	}
 
@@ -30,6 +30,8 @@ public:
 	{
 		if(p == PARAM_A)
 			thresh = 1.0-v;
+        else if(p == PARAM_B)
+            drive = v * 10.0;
 	}
 
 	std::string name() override
@@ -41,6 +43,8 @@ public:
 	{
 		if(p == PARAM_A)
 			return "Threshold";
+        else if(p == PARAM_A)
+        	return "Drive";
 		return "";
 	}
 
@@ -51,6 +55,7 @@ public:
 
 private:
 	float thresh;
+    float drive;
 };
 
 PLUGIN_API
