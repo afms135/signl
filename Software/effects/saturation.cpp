@@ -11,14 +11,19 @@ public:
 	float operator()(float in) override
 	{
         int inv = 1;
-        if (in < 0):
-            in = -1*x;
+        if (in < 0)
+        {
+            in = -1*in;
             inv = -1;
-        if (in < thresh):
+        }
+        if (in < thresh)
+        {
             return in*inv;
-        elif (in > thresh):
-            return (thresh + (in-thresh) / (1+( (in-thresh)/(1-thresh) )**2))*inv;
-
+        }
+        else
+        {
+            return (thresh + (in-thresh) / (1+pow( (in-thresh)/(1-thresh),2 )))*inv;
+        }
 	}
 
 	void paramset(param p, float v) override
@@ -43,6 +48,9 @@ public:
 	{
 		return ICON_PEDAL;
 	}
+
+private:
+	float thresh;
 };
 
 PLUGIN_API
