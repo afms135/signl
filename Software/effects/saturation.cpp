@@ -33,7 +33,7 @@ public:
 
 	std::string name() override
 	{
-		return "Saturation";
+		return "Tape Saturation";
 	}
 
 	std::string paramname(param p) override
