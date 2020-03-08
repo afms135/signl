@@ -18,7 +18,7 @@ public:
         }
         else
         {
-            float ret = (thresh + (abs_in-thresh) / (1+pow( (abs_in-thresh)/(1-thresh),drive )));
+            float ret = (thresh + (abs_in - thresh) / (1 + pow( (abs_in - thresh ) / (1 - thresh ), drive)));
             return (in > 0) ? ret : -ret;
         }
 	}
@@ -47,7 +47,7 @@ public:
 
 	gui_icon icon() override
 	{
-		return ICON_VUMETER;
+		return ICON_TAPE;
 	}
 
 private:
