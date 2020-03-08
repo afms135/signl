@@ -17,13 +17,13 @@ public:
 
     float gateState(float in)
     {
-        return 0;
+        return in * (1-reduction);
     }
 
     float attackState(float in)
     {
         index++;
-        return in * (index / attack);
+        return in * ((reduction * index / attack) + (1 - reduction));
     }
 
     float holdState(float in)
@@ -34,7 +34,7 @@ public:
     float releaseState(float in)
     {
         index++;
-        return in * (1 - (index / release));
+        return in * (1 - (reduction * index / release));
     }
 
     float enterGateState(float in)
