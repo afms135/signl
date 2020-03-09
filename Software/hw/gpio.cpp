@@ -8,7 +8,7 @@
 #include <unistd.h>    //close()
 #include <linux/gpio.h>
 
-static int req_gpio(std::string gpiochip, int pin, std::string label = "", bool value = 0)
+static int req_gpio(std::string gpiochip, int pin, int flags, std::string label = "", bool value = 0)
 {
 	//Open gpiochip device file
 	int req_fd = open(gpiochip.c_str(), O_RDWR | O_NONBLOCK);
@@ -17,7 +17,7 @@ static int req_gpio(std::string gpiochip, int pin, std::string label = "", bool 
 
 	//GPIO pin request
 	struct gpiohandle_request req = {};
-	req.flags = GPIOHANDLE_REQUEST_OUTPUT;
+	req.flags = flags;
 	req.lines = 1;
 	req.lineoffsets[0] = pin;
 	req.default_values[0] = value;
@@ -37,7 +37,7 @@ static int req_gpio(std::string gpiochip, int pin, std::string label = "", bool 
 
 gpioout::gpioout(std::string gpiochip, int pin, bool value, std::string label)
 {
-	fd = req_gpio(gpiochip, pin, label, value);
+	fd = req_gpio(gpiochip, pin, GPIOHANDLE_REQUEST_OUTPUT, label, value);
 }
 
 void gpioout::operator=(bool v)
@@ -74,7 +74,7 @@ gpioout::~gpioout()
 
 gpioin::gpioin(std::string gpiochip, int pin, std::string label)
 {
-	fd = req_gpio(gpiochip, pin, label);
+	fd = req_gpio(gpiochip, pin, GPIOHANDLE_REQUEST_INPUT, label);
 }
 
 gpioin::operator bool()
