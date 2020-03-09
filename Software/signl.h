@@ -2,7 +2,7 @@
 #define SIGNL_H
 #include "jack.h"
 #include "effect_manager.h"
-#include "hw/lcd.h"
+#include "gui/gui.h"
 #include "hw/debounce.h"
 #include "hw/adc.h"
 #include <memory>
@@ -19,7 +19,7 @@ public:
 
 private:
 	std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_chain;
-	lcd display;
+	gui display;
 	adc param;
 	debounce joy_up;
 	debounce joy_down;
