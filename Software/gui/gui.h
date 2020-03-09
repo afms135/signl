@@ -9,6 +9,7 @@
 
 class gui : public lcd
 {
+	using lcd::lcd;
 public:
 
 private:
