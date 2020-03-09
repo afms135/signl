@@ -9,7 +9,7 @@ typedef struct Sprite
 	uint8_t width;
 } Sprite;
 
-Sprite icons[] =
+static Sprite icons[] =
 {
 	{	// empty
 		{
@@ -145,7 +145,7 @@ Sprite icons[] =
 
 };
 
-Sprite arrow =
+static Sprite arrow =
 {
 	{
 	0,0,0,1,1,0,0,0,

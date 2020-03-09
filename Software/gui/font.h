@@ -5,7 +5,7 @@
 // https://fontmeme.com/fonts/early-gameboy-font/
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;:'!"?
 
-Sprite font[] =
+static Sprite font[] =
 {
 	{	// A
 		{
