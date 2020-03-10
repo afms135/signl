@@ -80,6 +80,6 @@ void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 	for(auto &e : effect_chain)
 	{
 		putsprite(icons[e->icon()],cursor,4);
-		cursor = cursor + 24;
+		cursor = cursor + 26;
 	}
 }
