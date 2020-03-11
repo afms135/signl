@@ -29,6 +29,9 @@ private:
 	effect_manager effects;
 	static void sigterm_handler(int sig);
 	static volatile sig_atomic_t running;
+
+	unsigned int effect_idx;
+	unsigned int effect_chain_idx[5];
 };
 
 #endif /*SIGNL_H*/

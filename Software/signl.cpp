@@ -29,7 +29,9 @@ signl::signl() :
 	joy_left(GPIO, JOY_LEFT, false, DEBOUNCE_TIME, "JOY_LEFT"),
 	joy_right(GPIO, JOY_RIGHT, false, DEBOUNCE_TIME, "JOY_RIGHT"),
 	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH"),
-	effects("./effects")
+	effects("./effects"),
+	effect_idx(0),
+	effect_chain_idx{0,0,0,0,0}
 {
 	//Register signal handlers
 	struct sigaction s;
@@ -75,15 +77,27 @@ void signl::start()
 		//Joystick input
 		if(joy_up)
 		{
+			effect_chain_idx[effect_idx]--;
+			if(effect_chain_idx[effect_idx] >= effects.size())
+				effect_chain_idx[effect_idx] = effects.size() - 1;
+			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx]);
 		}
 		if(joy_down)
 		{
+			effect_chain_idx[effect_idx]++;
+			effect_chain_idx[effect_idx] %= effects.size();
+			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx]);
 		}
 		if(joy_left)
 		{
+			effect_idx--;
+			if (effect_idx >= 5)
+				effect_idx = 4;
 		}
 		if(joy_right)
 		{
+			effect_idx++;
+			effect_idx %= 5;
 		}
 		if(joy_push)
 		{
@@ -91,6 +105,7 @@ void signl::start()
 
 		//Display update
 		display.clear();
+		display.signl_view(effect_chain,effect_idx);
 		display.flip();
 	}
 	std::cout << "Stopping..." << std::endl;

@@ -2,12 +2,12 @@
 
 void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin, bool inv)
 {
-	unsigned int rows = sprite.width/sprite.art.size();
-	for(unsigned int y_index = 0; y_index < rows ; ++y_index)
+	unsigned int rows = sprite.art.size()/sprite.width;
+	for(unsigned int y_index = 0; y_index < rows ; y_index++)
 	{
-		for(unsigned int x_index = 0; x_index < sprite.width; ++x_index)
+		for(unsigned int x_index = 0; x_index < sprite.width; x_index++)
 		{
-			putpixel(x_origin+x_index, y_origin+y_index, sprite.art[x_index+(y_index*sprite.width)]-inv);
+			putpixel(x_origin+x_index, y_origin+y_index, sprite.art[x_index+(y_index*sprite.width)]);
 		}
 	}
 }
@@ -74,12 +74,31 @@ void gui::putrect(unsigned int x_origin, unsigned int y_origin, unsigned int wid
 	}
 }
 
-void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain)
+void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain, unsigned int effect_idx)
 {
-	unsigned int cursor = 4;
+	unsigned int cursor_x = 0;
+	unsigned int cursor_y = 0;
+
+	// Draw main signal line
+	cursor_y = 12;
+	putrect(cursor_x,cursor_y,128,1);
+
+	// Draw effect chain
+	cursor_x = 5;
+	cursor_y = 0;
 	for(auto &e : effect_chain)
 	{
-		putsprite(icons[e->icon()],cursor,4);
-		cursor = cursor + 26;
+		putsprite(icons[e->icon()],cursor_x,cursor_y);
+		cursor_x = cursor_x + icons[e->icon()].width + 4;
 	}
+
+	// Draw arrow
+	cursor_x = 5 + 6 + (effect_idx * 24);
+	cursor_y = 18;
+	putsprite(arrow,cursor_x,cursor_y);
+
+	// Print name of current effect
+	cursor_x = 64 - (effect_chain[effect_idx]->name().length() * 7 / 2) - 4;
+	cursor_y = 28;
+	putstring(effect_chain[effect_idx]->name(),cursor_x,cursor_y);
 }
