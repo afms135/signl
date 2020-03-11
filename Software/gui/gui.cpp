@@ -101,4 +101,22 @@ void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 	cursor_x = 64 - (effect_chain[effect_idx]->name().length() * 7 / 2) - 4;
 	cursor_y = 28;
 	putstring(effect_chain[effect_idx]->name(),cursor_x,cursor_y);
+
+	// Print parameters of current effect
+	cursor_x = 0;
+	cursor_y = 44;
+	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_A),cursor_x,cursor_y);
+
+	cursor_x = 0;
+	cursor_y = 52;
+	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_B),cursor_x,cursor_y);
+
+	cursor_x = 128 - (effect_chain[effect_idx]->paramname(effect::PARAM_C).length() * 7);
+	cursor_y = 44;
+	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_C),cursor_x,cursor_y);
+
+	cursor_x = 128 - (effect_chain[effect_idx]->paramname(effect::PARAM_D).length() * 7);
+	cursor_y = 52;
+	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_D),cursor_x,cursor_y);
+
 }

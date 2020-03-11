@@ -140,8 +140,8 @@ public:
 
 	void paramset(param p, float v) override
 	{
-		if(p == PARAM_A)
-			thresh = v;
+	if(p == PARAM_A)
+		thresh = v;
         else if(p == PARAM_B)
         {
             attack = pow(100,v) - 1;    // in milliseconds
@@ -163,8 +163,8 @@ public:
 
 	std::string paramname(param p) override
 	{
-		if(p == PARAM_A)
-			return "Threshold";
+	if(p == PARAM_A)
+		return "Threshold";
         else if(p == PARAM_B)
         	return "Attack";
         else if(p == PARAM_C)
