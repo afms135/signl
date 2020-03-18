@@ -31,11 +31,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo '[LINK] $@'
-	@g++ -o $@ $^ `pkg-config --cflags --libs jack` -ldl
+	@$(CXX) -o $@ $^ `pkg-config --cflags --libs jack` -ldl
 
 %.o: %.cpp
 	@echo '[C++ ] $@'
-	@g++ $(CPPFLAGS) -MMD -MP -c $< -o $@
+	@$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
 
 -include $(DEPS)
 
