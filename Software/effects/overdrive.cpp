@@ -10,7 +10,7 @@ public:
 
 	float operator()(float in) override
 	{
-		float abs_in = abs(in);
+		float abs_in = std::abs(in);
 
 		if(abs_in < threshold)
 			return 2 * in;

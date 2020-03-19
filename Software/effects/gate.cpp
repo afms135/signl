@@ -12,7 +12,7 @@ public:
 
 	float operator()(float in) override
 	{
-		float abs_in = abs(in);
+		float abs_in = std::abs(in);
 
 		// Gate state
 		if (state == 0)
