@@ -14,12 +14,12 @@ struct effect
 
 	enum gui_icon
 	{
-		ICON_NONE  = 0,
-		ICON_AMP   = 1,
-		ICON_PEDAL = 2,
-		ICON_FADER = 3,
+		ICON_NONE    = 0,
+		ICON_AMP     = 1,
+		ICON_PEDAL   = 2,
+		ICON_FADER   = 3,
 		ICON_VUMETER = 4,
-		ICON_TAPE = 5
+		ICON_TAPE    = 5
 	};
 
 	virtual ~effect() {}

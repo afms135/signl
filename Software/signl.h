@@ -18,7 +18,6 @@ public:
 	void start();
 
 private:
-	std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_chain;
 	gui display;
 	adc param;
 	debounce joy_up;
@@ -27,6 +26,7 @@ private:
 	debounce joy_right;
 	debounce joy_push;
 	effect_manager effects;
+	std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_chain;
 	static void sigterm_handler(int sig);
 	static volatile sig_atomic_t running;
 

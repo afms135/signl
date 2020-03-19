@@ -10,25 +10,25 @@ public:
 
 	float operator()(float in) override
 	{
-        float abs_in = abs(in);
+		float abs_in = std::abs(in);
 
-        if (in < thresh)
-        {
-            return in;
-        }
-        else
-        {
-            float ret = (thresh + (abs_in - thresh) / (1 + pow( (abs_in - thresh ) / (1 - thresh ), drive)));
-            return (in > 0) ? ret : -ret;
-        }
+		if (in < thresh)
+		{
+			return in;
+		}
+		else
+		{
+			float ret = (thresh + (abs_in - thresh) / (1 + pow( (abs_in - thresh ) / (1 - thresh ), drive)));
+			return (in > 0) ? ret : -ret;
+		}
 	}
 
 	void paramset(param p, float v) override
 	{
 		if(p == PARAM_A)
 			thresh = 1.0-v;
-        else if(p == PARAM_B)
-            drive = v * 10.0;
+		else if(p == PARAM_B)
+			drive = v * 10.0;
 	}
 
 	std::string name() override
@@ -40,8 +40,8 @@ public:
 	{
 		if(p == PARAM_A)
 			return "Threshold";
-        else if(p == PARAM_B)
-        	return "Drive";
+		else if(p == PARAM_B)
+			return "Drive";
 		return "";
 	}
 
@@ -52,7 +52,7 @@ public:
 
 private:
 	float thresh;
-    float drive;
+	float drive;
 };
 
 PLUGIN_API
