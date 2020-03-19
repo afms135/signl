@@ -6,84 +6,6 @@
 class plugin : public effect
 {
 public:
-
-	void time_under(float in)
-	{
-		if (in < thresh)
-			samples_under_threshold++;
-		else
-			samples_under_threshold = 0;
-	}
-
-	float gateState(float in)
-	{
-		return in * (1-reduction);
-	}
-
-	float attackState(float in)
-	{
-		index++;
-		return in * ((reduction * index / attack) + (1 - reduction));
-	}
-
-	float holdState(float in)
-	{
-		return in;
-	}
-
-	float releaseState(float in)
-	{
-		index++;
-		return in * (1 - (reduction * index / release));
-	}
-
-	float enterGateState(float in)
-	{
-		state = 0;
-		return gateState(in);
-	}
-
-	float enterAttackState(float in)
-	{
-		// from gate state
-		if (state == 0)
-		{
-			index = 0;
-		}
-		// from release state
-		else if (state == 3)
-		{
-			index = attack * (1 - (index / release));
-		}
-
-		samples_under_threshold = 0;
-		state = 1;
-		return attackState(in);
-	}
-
-	float enterHoldState(float in)
-	{
-		state = 2;
-		return holdState(in);
-	}
-
-	float enterReleaseState(float in)
-	{
-		// from attack state
-		if (state == 1)
-		{
-			index = release * (1 - (index / attack));
-		}
-		// from hold state
-		else if (state == 2)
-		{
-			index = 0;
-		}
-
-		state = 3;
-		return releaseState(in);
-	}
-
 	plugin() : thresh(0.1), attack(2.0), release(10.0), reduction(1.0)
 	{
 	}
@@ -180,6 +102,83 @@ public:
 	}
 
 private:
+	void time_under(float in)
+	{
+		if (in < thresh)
+			samples_under_threshold++;
+		else
+			samples_under_threshold = 0;
+	}
+
+	float gateState(float in)
+	{
+		return in * (1-reduction);
+	}
+
+	float attackState(float in)
+	{
+		index++;
+		return in * ((reduction * index / attack) + (1 - reduction));
+	}
+
+	float holdState(float in)
+	{
+		return in;
+	}
+
+	float releaseState(float in)
+	{
+		index++;
+		return in * (1 - (reduction * index / release));
+	}
+
+	float enterGateState(float in)
+	{
+		state = 0;
+		return gateState(in);
+	}
+
+	float enterAttackState(float in)
+	{
+		// from gate state
+		if (state == 0)
+		{
+			index = 0;
+		}
+		// from release state
+		else if (state == 3)
+		{
+			index = attack * (1 - (index / release));
+		}
+
+		samples_under_threshold = 0;
+		state = 1;
+		return attackState(in);
+	}
+
+	float enterHoldState(float in)
+	{
+		state = 2;
+		return holdState(in);
+	}
+
+	float enterReleaseState(float in)
+	{
+		// from attack state
+		if (state == 1)
+		{
+			index = release * (1 - (index / attack));
+		}
+		// from hold state
+		else if (state == 2)
+		{
+			index = 0;
+		}
+
+		state = 3;
+		return releaseState(in);
+	}
+
 	float thresh;    // from 0. to 1. (linear)
 	float attack;    // from 0. to 100. (in milliseconds) (log)
 	float release;   // from 0. to 1000. (in milliseconds) (log)
