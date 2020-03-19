@@ -29,6 +29,9 @@ private:
 	std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_chain;
 	static void sigterm_handler(int sig);
 	static volatile sig_atomic_t running;
+
+	unsigned int effect_idx;
+	unsigned int effect_chain_idx[5];
 };
 
 #endif /*SIGNL_H*/
