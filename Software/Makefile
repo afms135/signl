@@ -27,20 +27,21 @@ CPPFLAGS += $(CPP_OPTS) $(WARNS) $(DEFS) $(INCS)
 
 .PHONY: all clean effects
 
-all: $(NAME)
+all: $(NAME) effects
 
 $(NAME): $(OBJS)
 	@echo '[LINK] $@'
 	@$(CXX) -o $@ $^ `pkg-config --cflags --libs jack` -ldl
 
 %.o: %.cpp
-	@echo '[C++ ] $@'
+	@echo '[C++] $@'
 	@$(CXX) $(CPPFLAGS) -MMD -MP -c $< -o $@
 
 -include $(DEPS)
 
 effects:
-	make -C ./effects
+	@$(MAKE) --no-print-directory -C ./effects
 
 clean:
 	rm -f $(OBJS) $(DEPS) $(NAME)
+	@$(MAKE) --no-print-directory -C ./effects clean
