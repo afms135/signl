@@ -44,7 +44,7 @@ effect_manager::effect_manager(std::string path, std::string ext)
 	globfree(&b);
 }
 
-std::unique_ptr<effect, plugin_dtor_t> effect_manager::operator()(unsigned int idx)
+std::unique_ptr<effect, plugin_dtor_t> effect_manager::operator()(unsigned int idx, unsigned int rate)
 {
 	if(idx >= size())
 		throw std::runtime_error("Effect index out of range");

@@ -46,11 +46,11 @@ signl::signl() :
 	//Print list of loaded plugins
 	std::cout << "Loaded plugins:" << std::endl;
 	for(unsigned int i = 0; i < effects.size(); i++)
-		std::cout << '\t' << effects(i)->name() << std::endl;
+		std::cout << '\t' << effects(i, rate())->name() << std::endl;
 
 	//Create blank effect chain
 	for(int i = 0; i < NUM_EFFECTS; i++)
-		effect_chain.push_back(effects(effects.EFFECT_NULL));
+		effect_chain.push_back(effects(effects.EFFECT_NULL, rate()));
 
 	running = 1;
 	activate();
@@ -80,13 +80,13 @@ void signl::start()
 			effect_chain_idx[effect_idx]--;
 			if(effect_chain_idx[effect_idx] >= effects.size())
 				effect_chain_idx[effect_idx] = effects.size() - 1;
-			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx]);
+			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
 		}
 		if(joy_down)
 		{
 			effect_chain_idx[effect_idx]++;
 			effect_chain_idx[effect_idx] %= effects.size();
-			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx]);
+			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
 		}
 		if(joy_left)
 		{
