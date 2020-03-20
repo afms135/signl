@@ -1,7 +1,7 @@
 #include "adc.h"
 
 adc::adc(std::string spidev) :
-	spi(spidev, spidev::MODE0, 8, 2000000)
+	spi(spidev, spidev::MODE0, 8, 1000000)
 {
 }
 
@@ -25,6 +25,7 @@ float adc::operator()(channel ch)
 
 	//Extract 10 bit count
 	uint16_t val = ((buf[1] & 0x03) << 8) | buf[2];
+
 	//Convert to float between 0 and 1
 	return (float)val / 0x03FF;
 }

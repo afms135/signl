@@ -52,7 +52,7 @@ void spidev::xfer(const void *send, void *recv, uint32_t len)
 	msg[0].tx_nbits = 0;
 	msg[0].rx_nbits = 0;
 	//Deselect device after transfer
-	msg[0].cs_change = 1;
+	msg[0].cs_change = 0;
 	//No delays between transfers
 	msg[0].delay_usecs = 0;
 
