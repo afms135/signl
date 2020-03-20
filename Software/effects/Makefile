@@ -12,7 +12,7 @@ CPP_OPTS = -O3 -std=c++14 -fPIC -shared -lm
 
 all: $(OBJS)
 
-%.so: %.cpp
+%.so: %.cpp effect.h
 	@echo '[C++] $@'
 	@$(CXX) $(CPP_OPTS) $(WARNS) $< -o $@
 
