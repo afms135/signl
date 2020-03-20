@@ -59,21 +59,21 @@ public:
 };
 
 //Type definition of plugin create/destroy functions
-typedef effect *(*plugin_ctor_t)(void);
+typedef effect *(*plugin_ctor_t)(unsigned int);
 typedef void (*plugin_dtor_t)(effect*);
 
-#define PLUGIN_API             \
-extern "C"                     \
-{                              \
-effect *plugin_create(void)    \
-{                              \
-return new plugin();           \
-}                              \
-                               \
-void plugin_destroy(effect *e) \
-{                              \
-delete e;                      \
-}                              \
+#define PLUGIN_API                       \
+extern "C"                               \
+{                                        \
+effect *plugin_create(unsigned int rate) \
+{                                        \
+return new plugin(rate);                 \
+}                                        \
+                                         \
+void plugin_destroy(effect *e)           \
+{                                        \
+delete e;                                \
+}                                        \
 }
 
 #endif /*EFFECT_H*/

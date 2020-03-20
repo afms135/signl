@@ -3,7 +3,7 @@
 class plugin : public effect
 {
 public:
-	plugin() : gain(1)
+	plugin(unsigned int rate) : gain(1)
 	{
 	}
 
