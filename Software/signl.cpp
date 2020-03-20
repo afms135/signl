@@ -45,7 +45,7 @@ signl::signl() :
 
 	//Print list of loaded plugins
 	std::cout << "Loaded plugins:" << std::endl;
-	for(int i = 0; i < effects.size(); i++)
+	for(unsigned int i = 0; i < effects.size(); i++)
 		std::cout << '\t' << effects(i)->name() << std::endl;
 
 	//Create blank effect chain
