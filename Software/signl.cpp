@@ -76,9 +76,9 @@ void signl::start()
 		param_in[2] = param(adc::CH2);
 		param_in[3] = param(adc::CH3);
 
-		for(char i = 0; i < 4; ++i)
+		for(unsigned int i = 0; i < 4; ++i)
 		{
-			if(param_in[i] != param_knobs[i])
+			if(param_in[i] < param_knobs[i]*0.97 || param_in[i] > param_knobs[i]*1.03)
 			{
 				param_knobs[i] = param_in[i];
 				effect_chain[effect_idx]->paramset(static_cast<effect::param>(i),param_in[i]);
