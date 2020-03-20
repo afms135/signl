@@ -4,7 +4,7 @@
 class plugin : public effect
 {
 public:
-	plugin() : thresh(0.5), drive(2.0)
+	plugin(unsigned int rate) : thresh(0.5), drive(2.0)
 	{
 	}
 

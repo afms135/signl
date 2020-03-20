@@ -4,7 +4,7 @@
 class plugin : public effect
 {
 public:
-	plugin() : low(0.5), lowmid(0.5), highmid(0.5), high(0.5)
+	plugin(unsigned int rate) : low(0.5), lowmid(0.5), highmid(0.5), high(0.5)
 	{
 	}
 

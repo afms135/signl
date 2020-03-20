@@ -6,7 +6,13 @@
 class plugin : public effect
 {
 public:
-	plugin() : thresh(0.1), attack(2.0), release(10.0), reduction(1.0)
+	plugin(unsigned int rate) :
+		rate(rate),
+		thresh(0.1),
+		attack(2.0),
+		release(10.0),
+		reduction(1.0),
+		hold(rate * 30 / 1000) // 30ms in samples
 	{
 	}
 
@@ -67,12 +73,12 @@ public:
 		else if(p == PARAM_B)
 		{
 			attack = pow(100,v) - 1; // in milliseconds
-			attack = 44100 * attack / 1000; // in samples
+			attack = rate * attack / 1000; // in samples
 		}
 		else if(p == PARAM_C)
 		{
 			release = pow(1000,v) - 1; // in milliseconds
-			release = 44100 * release / 1000; // in samples
+			release = rate * release / 1000; // in samples
 		}
 		else if(p == PARAM_D)
 			reduction = v;
@@ -179,13 +185,14 @@ private:
 		return releaseState(in);
 	}
 
+	unsigned int rate;
 	float thresh;    // from 0. to 1. (linear)
 	float attack;    // from 0. to 100. (in milliseconds) (log)
 	float release;   // from 0. to 1000. (in milliseconds) (log)
 	float reduction; // from 0. to 1. (linear)
+	float hold;
 
 	float samples_under_threshold = 0;
-	float hold = 44100 * 30 / 1000; // 30ms in samples
 	float index = 0;
 	float state = 0; // 0 = gate, 1 = attack, 2 = hold, 3 = release
 };
