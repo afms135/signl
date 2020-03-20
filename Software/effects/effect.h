@@ -67,7 +67,7 @@ extern "C"                               \
 {                                        \
 effect *plugin_create(unsigned int rate) \
 {                                        \
-return new plugin();                     \
+return new plugin(rate);                 \
 }                                        \
                                          \
 void plugin_destroy(effect *e)           \

@@ -4,7 +4,7 @@
 class plugin : public effect
 {
 public:
-	plugin() : threshold(1.0/3.0)
+	plugin(unsigned int rate) : threshold(1.0/3.0)
 	{
 	}
 

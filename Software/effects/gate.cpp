@@ -6,7 +6,7 @@
 class plugin : public effect
 {
 public:
-	plugin() : thresh(0.1), attack(2.0), release(10.0), reduction(1.0)
+	plugin(unsigned int rate) : thresh(0.1), attack(2.0), release(10.0), reduction(1.0)
 	{
 	}
 
