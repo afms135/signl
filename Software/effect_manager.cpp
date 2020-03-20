@@ -54,7 +54,7 @@ std::unique_ptr<effect, plugin_dtor_t> effect_manager::operator()(unsigned int i
 	else
 	{
 		plugin p = plugins[idx - 1];
-		return std::unique_ptr<effect, plugin_dtor_t>(p.create(), p.destroy);
+		return std::unique_ptr<effect, plugin_dtor_t>(p.create(rate), p.destroy);
 	}
 }
 
