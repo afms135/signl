@@ -32,6 +32,7 @@ private:
 
 	unsigned int effect_idx;
 	unsigned int effect_chain_idx[5];
+	float param_knobs[4];
 };
 
 #endif /*SIGNL_H*/

@@ -31,7 +31,8 @@ signl::signl() :
 	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH"),
 	effects("./effects"),
 	effect_idx(0),
-	effect_chain_idx{0,0,0,0,0}
+	effect_chain_idx{0,0,0,0,0},
+	param_knobs{0.0,0.0,0.0,0.0}
 {
 	//Register signal handlers
 	struct sigaction s;
@@ -69,10 +70,20 @@ void signl::start()
 	while(running)
 	{
 		//Parameter input
-		float A = param(adc::CH0);
-		float B = param(adc::CH1);
-		float C = param(adc::CH2);
-		float D = param(adc::CH3);
+		float param_in[4];
+		param_in[0] = param(adc::CH0);
+		param_in[1] = param(adc::CH1);
+		param_in[2] = param(adc::CH2);
+		param_in[3] = param(adc::CH3);
+
+		for(char i = 0; i < 4; ++i)
+		{
+			if(param_in[i] != param_knobs[i])
+			{
+				param_knobs[i] = param_in[i];
+				effect_chain[effect_idx]->paramset(static_cast<effect::param>(i),param_in[i]);
+			}
+		}
 
 		//Joystick input
 		if(joy_up)
