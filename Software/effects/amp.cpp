@@ -38,6 +38,13 @@ public:
 		return "";
 	}
 
+	float paramval(param p) override
+	{
+		if(p == PARAM_A)
+			return gain;
+		return -1;
+	}
+
 	gui_icon icon() override
 	{
 		return ICON_AMP;

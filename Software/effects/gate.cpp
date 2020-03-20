@@ -10,7 +10,9 @@ public:
 		rate(rate),
 		thresh(0.1),
 		attack(2.0),
+		attack_raw(0.0),
 		release(10.0),
+		release_raw(0.0),
 		reduction(1.0),
 		hold(rate * 30 / 1000) // 30ms in samples
 	{
@@ -72,11 +74,13 @@ public:
 			thresh = v;
 		else if(p == PARAM_B)
 		{
+			attack_raw = v;
 			attack = pow(100,v) - 1; // in milliseconds
 			attack = rate * attack / 1000; // in samples
 		}
 		else if(p == PARAM_C)
 		{
+			release_raw = v;
 			release = pow(1000,v) - 1; // in milliseconds
 			release = rate * release / 1000; // in samples
 		}
@@ -100,6 +104,19 @@ public:
 		else if(p == PARAM_D)
 			return "Reduction";
 		return "";
+	}
+
+	float paramval(param p) override
+	{
+		if(p == PARAM_A)
+			return thresh;
+		else if(p == PARAM_B)
+			return attack_raw;
+		else if(p == PARAM_C)
+			return release_raw;
+		else if(p == PARAM_D)
+			return reduction;
+		return -1;
 	}
 
 	gui_icon icon() override
@@ -188,7 +205,9 @@ private:
 	unsigned int rate;
 	float thresh;    // from 0. to 1. (linear)
 	float attack;    // from 0. to 100. (in milliseconds) (log)
+	float attack_raw;
 	float release;   // from 0. to 1000. (in milliseconds) (log)
+	float release_raw;
 	float reduction; // from 0. to 1. (linear)
 	float hold;
 

@@ -43,6 +43,19 @@ public:
 		return "";
 	}
 
+	float paramval(param p) override
+	{
+		if(p == PARAM_A)
+			return low;
+		else if(p == PARAM_B)
+			return lowmid;
+		else if(p == PARAM_C)
+			return highmid;
+		else if(p == PARAM_D)
+			return high;
+		return -1;
+	}
+
 	gui_icon icon() override
 	{
 		return ICON_FADER;
@@ -51,8 +64,8 @@ public:
 private:
 	float low;
 	float lowmid;
-    float highmid;
-    float high;
+	float highmid;
+	float high;
 };
 
 PLUGIN_API

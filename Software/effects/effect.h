@@ -27,6 +27,7 @@ struct effect
 	virtual void paramset(param p, float v) = 0;
 	virtual std::string name() = 0;
 	virtual std::string paramname(param p) = 0;
+	virtual float paramval(param p) = 0;
 	virtual gui_icon icon() = 0;
 };
 
@@ -50,6 +51,11 @@ public:
 	std::string paramname(param p) override
 	{
 		return "";
+	}
+
+	float paramval(param p) override
+	{
+		return 0;
 	}
 
 	gui_icon icon() override

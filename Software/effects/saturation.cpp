@@ -4,7 +4,7 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : thresh(0.5), drive(2.0)
+	plugin(unsigned int rate) : thresh(0.5), drive(0.2)
 	{
 	}
 
@@ -18,7 +18,7 @@ public:
 		}
 		else
 		{
-			float ret = (thresh + (abs_in - thresh) / (1 + pow( (abs_in - thresh ) / (1 - thresh ), drive)));
+			float ret = (thresh + (abs_in - thresh) / (1 + pow( (abs_in - thresh ) / (1 - thresh ), drive*10.0)));
 			return (in > 0) ? ret : -ret;
 		}
 	}
@@ -26,9 +26,9 @@ public:
 	void paramset(param p, float v) override
 	{
 		if(p == PARAM_A)
-			thresh = 1.0-v;
+			thresh = v;
 		else if(p == PARAM_B)
-			drive = v * 10.0;
+			drive = v;
 	}
 
 	std::string name() override
@@ -43,6 +43,15 @@ public:
 		else if(p == PARAM_B)
 			return "Drive";
 		return "";
+	}
+
+	float paramval(param p) override
+	{
+		if(p == PARAM_A)
+			return thresh;
+		else if(p == PARAM_B)
+			return drive;
+		return -1;
 	}
 
 	gui_icon icon() override
