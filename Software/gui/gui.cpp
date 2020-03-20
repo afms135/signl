@@ -104,20 +104,37 @@ void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 	putrect(0,26,128,10);
 
 	// Print parameters of current effect
-	cursor_x = 0;
+	cursor_x = 2;
 	cursor_y = 44;
 	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_A).substr(0,8),cursor_x,cursor_y);
 
-	cursor_x = 0;
-	cursor_y = 52;
+	cursor_x = 2;
+	cursor_y = 56;
 	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_B).substr(0,8),cursor_x,cursor_y);
 
-	cursor_x = 128 - (effect_chain[effect_idx]->paramname(effect::PARAM_C).substr(0,8).length() * 7);
+	cursor_x = 126 - (effect_chain[effect_idx]->paramname(effect::PARAM_C).substr(0,8).length() * 7);
 	cursor_y = 44;
 	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_C).substr(0,8),cursor_x,cursor_y);
 
-	cursor_x = 128 - (effect_chain[effect_idx]->paramname(effect::PARAM_D).substr(0,8).length() * 7);
-	cursor_y = 52;
+	cursor_x = 126 - (effect_chain[effect_idx]->paramname(effect::PARAM_D).substr(0,8).length() * 7);
+	cursor_y = 56;
 	putstring(effect_chain[effect_idx]->paramname(effect::PARAM_D).substr(0,8),cursor_x,cursor_y);
+
+	// Print parameter bars
+	cursor_x = 0;
+	cursor_y = 42;
+	putrect(cursor_x,cursor_y,effect_chain[effect_idx]->paramval(effect::PARAM_A)*60,10);
+
+	cursor_y = 54;
+	putrect(cursor_x,cursor_y,effect_chain[effect_idx]->paramval(effect::PARAM_B)*60,10);
+
+	cursor_x = 126;
+	cursor_y = 42;
+	unsigned int current_val = effect_chain[effect_idx]->paramval(effect::PARAM_C)*60;
+	putrect(128 - current_val,cursor_y,current_val,10);
+
+	current_val = effect_chain[effect_idx]->paramval(effect::PARAM_D)*60;
+	cursor_y = 54;
+	putrect(128 - current_val,cursor_y,current_val,10);
 
 }
