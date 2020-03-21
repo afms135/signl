@@ -96,13 +96,13 @@ public:
 	std::string paramname(param p) override
 	{
 		if(p == PARAM_A)
-			return "Threshold";
+			return "Thresh";
 		else if(p == PARAM_B)
 			return "Attack";
 		else if(p == PARAM_C)
 			return "Release";
 		else if(p == PARAM_D)
-			return "Reduction";
+			return "Amount";
 		return "";
 	}
 

@@ -39,7 +39,7 @@ public:
 	std::string paramname(param p) override
 	{
 		if(p == PARAM_A)
-			return "Threshold";
+			return "Thresh";
 		else if(p == PARAM_B)
 			return "Drive";
 		return "";
