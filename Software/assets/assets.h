@@ -9,7 +9,8 @@ typedef struct Sprite
 	uint8_t width;
 } Sprite;
 
-#include "font.h"
-#include "sprites.h"
+extern Sprite icons[];
+extern Sprite arrow;
+extern Sprite font[];
 
 #endif /*ASSETS_H*/

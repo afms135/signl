@@ -1,8 +1,6 @@
-#ifndef SPRITES_H
-#define SPRITES_H
 #include "assets.h"
 
-static Sprite icons[] =
+Sprite icons[] =
 {
 	{	// empty
 		{
@@ -159,7 +157,7 @@ static Sprite icons[] =
 	}
 };
 
-static Sprite arrow =
+Sprite arrow =
 {
 	{
 	0,0,0,1,1,0,0,0,
@@ -169,5 +167,3 @@ static Sprite arrow =
 	},
 	8
 };
-
-#endif /* SPRITES_H */
