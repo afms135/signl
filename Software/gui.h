@@ -1,7 +1,6 @@
 #ifndef GUI_H
 #define GUI_H
-#include "assets/sprites.h"
-#include "assets/font.h"
+#include "assets/assets.h"
 #include "effects/effect.h"
 #include "hw/lcd.h"
 #include <string>

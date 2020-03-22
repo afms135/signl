@@ -1,6 +1,6 @@
 #ifndef FONT_H
 #define FONT_H
-#include "sprites.h"
+#include "assets.h"
 
 // https://fontmeme.com/fonts/early-gameboy-font/
 // ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,;:'!"?-+=
