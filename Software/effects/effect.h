@@ -19,7 +19,8 @@ struct effect
 		ICON_PEDAL   = 2,
 		ICON_FADER   = 3,
 		ICON_VUMETER = 4,
-		ICON_TAPE    = 5
+		ICON_TAPE    = 5,
+		ICON_VINYL	 = 6
 	};
 
 	virtual ~effect() {}
