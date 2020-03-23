@@ -9,11 +9,11 @@ public:
 	plugin(unsigned int rate) :
 		rate(rate),
 		thresh(0.1),
-		attack(2.0),
-		attack_raw(0.0),
-		release(10.0),
-		release_raw(0.0),
-		reduction(1.0),
+		attack(28.0),
+		attack_raw(0.1),
+		release(3346.0),
+		release_raw(0.5),
+		reduction(0.75),
 		hold(rate * 30 / 1000) // 30ms in samples
 	{
 	}
@@ -81,7 +81,7 @@ public:
 		else if(p == PARAM_C)
 		{
 			release_raw = v;
-			release = pow(1000,v) - 1; // in milliseconds
+			release = pow(5000,v) - 1; // in milliseconds
 			release = rate * release / 1000; // in samples
 		}
 		else if(p == PARAM_D)
