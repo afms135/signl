@@ -33,6 +33,9 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 			case '!':  font_index = 41; break;
 			case '"':  font_index = 42; break;
 			case '?':  font_index = 43; break;
+			case '-':  font_index = 44; break;
+			case '+':  font_index = 45; break;
+			case '=':  font_index = 46; break;
 			default: return;
 		}
 	}
