@@ -33,6 +33,15 @@ private:
 	unsigned int effect_idx;
 	unsigned int effect_chain_idx[5];
 	float param_knobs[4];
+
+	float in_level;
+	float out_level;
+	enum disp_state
+	{
+		EFFECT_CHAIN,
+		LEVEL_ADJ
+	};
+	disp_state state;
 };
 
 #endif /*SIGNL_H*/

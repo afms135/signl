@@ -1,4 +1,7 @@
 #include "gui.h"
+#include <string>
+#include <algorithm>
+#include <math.h>
 
 void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin, bool inv)
 {
@@ -77,7 +80,7 @@ void gui::putrect(unsigned int x_origin, unsigned int y_origin, unsigned int wid
 	}
 }
 
-void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain, unsigned int effect_idx)
+void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain)
 {
 	unsigned int cursor_x = 0;
 	unsigned int cursor_y = 0;
@@ -94,6 +97,12 @@ void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 		putsprite(icons[e->icon()],cursor_x,cursor_y);
 		cursor_x = cursor_x + icons[e->icon()].width + 4;
 	}
+}
+
+void gui::param_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain, unsigned int effect_idx)
+{
+	unsigned int cursor_x = 0;
+	unsigned int cursor_y = 0;
 
 	// Draw arrow
 	cursor_x = 5 + 6 + (effect_idx * 24);
@@ -140,4 +149,37 @@ void gui::signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 	cursor_y = 54;
 	putrect(128 - current_val,cursor_y,current_val,10);
 
+}
+
+void gui::level_view(float in_level, float out_level, jack_client::sample_t sample_array[7][BUFFER_LENGTH])
+{
+	// Show bar outlines
+	for(int x = 0; x < 128; x = x + 23)
+	{
+		putrect(x,28,10,36);
+		putrect(x+1,29,8,34);
+
+		int k = 0;
+		for(int j = 28; j + k < 64; j = j + k)
+		{
+			putrect(x+11,j + k++,2,1);
+		}
+	}
+
+	// Calculate maximum of current buffer in dB
+	float max_dB[7] = {0};
+	for(int i = 0; i < 7; ++i)
+	{
+		max_dB[i] = 20*log10(*std::max_element(sample_array[i],sample_array[i]+BUFFER_LENGTH));
+	}
+
+	// Show dB bars
+	int i = 0;	// def should be a loop of i < 7
+	for(int x = 0; x < 128; x = x + 23)
+	{
+		int h = max_dB[i++]*34;
+		putrect(x+1,29+h,8,h);
+	}
+	//putrect(1,13,2*(in_max_dB+60),8);
+	//putrect(1,45,2*(out_max_dB+60),8);
 }

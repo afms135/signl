@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstring> //strerror()
+#include <math.h> // fabs()
 
 constexpr auto NUM_EFFECTS = 5;
 //Device names
@@ -32,7 +33,10 @@ signl::signl() :
 	effects("./effects"),
 	effect_idx(0),
 	effect_chain_idx{0,0,0,0,0},
-	param_knobs{0.0,0.0,0.0,0.0}
+	param_knobs{0.0,0.0,0.0,0.0},
+	in_level(1.0),
+	out_level(1.0),
+	state(EFFECT_CHAIN)
 {
 	//Register signal handlers
 	struct sigaction s;
@@ -57,11 +61,32 @@ signl::signl() :
 	activate();
 }
 
+jack_client::sample_t sample_array[7][BUFFER_LENGTH] = {0};
+unsigned int sample_array_idx[7] = {0};
+
 jack_client::sample_t signl::process(sample_t in)
 {
+	unsigned int idx = 0;
+	in *= in_level;
+	sample_array[idx][sample_array_idx[idx]++] = in;
+	sample_array_idx[idx] %= BUFFER_LENGTH;
+	idx++;
+
 	for(const auto &e : effect_chain)
+	{
+		//Process sample through effect number idx
 		in = (*e)(in);
-	return in;
+		//Add processed sample to sample_array[idx] at point sample_array_idx[idx]
+		sample_array[idx][sample_array_idx[idx]++] = in;
+		//Loop to start of sample_array if sample_array_idx has reached end
+		sample_array_idx[idx] %= BUFFER_LENGTH;
+		idx++;
+	}
+
+	float out = in * out_level;
+	sample_array[idx][sample_array_idx[idx]++] = out;
+	sample_array_idx[idx] %= BUFFER_LENGTH;
+	return out;
 }
 
 void signl::start()
@@ -69,55 +94,99 @@ void signl::start()
 	std::cout << "Starting..." << std::endl;
 	while(running)
 	{
-		//Parameter input
-		float param_in[4];
-		param_in[0] = param(adc::CH0);
-		param_in[1] = param(adc::CH1);
-		param_in[2] = param(adc::CH2);
-		param_in[3] = param(adc::CH3);
-
-		for(unsigned int i = 0; i < 4; ++i)
+		if(state == EFFECT_CHAIN)
 		{
-			if(param_in[i] < param_knobs[i]*0.97 || param_in[i] > param_knobs[i]*1.03)
+			//Change state
+			if(joy_push)
 			{
-				param_knobs[i] = param_in[i];
-				effect_chain[effect_idx]->paramset(static_cast<effect::param>(i),param_in[i]);
+				state = LEVEL_ADJ;
 			}
-		}
 
-		//Joystick input
-		if(joy_up)
-		{
-			effect_chain_idx[effect_idx]--;
-			if(effect_chain_idx[effect_idx] >= effects.size())
-				effect_chain_idx[effect_idx] = effects.size() - 1;
-			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
-		}
-		if(joy_down)
-		{
-			effect_chain_idx[effect_idx]++;
-			effect_chain_idx[effect_idx] %= effects.size();
-			effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
-		}
-		if(joy_left)
-		{
-			effect_idx--;
-			if (effect_idx >= 5)
-				effect_idx = 4;
-		}
-		if(joy_right)
-		{
-			effect_idx++;
-			effect_idx %= 5;
-		}
-		if(joy_push)
-		{
-		}
+			//Parameter input
+			float param_in[4];
+			param_in[0] = param(adc::CH0);
+			param_in[1] = param(adc::CH1);
+			param_in[2] = param(adc::CH2);
+			param_in[3] = param(adc::CH3);
 
-		//Display update
-		display.clear();
-		display.signl_view(effect_chain,effect_idx);
-		display.flip();
+			for(unsigned int i = 0; i < 4; ++i)
+			{
+				if(fabs(param_in[i] - param_knobs[i]) > 0.01)
+				{
+					param_knobs[i] = param_in[i];
+					effect_chain[effect_idx]->paramset(static_cast<effect::param>(i),param_in[i]);
+				}
+			}
+
+			//Joystick input
+			if(joy_up)
+			{
+				effect_chain_idx[effect_idx]--;
+				if(effect_chain_idx[effect_idx] >= effects.size())
+					effect_chain_idx[effect_idx] = effects.size() - 1;
+				effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
+			}
+			if(joy_down)
+			{
+				effect_chain_idx[effect_idx]++;
+				effect_chain_idx[effect_idx] %= effects.size();
+				effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
+			}
+			if(joy_left)
+			{
+				effect_idx--;
+				if (effect_idx >= 5)
+					effect_idx = 4;
+			}
+			if(joy_right)
+			{
+				effect_idx++;
+				effect_idx %= 5;
+			}
+
+			//Display update
+			display.clear();
+			display.signl_view(effect_chain);
+			display.param_view(effect_chain,effect_idx);
+			display.flip();
+		}
+		else if (state == LEVEL_ADJ)
+		{
+			//State change
+			if(joy_push)
+			{
+				state = EFFECT_CHAIN;
+			}
+
+			//Parameter input
+			float param_in[4];
+			param_in[0] = param(adc::CH0);
+			param_in[1] = param(adc::CH1);
+			param_in[2] = param(adc::CH2);
+			param_in[3] = param(adc::CH3);
+
+			for(unsigned int i = 0; i < 4; ++i)
+			{
+				if(fabs(param_in[i] - param_knobs[i]) > 0.01)
+				{
+					param_knobs[i] = param_in[i];
+					if (i == 0)
+					{
+						in_level = param_in[i];
+					}
+					else if(i == 3)
+					{
+						out_level = param_in[i];
+					}
+				}
+			}
+
+			//Display update
+			display.clear();
+			display.signl_view(effect_chain);
+			display.level_view(in_level,out_level,sample_array);
+			display.flip();
+		}
 	}
 	std::cout << "Stopping..." << std::endl;
 }
