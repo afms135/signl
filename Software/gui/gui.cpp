@@ -178,7 +178,7 @@ void gui::level_view(float in_level, float out_level, jack_client::sample_t samp
 	for(int x = 0; x < 128; x = x + 23)
 	{
 		int h = max_dB[i++]*34;
-		putrect(x+1,29+h,8,h);
+		putrect(x+1,29+64-h,8,h);
 	}
 	//putrect(1,13,2*(in_max_dB+60),8);
 	//putrect(1,45,2*(out_max_dB+60),8);
