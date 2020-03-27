@@ -170,15 +170,15 @@ void gui::level_view(float in_level, float out_level, jack_client::sample_t samp
 	float max_dB[7] = {0};
 	for(int i = 0; i < 7; ++i)
 	{
-		max_dB[i] = 20*log10(*std::max_element(sample_array[i],sample_array[i]+BUFFER_LENGTH));
+		max_dB[i] = 20*log10(*std::max_element(sample_array[i],sample_array[i]+BUFFER_LENGTH))+60;
 	}
-
+//	printf("%f\t%f\r\n",max_dB[0],max_dB[0]*34/60);
 	// Show dB bars
 	int i = 0;	// def should be a loop of i < 7
 	for(int x = 0; x < 128; x = x + 23)
 	{
-		int h = max_dB[i++]*34;
-		putrect(x+1,29+64-h,8,h);
+		int h = max_dB[i++]*34/60;
+		putrect(x+1,63-h,8,h);
 	}
 	//putrect(1,13,2*(in_max_dB+60),8);
 	//putrect(1,45,2*(out_max_dB+60),8);
