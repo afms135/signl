@@ -13,3 +13,8 @@ apt-get -y install jackd2 libjack-jackd2-dev git
 if [ $? -ne 0 ]; then
 	echo "apt-get failed (Are you connected to the internet?)"
 fi
+
+#Sound card/HW setup
+echo "Configuring Hardware..."
+echo "Disabling internal sound card..."
+sed -i "s:dtparam=audio:#dtparam=audio:" /boot/config.txt
