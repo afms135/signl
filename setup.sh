@@ -18,3 +18,7 @@ fi
 echo "Configuring Hardware..."
 echo "Disabling internal sound card..."
 sed -i "s:dtparam=audio:#dtparam=audio:" /boot/config.txt
+echo "Enable WM8731 sound card..."
+if [ $(grep -c audioinjector-wm8731-audio /boot/config.txt -eq "0" ]; then
+	echo "dtoverlay=audioinjector-wm8731-audio" >> /boot/config.txt
+fi
