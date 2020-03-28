@@ -14,13 +14,19 @@ struct effect
 
 	enum gui_icon
 	{
-		ICON_NONE    = 0,
-		ICON_AMP     = 1,
-		ICON_PEDAL   = 2,
-		ICON_FADER   = 3,
-		ICON_VUMETER = 4,
-		ICON_TAPE    = 5,
-		ICON_VINYL	 = 6
+		ICON_NONE      = 0,
+		ICON_EMPTY_BOX = 1,
+		ICON_AMP       = 2,
+		ICON_PEDAL     = 3,
+		ICON_FADER     = 4,
+		ICON_VUMETER   = 5,
+		ICON_TAPE      = 6,
+		ICON_VINYL	   = 7,
+		ICON_MUSIC	   = 8,
+		ICON_RADIO 	   = 9,
+		ICON_SPEAKER   = 10,
+		ICON_WOBBLE	   = 11,
+		ICON_DELAY     = 12
 	};
 
 	virtual ~effect() {}
