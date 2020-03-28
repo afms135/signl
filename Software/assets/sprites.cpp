@@ -1,15 +1,6 @@
-#ifndef SPRITES_H
-#define SPRITES_H
-#include <vector>
-#include <cstdint>
+#include "assets.h"
 
-typedef struct Sprite
-{
-	const std::vector<bool> art;
-	uint8_t width;
-} Sprite;
-
-static Sprite icons[] =
+Sprite icons[] =
 {
 	{	// empty
 		{
@@ -166,7 +157,7 @@ static Sprite icons[] =
 	}
 };
 
-static Sprite arrow =
+Sprite arrow =
 {
 	{
 	0,0,0,1,1,0,0,0,
@@ -176,5 +167,3 @@ static Sprite arrow =
 	},
 	8
 };
-
-#endif /* SPRITES_H */

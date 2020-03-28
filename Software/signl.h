@@ -2,7 +2,7 @@
 #define SIGNL_H
 #include "jack.h"
 #include "effect_manager.h"
-#include "gui/gui.h"
+#include "gui.h"
 #include "hw/debounce.h"
 #include "hw/adc.h"
 #include <memory>

@@ -1,9 +1,8 @@
 #ifndef GUI_H
 #define GUI_H
-#include "sprites.h"
-#include "font.h"
-#include "../effects/effect.h"
-#include "../hw/lcd.h"
+#include "assets/assets.h"
+#include "effects/effect.h"
+#include "hw/lcd.h"
 #include <string>
 #include <memory>
 #include "jack.h"

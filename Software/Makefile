@@ -2,8 +2,8 @@
 NAME = signl
 
 #C++ Sources
-SRCS  = main.cpp signl.cpp jack.cpp effect_manager.cpp
-SRCS += gui/gui.cpp
+SRCS  = main.cpp signl.cpp gui.cpp jack.cpp effect_manager.cpp
+SRCS += assets/font.cpp assets/sprites.cpp
 SRCS += hw/gpio.cpp hw/spi.cpp hw/lcd.cpp hw/debounce.cpp hw/adc.cpp
 
 #Include directories
