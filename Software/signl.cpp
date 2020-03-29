@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstring> //strerror()
-#include <math.h> // fabs()
+#include <math.h>  //std::abs()
 
 constexpr auto NUM_EFFECTS = 5;
 //Device names
@@ -111,7 +111,7 @@ void signl::start()
 
 			for(unsigned int i = 0; i < 4; ++i)
 			{
-				if(fabs(param_in[i] - param_knobs[i]) > 0.01)
+				if(std::abs(param_in[i] - param_knobs[i]) > 0.01)
 				{
 					param_knobs[i] = param_in[i];
 					effect_chain[effect_idx]->paramset(static_cast<effect::param>(i),param_in[i]);
@@ -167,7 +167,7 @@ void signl::start()
 
 			for(unsigned int i = 0; i < 4; ++i)
 			{
-				if(fabs(param_in[i] - param_knobs[i]) > 0.01)
+				if(std::abs(param_in[i] - param_knobs[i]) > 0.01)
 				{
 					param_knobs[i] = param_in[i];
 					if (i == 0)
