@@ -31,7 +31,14 @@ OBJS = $(SRCS:%.cpp=%.o)
 DEPS = $(SRCS:%.cpp=%.d)
 CXXFLAGS += $(CXX_OPTS) $(WARNS) $(DEFS) $(INCS)
 
-.PHONY: all clean effects
+.PHONY: all clean effects help
+
+help:
+	@echo 'Makefile targets:'
+	@echo 'make all     - build software and effects'
+	@echo 'make signl   - build software'
+	@echo 'make effects - build effects'
+	@echo 'make clean   - clean build artefacts and docs'
 
 all: $(NAME) effects
 
