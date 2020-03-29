@@ -61,8 +61,8 @@ signl::signl() :
 	activate();
 }
 
-jack_client::sample_t sample_array[7][BUFFER_LENGTH] = {0};
-unsigned int sample_array_idx[7] = {0};
+jack_client::sample_t sample_array[7][BUFFER_LENGTH] = {};
+unsigned int sample_array_idx[7] = {};
 
 jack_client::sample_t signl::process(sample_t in)
 {
