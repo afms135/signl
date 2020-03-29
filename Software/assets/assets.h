@@ -3,11 +3,11 @@
 #include <vector>
 #include <cstdint>
 
-typedef struct Sprite
+struct Sprite
 {
 	const std::vector<bool> art;
 	uint8_t width;
-} Sprite;
+};
 
 extern Sprite icons[];
 extern Sprite arrow;
