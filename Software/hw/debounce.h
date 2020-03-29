@@ -34,17 +34,17 @@ public:
 	/**
 	 * \brief Create an instance of a debounced GPIO input.
 	 *
-	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN)
-	 * \param pin Pin number within the gpiochip device
-	 * \param active True if input is active high; false if input is active low (optional: defaults to active high)
-	 * \param time Amount of time in milliseconds that input needs to be active (optional: defaults to 20ms)
-	 * \param label String detailing the usage of the pin (optional)
+	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN).
+	 * \param pin Pin number within the gpiochip device.
+	 * \param active True if input is active high; false if input is active low (optional: defaults to active high).
+	 * \param time Amount of time in milliseconds that input needs to be active (optional: defaults to 20ms).
+	 * \param label String detailing the usage of the pin (optional).
 	 */
 	debounce(std::string gpiochip, int pin, bool active = true, int time = 20, std::string label = "");
 
 	/**
 	 * \brief Read value of debounced input.
-	 * \retval Returns true if input was pressed; false otherwise
+	 * \retval Returns true if input was pressed; false otherwise.
 	 */
 	explicit operator bool();
 

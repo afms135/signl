@@ -33,16 +33,16 @@ public:
 	/**
 	 * \brief Create an instance of a GPIO output.
 	 *
-	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN)
-	 * \param pin Pin number within the gpiochip device
-	 * \param value Default value of gpio pin (optional: defaults to low)
-	 * \param label String detailing the usage of the pin (optional)
+	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN).
+	 * \param pin Pin number within the gpiochip device.
+	 * \param value Default value of gpio pin (optional: defaults to low).
+	 * \param label String detailing the usage of the pin (optional).
 	 */
 	gpioout(std::string gpiochip, int pin, bool value = 0, std::string label = "");
 
 	/**
-	 * \brief Assign value to GPIO pin.
-	 * \param v Value to set pin; true to set pin high; false to set pin low
+	 * \brief Assign value to GPIO output.
+	 * \param v Value to set output; true to set pin high; false to set pin low.
 	 */
 	void operator=(bool v);
 
@@ -89,15 +89,15 @@ public:
 	/**
 	 * \brief Create an instance of an GPIO input.
 	 *
-	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN)
-	 * \param pin Pin number within the gpiochip device
-	 * \param label String detailing the usage of the pin (optional)
+	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN).
+	 * \param pin Pin number within the gpiochip device.
+	 * \param label String detailing the usage of the pin (optional).
 	 */
 	gpioin(std::string gpiochip, int pin, std::string label = "");
 
 	/**
 	 * \brief Read value of GPIO input.
-	 * \retval Returns true if input is high; false if input is low
+	 * \retval Returns true if input is high; false if input is low.
 	 */
 	explicit operator bool();
 
