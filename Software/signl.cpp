@@ -135,13 +135,13 @@ void signl::start()
 			if(joy_left)
 			{
 				effect_idx--;
-				if (effect_idx >= 5)
-					effect_idx = 4;
+				if (effect_idx >= NUM_EFFECTS)
+					effect_idx = NUM_EFFECTS-1;
 			}
 			if(joy_right)
 			{
 				effect_idx++;
-				effect_idx %= 5;
+				effect_idx %= NUM_EFFECTS;
 			}
 
 			//Display update
