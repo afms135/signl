@@ -107,7 +107,7 @@ public:
 	 * \brief Read value of GPIO input.
 	 *
 	 * \exception std::runtime_error If #fd is invalid, due to a move.
-	 * \retval Returns true if input is high; false if input is low.
+	 * \retval bool Returns true if input is high; false if input is low.
 	 */
 	explicit operator bool();
 

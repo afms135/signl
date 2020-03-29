@@ -44,7 +44,7 @@ public:
 
 	/**
 	 * \brief Read value of debounced input.
-	 * \retval Returns true if input was pressed; false otherwise.
+	 * \retval bool Returns true if input was pressed; false otherwise.
 	 */
 	explicit operator bool();
 
