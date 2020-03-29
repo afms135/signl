@@ -1,11 +1,11 @@
 #ifndef GUI_H
 #define GUI_H
+#include "jack.h"
+#include "hw/lcd.h"
 #include "assets/assets.h"
 #include "effects/effect.h"
-#include "hw/lcd.h"
 #include <string>
 #include <memory>
-#include "jack.h"
 
 constexpr auto BUFFER_LENGTH = 2048;
 

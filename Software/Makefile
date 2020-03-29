@@ -7,7 +7,7 @@ SRCS += assets/font.cpp assets/sprites.cpp
 SRCS += hw/gpio.cpp hw/spi.cpp hw/lcd.cpp hw/debounce.cpp hw/adc.cpp
 
 #Include path directories
-INCS = -I.
+INCS =
 
 #Compiler defines
 DEFS =

@@ -1,10 +1,10 @@
 #ifndef SIGNL_H
 #define SIGNL_H
 #include "jack.h"
-#include "effect_manager.h"
 #include "gui.h"
-#include "hw/debounce.h"
+#include "effect_manager.h"
 #include "hw/adc.h"
+#include "hw/debounce.h"
 #include <memory>
 #include <vector>
 #include <signal.h>

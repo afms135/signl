@@ -1,6 +1,6 @@
+#include "signl.h"
 #include <iostream>
 #include <cstdlib>
-#include "signl.h"
 
 int main()
 {

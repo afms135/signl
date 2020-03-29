@@ -1,7 +1,7 @@
 #ifndef JACK_H
 #define JACK_H
-#include <string>
 #include <jack/jack.h>
+#include <string>
 
 class jack_client
 {

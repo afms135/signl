@@ -1,7 +1,6 @@
 #include "gui.h"
-#include <string>
 #include <algorithm>
-#include <math.h>
+#include <cmath>
 
 void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin, bool inv)
 {

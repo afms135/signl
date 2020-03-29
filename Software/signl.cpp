@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <cstring> //strerror()
-#include <math.h>  //std::abs()
+#include <cmath>   //std::abs()
 
 constexpr auto NUM_EFFECTS = 5;
 //Device names
