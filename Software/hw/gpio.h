@@ -33,6 +33,7 @@ public:
 	/**
 	 * \brief Create an instance of a GPIO output.
 	 *
+	 * \exception std::runtime_error If requesting the GPIO handle fails.
 	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN).
 	 * \param pin Pin number within the gpiochip device.
 	 * \param value Default value of gpio pin (optional: defaults to low).
@@ -42,14 +43,20 @@ public:
 
 	/**
 	 * \brief Assign value to GPIO output.
+	 * \exception std::runtime_error If #fd is invalid, due to a move.
 	 * \param v Value to set output; true to set pin high; false to set pin low.
 	 */
 	void operator=(bool v);
 
+	///Deleted copy constructor, class can only be moved.
 	gpioout(const gpioout& other) = delete;
+	///Deleted copy assignment operator, class can only be moved.
 	gpioout& operator=(const gpioout& other) = delete;
+	///Move constuctor, transfers ownership of other.#fd to this, sets other.#fd to -1.
 	gpioout(gpioout&& other);
+	///Move assignment operator, closes #fd, transfers ownership of other.#fd to this, sets other.#fd to -1.
 	gpioout& operator=(gpioout&& other);
+	///Destructor, closes #fd.
 	~gpioout();
 
 private:
@@ -89,6 +96,7 @@ public:
 	/**
 	 * \brief Create an instance of an GPIO input.
 	 *
+	 * \exception std::runtime_error If requesting the GPIO handle fails.
 	 * \param gpiochip String containg a path to a gpiochip device (/dev/gpiochipN).
 	 * \param pin Pin number within the gpiochip device.
 	 * \param label String detailing the usage of the pin (optional).
@@ -97,14 +105,21 @@ public:
 
 	/**
 	 * \brief Read value of GPIO input.
+	 *
+	 * \exception std::runtime_error If #fd is invalid, due to a move.
 	 * \retval Returns true if input is high; false if input is low.
 	 */
 	explicit operator bool();
 
+	///Deleted copy constructor, class can only be moved.
 	gpioin(const gpioin& other) = delete;
+	///Deleted copy assignment operator, class can only be moved.
 	gpioin& operator=(const gpioin& other) = delete;
+	///Move constuctor, transfers ownership of other.#fd to this, sets other.#fd to -1.
 	gpioin(gpioin&& other);
+	///Move assignment operator, closes #fd, transfers ownership of other.#fd to this, sets other.#fd to -1.
 	gpioin& operator=(gpioin&& other);
+	///Destructor, closes #fd.
 	~gpioin();
 
 private:
