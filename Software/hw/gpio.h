@@ -53,7 +53,7 @@ public:
 	~gpioout();
 
 private:
-	int fd;
+	int fd; ///<File descriptor handle.
 };
 
 /**
@@ -108,7 +108,7 @@ public:
 	~gpioin();
 
 private:
-	int fd;
+	int fd; ///<File descriptor handle.
 };
 
 #endif /*GPIO_H*/

@@ -49,10 +49,10 @@ public:
 	explicit operator bool();
 
 private:
-	bool last_val;
-	const bool active;
-	std::chrono::time_point<std::chrono::steady_clock> start_time;
-	const std::chrono::milliseconds debounce_time;
+	bool last_val; ///<Last value of input.
+	const bool active; ///<true if input is active high; false if active low.
+	std::chrono::time_point<std::chrono::steady_clock> start_time; ///<Timestamp of last detected edge.
+	const std::chrono::milliseconds debounce_time; ///<Time that input needs to be active to register a press.
 };
 
 #endif /*DEBOUNCE_H*/
