@@ -70,22 +70,22 @@ public:
 		if(p == PARAM_A)
 		{
 			low = v;
-			level[0] = low;
+			level[0] = 4*pow(low,2);   // Allow gain boost of ~+12dB
 		}
 		else if(p == PARAM_B)
 		{
 			lowmid = v;
-			level[1] = lowmid;
+			level[1] = 4*pow(lowmid,2);
 		}
 		else if(p == PARAM_C)
 		{
 			highmid = v;
-			level[2] = highmid;
+			level[2] = 4*pow(highmid,2);
 		}
 		else if(p == PARAM_D)
 		{
 			high = v;
-			level[3] = high;
+			level[3] = 4*pow(high,2);
 		}
 	}
 
@@ -132,7 +132,7 @@ private:
 	float lowmid;
 	float highmid;
 	float high;
-	float level[4] = {0.5,0.5,0.5,0.5};
+	float level[4] = {1,1,1,1};
 
 	float xn1[4] = {0};
 	float xn2[4] = {0};
