@@ -4,7 +4,7 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : gain(2.0), gain_raw(0.0), drive(1.44), drive_raw(0.2), level(1.0)
+	plugin(unsigned int rate) : gain(2.4), gain_raw(0.2), drive(2.24), drive_raw(0.4), level(0.8)
 	{
 	}
 
