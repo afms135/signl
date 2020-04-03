@@ -4,6 +4,7 @@
 #include <algorithm> // std::copy() and .assign() and std::transform()
 #include <vector> // std::vector()
 #include <functional> // std::plus()
+#include "../FFTConvolver/FFTConvolver.h"
 
 /*
 This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
@@ -33,6 +34,9 @@ public:
 	conv_buf(CONV_BUFFER_LENGTH),
 	overlap_buf(KERNEL_SIZE - 1)
 	{
+//		float test[8] = {1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0};
+//		filter.init(128,test,8);
+		filter.init(CONV_BUFFER_LENGTH,&kernel[0],kernel.size());
 	}
 
 	float operator()(float in) override
@@ -41,10 +45,7 @@ public:
 		if (buf_idx == CONV_BUFFER_LENGTH)
 		{
 			buf_idx = 0;
-			conv_buf = in_buf;
-			convolve(std::ref(conv_buf));
-//			std::thread t(&plugin::convolve,this,std::ref(conv_buf));
-//			t.detach();
+			filter.process(&in_buf[0],&conv_buf[0],CONV_BUFFER_LENGTH);
 		}
 		return conv_buf[buf_idx];
 	}
@@ -94,6 +95,8 @@ private:
 		// Store the overlap
 		overlap_buf.assign(output.begin() + CONV_BUFFER_LENGTH, output.end());
 	}
+
+	fftconvolver::FFTConvolver filter;
 
 	std::vector<float> kernel;
 	std::vector<float> in_buf;

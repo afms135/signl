@@ -1,5 +1,6 @@
 #C++ Sources
 SRCS := $(wildcard *.cpp)
+SRCS += ../FFTConvolver/Utilities.cpp ../FFTConvolver/AudioFFT.cpp ../FFTConvolver/FFTConvolver.cpp
 OBJS = $(SRCS:%.cpp=%.so)
 
 #C++ compiler options

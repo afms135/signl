@@ -12,11 +12,31 @@ effect_manager::effect_manager(std::string path, std::string ext)
 	if(glob(search_path.c_str(), 0, nullptr, &b) != 0)
 		throw std::runtime_error("Error searching path: " + search_path);
 
+	//Open FFT
+	void *handle = dlopen("./FFTConvolver/Utilities.so", RTLD_LAZY | RTLD_GLOBAL);
+	if(handle == nullptr)
+	{
+		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
+	}
+
+	handle = dlopen("./FFTConvolver/AudioFFT.so", RTLD_LAZY | RTLD_GLOBAL);
+	if(handle == nullptr)
+	{
+		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
+	}
+
+	handle = dlopen("./FFTConvolver/FFTConvolver.so", RTLD_LAZY | RTLD_GLOBAL);
+	if(handle == nullptr)
+	{
+		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
+	}
+
+
 	//Open each found plugin
 	for(unsigned long i = 0; i < b.gl_pathc; i++)
 	{
 		//Open plugin
-		void *handle = dlopen(b.gl_pathv[i], RTLD_NOW);
+		handle = dlopen(b.gl_pathv[i], RTLD_NOW);
 		if(handle == nullptr)
 		{
 			std::cerr << "dlopen(): " + std::string(b.gl_pathv[i]) + ": " + std::string(dlerror()) << std::endl;
