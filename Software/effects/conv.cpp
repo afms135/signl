@@ -31,7 +31,6 @@ public:
 	kernel(KERNEL_SIZE,1.0f/KERNEL_SIZE),
 	in_buf(CONV_BUFFER_LENGTH),
 	conv_buf(CONV_BUFFER_LENGTH),
-	out_buf(CONV_BUFFER_LENGTH),
 	overlap_buf(KERNEL_SIZE - 1)
 	{
 	}
@@ -42,13 +41,12 @@ public:
 		if (buf_idx == CONV_BUFFER_LENGTH)
 		{
 			buf_idx = 0;
-			out_buf = conv_buf;
 			conv_buf = in_buf;
 			convolve(std::ref(conv_buf));
 //			std::thread t(&plugin::convolve,this,std::ref(conv_buf));
 //			t.detach();
 		}
-		return out_buf[buf_idx];
+		return conv_buf[buf_idx];
 	}
 
 	void paramset(param p, float v) override
@@ -100,7 +98,6 @@ private:
 	std::vector<float> kernel;
 	std::vector<float> in_buf;
 	std::vector<float> conv_buf;
-	std::vector<float> out_buf;
 	std::vector<float> overlap_buf;
 	unsigned int buf_idx = 0;
 };
