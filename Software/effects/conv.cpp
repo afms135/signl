@@ -1,8 +1,9 @@
 #include "effect.h"
 #include <cmath>
 #include <thread> // std::thread()
-#include <algorithm> // std::copy()
+#include <algorithm> // std::copy() and .assign() and std::transform()
 #include <vector> // std::vector()
+#include <functional> // std::plus()
 
 /*
 This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
@@ -20,12 +21,18 @@ This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
 //         before we can process it. Would be back down to the above times
 //         if we pass a buffer straight to the plugin () from jack_client::process
 
-#define CONV_BUFFER_LENGTH 256
+#define CONV_BUFFER_LENGTH 128
+#define KERNEL_SIZE 64
 
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : kernel(128,1.0f)
+	plugin(unsigned int rate) :
+	kernel(KERNEL_SIZE,1.0f/KERNEL_SIZE),
+	in_buf(CONV_BUFFER_LENGTH),
+	conv_buf(CONV_BUFFER_LENGTH),
+	out_buf(CONV_BUFFER_LENGTH),
+	overlap_buf(KERNEL_SIZE - 1)
 	{
 	}
 
@@ -35,12 +42,12 @@ public:
 		if (buf_idx == CONV_BUFFER_LENGTH)
 		{
 			buf_idx = 0;
-			std::copy(conv_buf, conv_buf+CONV_BUFFER_LENGTH, out_buf);
-			std::copy(in_buf, in_buf+CONV_BUFFER_LENGTH, conv_buf);
-			std::thread t(&plugin::convolve,this,conv_buf);
-			t.detach();
+			out_buf = conv_buf;
+			conv_buf = in_buf;
+			convolve(std::ref(conv_buf));
+//			std::thread t(&plugin::convolve,this,std::ref(conv_buf));
+//			t.detach();
 		}
-
 		return out_buf[buf_idx];
 	}
 
@@ -69,30 +76,33 @@ public:
 	}
 
 private:
-	void convolve(float* conv_buf)
+	void convolve(std::vector<float> &input)
 	{
-		std::vector<float> input(conv_buf, conv_buf + CONV_BUFFER_LENGTH);
-
 		unsigned int paddedLength = input.size() + kernel.size() - 1;
-		std::vector<float> convolved(paddedLength); //zeros
+		std::vector<float> output(paddedLength); //zeros
 
-		for(unsigned int i=0; i<paddedLength; i++) //index into 'convolved' vector
+		for(unsigned int i=0; i<paddedLength; i++) //index into output vector
 		{
 			int startk = (i >= input.size()) ? i - input.size() + 1 : 0;
 			int endk = (i < kernel.size()) ? i : kernel.size() - 1;
 
 			for( int kernel_idx = startk; kernel_idx < endk; kernel_idx++ )
-				convolved[i] += kernel[kernel_idx]*input[i-kernel_idx];
+				output[i] += kernel[kernel_idx]*input[i-kernel_idx];
 		}
-		conv_buf = &convolved[0];
+		// Return convolved output
+		conv_buf.assign(output.begin(),output.begin() + CONV_BUFFER_LENGTH);
+		// Add the previous overlap to the first values of the result
+		std::transform(overlap_buf.begin(), overlap_buf.end(), conv_buf.begin(), conv_buf.begin(), std::plus<float>());
+		// Store the overlap
+		overlap_buf.assign(output.begin() + CONV_BUFFER_LENGTH, output.end());
 	}
 
-	float in_buf[CONV_BUFFER_LENGTH] = {0.0};
-	float conv_buf[CONV_BUFFER_LENGTH] = {0.0};
-	float out_buf[CONV_BUFFER_LENGTH] = {0.0};
-	unsigned int buf_idx = 0;
-
 	std::vector<float> kernel;
+	std::vector<float> in_buf;
+	std::vector<float> conv_buf;
+	std::vector<float> out_buf;
+	std::vector<float> overlap_buf;
+	unsigned int buf_idx = 0;
 };
 
 PLUGIN_API
