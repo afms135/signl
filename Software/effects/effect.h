@@ -30,7 +30,7 @@ struct effect
 	};
 
 	virtual ~effect() {}
-	virtual float operator()(float in) = 0;
+	virtual float* operator()(float* in, const unsigned int frames) = 0;
 	virtual void paramset(param p, float v) = 0;
 	virtual std::string name() = 0;
 	virtual std::string paramname(param p) = 0;
@@ -41,7 +41,7 @@ struct effect
 class null : public effect
 {
 public:
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
 		return in;
 	}

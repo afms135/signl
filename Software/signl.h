@@ -13,7 +13,7 @@ class signl : jack_client
 {
 public:
 	signl();
-	sample_t process(sample_t in);
+	sample_t* process(sample_t* in, jack_nframes_t);
 	void shutdown();
 	void start();
 

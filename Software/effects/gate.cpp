@@ -18,53 +18,54 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
-		float abs_in = std::abs(in);
-
-		// Gate state
-		if (state == 0)
+		for(unsigned int frame = 0; frame < frames; ++frame)
 		{
-			return (abs_in > thresh) ? enterAttackState(in) : gateState(in);
-		}
+			float abs_in = std::abs(in[frame]);
 
-		// Attack state
-		else if (state == 1)
-		{
-			time_under(abs_in);
-
-			if (samples_under_threshold >= hold)
+			// Gate state
+			if (state == 0)
 			{
-				return enterReleaseState(in);
+				in[frame] = (abs_in > thresh) ? enterAttackState(in[frame]) : gateState(in[frame]);
 			}
-			else
+
+			// Attack state
+			else if (state == 1)
 			{
-				return (index >= attack) ? enterHoldState(in) : attackState(in);
+				time_under(abs_in);
+
+				if (samples_under_threshold >= hold)
+				{
+					in[frame] = enterReleaseState(in[frame]);
+				}
+				else
+				{
+					in[frame] = (index >= attack) ? enterHoldState(in[frame]) : attackState(in[frame]);
+				}
+			}
+
+			// Hold state
+			else if (state == 2)
+			{
+				time_under(abs_in);
+
+				in[frame] = (samples_under_threshold >= hold) ? enterReleaseState(in[frame]) : holdState(in[frame]);
+			}
+
+			// Release state
+			else if (state == 3)
+			{
+				if (abs_in > thresh)
+				{
+					in[frame] = enterAttackState(in[frame]);
+				}
+				else
+				{
+					in[frame] = (index >= release) ? enterGateState(in[frame]) : releaseState(in[frame]);
+				}
 			}
 		}
-
-		// Hold state
-		else if (state == 2)
-		{
-			time_under(abs_in);
-
-			return (samples_under_threshold >= hold) ? enterReleaseState(in) : holdState(in);
-		}
-
-		// Release state
-		else if (state == 3)
-		{
-			if (abs_in > thresh)
-			{
-				return enterAttackState(in);
-			}
-			else
-			{
-				return (index >= release) ? enterGateState(in) : releaseState(in);
-			}
-		}
-
-		// Shouldn't ever get here
 		return in;
 	}
 

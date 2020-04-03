@@ -17,11 +17,6 @@ This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
       64         |  1.33            |   6.67
 */
 
-// Note ^^ This is now  doubled as we must wait for a full input buffer
-//         before we can process it. Would be back down to the above times
-//         if we pass a buffer straight to the plugin () from jack_client::process
-
-#define CONV_BUFFER_LENGTH 128
 #define KERNEL_SIZE 64
 
 class plugin : public effect
@@ -29,26 +24,18 @@ class plugin : public effect
 public:
 	plugin(unsigned int rate) :
 	kernel(KERNEL_SIZE,1.0f/KERNEL_SIZE),
-	in_buf(CONV_BUFFER_LENGTH),
-	conv_buf(CONV_BUFFER_LENGTH),
-	out_buf(CONV_BUFFER_LENGTH),
 	overlap_buf(KERNEL_SIZE - 1)
 	{
 	}
 
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
-		in_buf[buf_idx++] = in;
-		if (buf_idx == CONV_BUFFER_LENGTH)
-		{
-			buf_idx = 0;
-			out_buf = conv_buf;
-			conv_buf = in_buf;
-			convolve(std::ref(conv_buf));
-//			std::thread t(&plugin::convolve,this,std::ref(conv_buf));
-//			t.detach();
-		}
-		return out_buf[buf_idx];
+		conv_buf.assign(in,in + frames);
+		convolve(std::ref(conv_buf),frames);
+//		std::thread t(&plugin::convolve,this,std::ref(conv_buf));
+//		t.detach();
+		std::copy(conv_buf.begin(),conv_buf.end(),in);
+		return in;
 	}
 
 	void paramset(param p, float v) override
@@ -76,7 +63,7 @@ public:
 	}
 
 private:
-	void convolve(std::vector<float> &input)
+	void convolve(std::vector<float> &input, const unsigned int frames)
 	{
 		unsigned int paddedLength = input.size() + kernel.size() - 1;
 		std::vector<float> output(paddedLength); //zeros
@@ -90,17 +77,15 @@ private:
 				output[i] += kernel[kernel_idx]*input[i-kernel_idx];
 		}
 		// Return convolved output
-		conv_buf.assign(output.begin(),output.begin() + CONV_BUFFER_LENGTH);
+		conv_buf.assign(output.begin(),output.begin() + frames);
 		// Add the previous overlap to the first values of the result
 		std::transform(overlap_buf.begin(), overlap_buf.end(), conv_buf.begin(), conv_buf.begin(), std::plus<float>());
 		// Store the overlap
-		overlap_buf.assign(output.begin() + CONV_BUFFER_LENGTH, output.end());
+		overlap_buf.assign(output.begin() + frames, output.end());
 	}
 
 	std::vector<float> kernel;
-	std::vector<float> in_buf;
 	std::vector<float> conv_buf;
-	std::vector<float> out_buf;
 	std::vector<float> overlap_buf;
 	unsigned int buf_idx = 0;
 };

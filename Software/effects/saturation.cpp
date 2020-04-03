@@ -8,11 +8,15 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
-		float abs_in = std::abs(in);
+		for (unsigned int frame = 0; frame < frames; ++frame)
+		{
+			float abs_in = std::abs(in[frame]);
 
-		return (in*(abs_in + drive)/(pow(in,2) + (drive-1)*abs_in + 1) ) * level;
+			in[frame] = (in[frame]*(abs_in + drive)/(pow(in[frame],2) + (drive-1)*abs_in + 1) ) * level;
+		}
+		return in;
 	}
 
 	void paramset(param p, float v) override

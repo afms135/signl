@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <cstring> //strerror()
 #include <cmath>   //std::abs()
+#include <algorithm> //std::min()
 
 constexpr auto NUM_EFFECTS = 5;
 //Device names
@@ -62,31 +63,32 @@ signl::signl() :
 }
 
 jack_client::sample_t sample_array[7][BUFFER_LENGTH] = {};
-unsigned int sample_array_idx[7] = {};
 
-jack_client::sample_t signl::process(sample_t in)
+jack_client::sample_t* signl::process(sample_t* in, jack_nframes_t frames)
 {
+	unsigned int level_buffer_size = std::min(frames,(unsigned int) BUFFER_LENGTH);
 	unsigned int idx = 0;
-	in *= in_level;
-	sample_array[idx][sample_array_idx[idx]++] = in;
-	sample_array_idx[idx] %= BUFFER_LENGTH;
-	idx++;
+
+	for(unsigned int i = 0; i < frames; ++i)
+		in[i] *= in_level;
+	for(unsigned int i = 0; i < level_buffer_size; ++i)
+		sample_array[idx][i] = in[i];
+	++idx;
 
 	for(const auto &e : effect_chain)
 	{
-		//Process sample through effect number idx
-		in = (*e)(in);
-		//Add processed sample to sample_array[idx] at point sample_array_idx[idx]
-		sample_array[idx][sample_array_idx[idx]++] = in;
-		//Loop to start of sample_array if sample_array_idx has reached end
-		sample_array_idx[idx] %= BUFFER_LENGTH;
-		idx++;
+		in = (*e)(in,frames);
+		for(unsigned int i = 0; i < level_buffer_size; ++i)
+			sample_array[idx][i] = in[i];
+		++idx;
 	}
 
-	float out = in * out_level;
-	sample_array[idx][sample_array_idx[idx]++] = out;
-	sample_array_idx[idx] %= BUFFER_LENGTH;
-	return out;
+	for(unsigned int i = 0; i < frames; ++i)
+		in[i] *= out_level;
+	for(unsigned int i = 0; i < level_buffer_size; ++i)
+		sample_array[idx][i] = in[i];
+//	printf("%+f\r\n",in[0]);
+	return in;
 }
 
 void signl::start()

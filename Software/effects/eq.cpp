@@ -44,24 +44,28 @@ public:
 
 	}
 
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
-		float out = 0;
-		float filtered[4] = {0};
-		for(unsigned int i = 0; i < 4; ++i)
+		for(unsigned int frame = 0; frame < frames; ++frame)
 		{
-			filtered[i] = ((b0[i]*in) + (b1[i]*xn1[i]) + (b2[i]*xn2[i])
-					 - (a1[i]*yn1[i]) - (a2[i]*yn2[i]))/a0[i];
+			float out = 0;
+			float filtered[4] = {0};
+			for(unsigned int i = 0; i < 4; ++i)
+			{
+				filtered[i] = ((b0[i]*in[frame]) + (b1[i]*xn1[i]) + (b2[i]*xn2[i])
+						 - (a1[i]*yn1[i]) - (a2[i]*yn2[i]))/a0[i];
 
-			xn2[i] = xn1[i];
-			xn1[i] = in;
-			yn2[i] = yn1[i];
-			yn1[i] = filtered[i];
-			filtered[i] *= level[i];
+				xn2[i] = xn1[i];
+				xn1[i] = in[frame];
+				yn2[i] = yn1[i];
+				yn1[i] = filtered[i];
+				filtered[i] *= level[i];
 
-			out += filtered[i];
+				out += filtered[i];
+			}
+			in[frame] =  out;
 		}
-		return out;
+		return in;
 	}
 
 	void paramset(param p, float v) override

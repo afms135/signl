@@ -12,7 +12,7 @@ public:
 	~jack_client();
 	void activate();
 	jack_nframes_t rate();
-	virtual sample_t process(sample_t in) = 0;
+	virtual sample_t* process(sample_t* in,jack_nframes_t frames) = 0;
 	virtual void shutdown() = 0;
 
 private:

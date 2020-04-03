@@ -8,19 +8,23 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
-		float abs_in = std::abs(in);
-
-		if(abs_in < threshold)
-			return 2 * in;
-		else if(abs_in >= threshold && abs_in < 2*threshold)
+		for(unsigned int frame= 0; frame < frames; ++frame)
 		{
-			float ret = (3 - pow(2 - abs_in * 3, 2)) / 3.0;
-			return (in > 0) ? ret : -ret;
+			float abs_in = std::abs(in[frame]);
+
+			if(abs_in < threshold)
+				in[frame] *= 2;
+			else if(abs_in >= threshold && abs_in < 2*threshold)
+			{
+				float ret = (3 - pow(2 - abs_in * 3, 2)) / 3.0;
+				in[frame] = (in[frame] > 0) ? ret : -ret;
+			}
+			else
+				in[frame] = (in[frame] > 0) ? 1 : -1;
 		}
-		else
-			return (in > 0) ? 1 : -1;
+		return in;
 	}
 
 	void paramset(param p, float v) override

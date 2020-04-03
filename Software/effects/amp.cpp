@@ -7,17 +7,21 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float* operator()(float* in, const unsigned int frames) override
 	{
-		float out = in * gain;
+		for(unsigned int frame = 0; frame < frames; ++frame)
+		{
+			float out = in[frame] * gain;
 
-		//Clip
-		if(out > 1.0f)
-			out = 1.0f;
-		if(out < -1.0f)
-			out = -1.0f;
+			//Clip
+			if(out > 1.0f)
+				out = 1.0f;
+			if(out < -1.0f)
+				out = -1.0f;
 
-		return out;
+			in[frame] = out;
+		}
+		return in;
 	}
 
 	void paramset(param p, float v) override

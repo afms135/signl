@@ -66,8 +66,7 @@ void jack_client::callback(jack_nframes_t frames)
 	sample_t *in = static_cast<sample_t*> (jack_port_get_buffer(input_port, frames));
 	sample_t *out = static_cast<sample_t*> (jack_port_get_buffer(output_port, frames));
 
-	for(jack_nframes_t i = 0; i < frames; i++)
-		out[i] = process(in[i]);
+	out = process(in,frames);
 }
 
 void jack_client::shutdown_forwarder(void *arg)
