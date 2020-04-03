@@ -5,6 +5,7 @@
 #include <vector> // std::vector()
 #include <functional> // std::plus()
 #include "../FFTConvolver/FFTConvolver.h"
+#include "ir.h"
 
 /*
 This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
@@ -22,21 +23,21 @@ This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
 //         before we can process it. Would be back down to the above times
 //         if we pass a buffer straight to the plugin () from jack_client::process
 
+// Note ^^ Now that we're using FFTConvolver, will have to look into this again.
+
 #define CONV_BUFFER_LENGTH 128
-#define KERNEL_SIZE 64
+#define KERNEL_SIZE 32768
 
 class plugin : public effect
 {
 public:
 	plugin(unsigned int rate) :
-	kernel(KERNEL_SIZE,1.0f/KERNEL_SIZE),
+	kernel(KERNEL_SIZE),
 	in_buf(CONV_BUFFER_LENGTH),
 	conv_buf(CONV_BUFFER_LENGTH),
 	overlap_buf(KERNEL_SIZE - 1)
 	{
-//		float test[8] = {1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0};
-//		filter.init(128,test,8);
-		filter.init(CONV_BUFFER_LENGTH,&kernel[0],kernel.size());
+		filter.init(CONV_BUFFER_LENGTH,&ir[0],ir.size());
 	}
 
 	float operator()(float in) override
@@ -56,7 +57,7 @@ public:
 
 	std::string name() override
 	{
-		return "Convolution";
+		return "Reverb";
 	}
 
 	std::string paramname(param p) override
