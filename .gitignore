@@ -1,4 +1,5 @@
 Software/signl
+Software/docs
 *.o
 *.so
 *.d
