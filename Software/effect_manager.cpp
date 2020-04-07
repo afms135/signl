@@ -63,6 +63,14 @@ unsigned int effect_manager::size()
 	return plugins.size() + 1; //+1 for NULL plugin
 }
 
+std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_manager::list(unsigned int rate)
+{
+	std::vector<std::unique_ptr<effect, plugin_dtor_t>> ret;
+	for(unsigned int i = 0; i < size(); i++)
+		ret.push_back(operator()(i, rate));
+	return ret;
+}
+
 effect_manager::effect_manager(effect_manager&& other)
 {
 	plugins = std::move(other.plugins);
