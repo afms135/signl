@@ -1,11 +1,9 @@
 #include "effect.h"
 #include <cmath>
-#include <thread> // std::thread()
-#include <algorithm> // std::copy() and .assign() and std::transform()
 #include <vector> // std::vector()
-#include <functional> // std::plus()
 #include "../FFTConvolver/FFTConvolver.h"
-#include "ir.h"
+#include "ir_cave.h"
+#include "ir_church.h"
 
 /*
 This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
@@ -25,19 +23,22 @@ This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
 
 // Note ^^ Now that we're using FFTConvolver, will have to look into this again.
 
-#define CONV_BUFFER_LENGTH 128
-#define KERNEL_SIZE 32768
+#define CONV_BUFFER_LENGTH 256
 
 class plugin : public effect
 {
 public:
 	plugin(unsigned int rate) :
-	kernel(KERNEL_SIZE),
 	in_buf(CONV_BUFFER_LENGTH),
-	conv_buf(CONV_BUFFER_LENGTH),
-	overlap_buf(KERNEL_SIZE - 1)
+	conv_buf1(CONV_BUFFER_LENGTH),
+	conv_buf2(CONV_BUFFER_LENGTH),
+	tail(0.5),
+	size(0.5),
+	drywet(0.5),
+	level(0.5)
 	{
-		filter.init(CONV_BUFFER_LENGTH,&ir[0],ir.size());
+		conv1.init(CONV_BUFFER_LENGTH,&ir_cave[0],ir_cave.size());
+		conv2.init(CONV_BUFFER_LENGTH,&ir_church[0],ir_church.size());
 	}
 
 	float operator()(float in) override
@@ -46,13 +47,32 @@ public:
 		if (buf_idx == CONV_BUFFER_LENGTH)
 		{
 			buf_idx = 0;
-			filter.process(&in_buf[0],&conv_buf[0],CONV_BUFFER_LENGTH);
+			conv1.process(&in_buf[0],&conv_buf1[0],CONV_BUFFER_LENGTH);
+			conv2.process(&in_buf[0],&conv_buf2[0],CONV_BUFFER_LENGTH);
 		}
-		return conv_buf[buf_idx];
+		float out = (conv_buf2[buf_idx]*size) + (conv_buf1[buf_idx]*(1-size));
+		out = (out * drywet) + (in_buf[buf_idx] * (1-drywet));
+		return out * level;
 	}
 
 	void paramset(param p, float v) override
 	{
+		if(p == PARAM_A)
+		{
+			tail = v;
+		}
+		else if(p == PARAM_B)
+		{
+			size = v;
+		}
+		else if(p == PARAM_C)
+		{
+			drywet = v;
+		}
+		else if(p == PARAM_D)
+		{
+			level = v;
+		}
 	}
 
 	std::string name() override
@@ -62,11 +82,26 @@ public:
 
 	std::string paramname(param p) override
 	{
-		return "";
-	}
+		if(p == PARAM_A)
+			return "Tail";
+		else if(p == PARAM_B)
+			return "Size";
+		else if(p == PARAM_C)
+			return "Dry-Wet";
+		else if(p == PARAM_D)
+			return "Level";
+		return "";	}
 
 	float paramval(param p) override
 	{
+		if(p == PARAM_A)
+			return tail;
+		else if(p == PARAM_B)
+			return size;
+		else if(p == PARAM_C)
+			return drywet;
+		else if(p == PARAM_D)
+			return level;
 		return -1;
 	}
 
@@ -76,34 +111,18 @@ public:
 	}
 
 private:
-	void convolve(std::vector<float> &input)
-	{
-		unsigned int paddedLength = input.size() + kernel.size() - 1;
-		std::vector<float> output(paddedLength); //zeros
+	fftconvolver::FFTConvolver conv1;
+	fftconvolver::FFTConvolver conv2;
 
-		for(unsigned int i=0; i<paddedLength; i++) //index into output vector
-		{
-			int startk = (i >= input.size()) ? i - input.size() + 1 : 0;
-			int endk = (i < kernel.size()) ? i : kernel.size() - 1;
-
-			for( int kernel_idx = startk; kernel_idx < endk; kernel_idx++ )
-				output[i] += kernel[kernel_idx]*input[i-kernel_idx];
-		}
-		// Return convolved output
-		conv_buf.assign(output.begin(),output.begin() + CONV_BUFFER_LENGTH);
-		// Add the previous overlap to the first values of the result
-		std::transform(overlap_buf.begin(), overlap_buf.end(), conv_buf.begin(), conv_buf.begin(), std::plus<float>());
-		// Store the overlap
-		overlap_buf.assign(output.begin() + CONV_BUFFER_LENGTH, output.end());
-	}
-
-	fftconvolver::FFTConvolver filter;
-
-	std::vector<float> kernel;
 	std::vector<float> in_buf;
-	std::vector<float> conv_buf;
-	std::vector<float> overlap_buf;
+	std::vector<float> conv_buf1;
+	std::vector<float> conv_buf2;
 	unsigned int buf_idx = 0;
+
+	float tail;
+	float size;
+	float drywet;
+	float level;
 };
 
 PLUGIN_API
