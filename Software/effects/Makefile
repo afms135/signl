@@ -1,6 +1,6 @@
 #C++ Sources
 SRCS := $(wildcard *.cpp)
-SRCS += FFTConvolver/Utilities.cpp FFTConvolver/AudioFFT.cpp FFTConvolver/FFTConvolver.cpp FFTConvolver/TwoStageFFTConvolver.cpp
+FFTSRCS := FFTConvolver/Utilities.cpp FFTConvolver/AudioFFT.cpp FFTConvolver/FFTConvolver.cpp FFTConvolver/TwoStageFFTConvolver.cpp
 OBJS = $(SRCS:%.cpp=%.so)
 
 #C++ compiler options
@@ -15,6 +15,11 @@ all: $(OBJS)
 %.so: %.cpp effect.h
 	@echo '[C++] $@'
 	@$(CXX) $(CXXFLAGS) $< -o $@
+
+#Special case for reverb plugin, needs FFT library compiled in
+reverb.so: reverb.cpp effect.h
+	@echo '[C++] $@'
+	@$(CXX) $(CXXFLAGS) $< $(FFTSRCS) -o $@
 
 clean:
 	rm -f $(OBJS)
