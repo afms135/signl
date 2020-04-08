@@ -1,6 +1,7 @@
 #include "effect.h"
 #include <cmath>
 #include <time.h>
+#include "./vinyl_clicks.h"
 
 class plugin : public effect
 {
@@ -9,15 +10,47 @@ public:
 	noise(0.05),
 	scratches(0.5),
 	filter(0.5),
-	drywet(1.0)
+	drywet(1.0),
+	popping(0),
+	click_idx(0),
+	click_arr_idx(0)
 	{
+		// Initialise the random number generator for the noise
 		srand(time(NULL));
 	}
 
 	float operator()(float in) override
 	{
-		float noise_fx = ((float)rand()/RAND_MAX)/2 - 0.25;
-		return (in*(1-noise)) + (noise_fx*noise);
+		float noise_fx = 0.0;
+		// Are we currently making a click sound?
+		if (!popping)
+		{
+			// If not, make white noise:
+			noise_fx = ((float)rand()/RAND_MAX)/4 - 0.125;
+			// And randomly decide to make a click
+			if(fabs(noise_fx) < 0.00001*scratches)
+				popping = 1;
+			//scale the white noise
+			noise_fx *= noise;
+		}
+		else
+		// If we are currently making a click
+		{
+			// play the next sample in the current click buffer
+			noise_fx = click[click_arr_idx][click_idx++];
+			// If we have reached the end of the current click
+			if(click_idx == click[click_arr_idx].size())
+			{
+				// Go back to making white noise
+				popping = 0;
+				// Reset the click buffer index
+				click_idx = 0;
+				// move the click vector index to the next click buffer
+				click_arr_idx++;
+				click_arr_idx %= click.size();
+			}
+		}
+		return (in*(1-noise)) + noise_fx;
 	}
 
 	void paramset(param p, float v) override
@@ -73,6 +106,10 @@ private:
 	float scratches;
 	float filter;
 	float drywet;
+
+	bool popping;
+	unsigned int click_idx;
+	unsigned int click_arr_idx;
 };
 
 PLUGIN_API
