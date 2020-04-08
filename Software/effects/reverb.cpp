@@ -13,8 +13,6 @@
 #include "ir/ir_columns_long.h"
 #include "ir/ir_cave.h"
 #include "ir/ir_hall.h"
-#include "ir/ir_opera.h"
-#include "ir/ir_church.h"
 
 /*
 This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
@@ -81,7 +79,7 @@ public:
 	{
 		if(p == PARAM_A)
 		{
-			new_val = (float)((int)(v*6))/5.0;
+			new_val = (float)((int)(v*5))/4.0;
 		}
 		else if(p == PARAM_B)
 		{
@@ -135,7 +133,7 @@ public:
 private:
 	void change_convolvers()
 	{
-		int type_int = int(type*6);
+		int type_int = int(type*5);
 		switch(type_int)
 		{
 			case 0:	conv1.init(32,1024,&ir_cement[0],16384);
@@ -150,11 +148,8 @@ private:
 			case 3:	conv1.init(32,1024,&ir_lodge[0],16384);
 				conv2.init(128,2048,&ir_columns_long[0],98304);
 				break;
-			case 4:	conv1.init(32,1024,&ir_cave[0],16384);
+			default:conv1.init(32,1024,&ir_cave[0],16384);
 				conv2.init(128,256,&ir_hall[0],131072);
-				break;
-			default:conv1.init(32,1024,&ir_opera[0],65536);
-				conv2.init(128,256,&ir_church[0],131072);
 				break;
 		}
 	}
