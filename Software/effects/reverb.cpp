@@ -151,7 +151,7 @@ private:
 				conv2.init(128,2048,&ir_columns_long[0],98304);
 				break;
 			case 4:	conv1.init(32,1024,&ir_cave[0],16384);
-				conv2.init(64,4096,&ir_hall[0],176519);
+				conv2.init(128,256,&ir_hall[0],131072);
 				break;
 			default:conv1.init(32,1024,&ir_opera[0],65536);
 				conv2.init(128,2048,&ir_church[0],65536);
