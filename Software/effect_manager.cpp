@@ -13,25 +13,25 @@ effect_manager::effect_manager(std::string path, std::string ext)
 		throw std::runtime_error("Error searching path: " + search_path);
 
 	//Open FFT
-	void *handle = dlopen("./FFTConvolver/Utilities.so", RTLD_LAZY | RTLD_GLOBAL);
+	void *handle = dlopen("./effects/FFTConvolver/Utilities.so", RTLD_LAZY | RTLD_GLOBAL);
 	if(handle == nullptr)
 	{
 		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
 	}
 
-	handle = dlopen("./FFTConvolver/AudioFFT.so", RTLD_LAZY | RTLD_GLOBAL);
+	handle = dlopen("./effects/FFTConvolver/AudioFFT.so", RTLD_LAZY | RTLD_GLOBAL);
 	if(handle == nullptr)
 	{
 		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
 	}
 
-	handle = dlopen("./FFTConvolver/FFTConvolver.so", RTLD_LAZY | RTLD_GLOBAL);
+	handle = dlopen("./effects/FFTConvolver/FFTConvolver.so", RTLD_LAZY | RTLD_GLOBAL);
 	if(handle == nullptr)
 	{
 		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
 	}
 
-	handle = dlopen("./FFTConvolver/TwoStageFFTConvolver.so", RTLD_LAZY | RTLD_GLOBAL);
+	handle = dlopen("./effects/FFTConvolver/TwoStageFFTConvolver.so", RTLD_LAZY | RTLD_GLOBAL);
 	if(handle == nullptr)
 	{
 		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;

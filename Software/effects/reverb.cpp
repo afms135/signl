@@ -1,8 +1,8 @@
 #include "effect.h"
 #include <cmath>
 #include <vector> // std::vector()
-#include "../FFTConvolver/FFTConvolver.h"
-#include "../FFTConvolver/TwoStageFFTConvolver.h"
+#include "FFTConvolver/FFTConvolver.h"
+#include "FFTConvolver/TwoStageFFTConvolver.h"
 #include "ir/ir_cement.h"
 #include "ir/ir_sanctuary.h"
 #include "ir/ir_drum.h"
