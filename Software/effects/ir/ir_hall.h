@@ -1,4 +1,4 @@
-const ir_hall[176519] = {
+const float ir_hall[176519] = {
 0.0 ,
 0.0 ,
 0.0 ,
