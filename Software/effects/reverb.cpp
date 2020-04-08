@@ -127,7 +127,7 @@ public:
 
 	gui_icon icon() override
 	{
-		return ICON_EMPTY_BOX;
+		return ICON_RADIO;
 	}
 
 private:
