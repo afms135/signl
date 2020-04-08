@@ -1,26 +1,29 @@
 #include "effect.h"
 #include <cmath>
+#include <time.h>
 
 class plugin : public effect
 {
 public:
 	plugin(unsigned int rate) :
-	noise(0.5),
+	noise(0.05),
 	scratches(0.5),
 	filter(0.5),
 	drywet(1.0)
 	{
+		srand(time(NULL));
 	}
 
 	float operator()(float in) override
 	{
-		return in;
+		float noise_fx = ((float)rand()/RAND_MAX)/2 - 0.25;
+		return (in*(1-noise)) + (noise_fx*noise);
 	}
 
 	void paramset(param p, float v) override
 	{
 		if(p == PARAM_A)
-			noise = v;
+			noise = v/4;
 		else if(p == PARAM_B)
 			scratches = v;
 		else if(p == PARAM_C)
@@ -50,7 +53,7 @@ public:
 	float paramval(param p) override
 	{
 		if(p == PARAM_A)
-			return noise;
+			return noise*4;
 		else if(p == PARAM_B)
 			return scratches;
 		else if(p == PARAM_C)
