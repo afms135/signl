@@ -6,7 +6,14 @@
 #include "ir/ir_cement.h"
 #include "ir/ir_sanctuary.h"
 #include "ir/ir_drum.h"
+#include "ir/ir_ruby.h"
+#include "ir/ir_trig.h"
+#include "ir/ir_columns.h"
+#include "ir/ir_lodge.h"
+#include "ir/ir_columns_long.h"
 #include "ir/ir_cave.h"
+#include "ir/ir_hall.h"
+#include "ir/ir_opera.h"
 #include "ir/ir_church.h"
 
 /*
@@ -128,14 +135,27 @@ public:
 private:
 	void change_convolvers()
 	{
-		int type_int = round(type*6);
+		int type_int = int(type*6);
 		switch(type_int)
 		{
 			case 0:	conv1.init(32,1024,&ir_cement[0],16384);
 				conv2.init(128,2048,&ir_sanctuary[0],65536);
 				break;
-			default:conv1.init(32,1024,&ir_drum[0],16384);
-				conv2.init(128,2048,&ir_cave[0],16384);
+			case 1:	conv1.init(32,1024,&ir_drum[0],16384);
+				conv2.init(128,2048,&ir_ruby[0],32768);
+				break;
+			case 2:	conv1.init(32,1024,&ir_trig[0],32768);
+				conv2.init(128,2048,&ir_columns[0],65536);
+				break;
+			case 3:	conv1.init(32,1024,&ir_lodge[0],16384);
+				conv2.init(128,2048,&ir_columns_long[0],98304);
+				break;
+			case 4:	conv1.init(32,1024,&ir_cave[0],16384);
+				conv2.init(128,2048,&ir_hall[0],98304);
+				break;
+			default:conv1.init(32,1024,&ir_opera[0],65536);
+				conv2.init(128,2048,&ir_church[0],65536);
+				break;
 		}
 	}
 
