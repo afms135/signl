@@ -31,6 +31,12 @@ effect_manager::effect_manager(std::string path, std::string ext)
 		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
 	}
 
+	handle = dlopen("./FFTConvolver/TwoStageFFTConvolver.so", RTLD_LAZY | RTLD_GLOBAL);
+	if(handle == nullptr)
+	{
+		std::cerr << "dlopen(): " + std::string(dlerror()) << std::endl;
+	}
+
 
 	//Open each found plugin
 	for(unsigned long i = 0; i < b.gl_pathc; i++)

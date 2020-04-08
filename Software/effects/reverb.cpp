@@ -2,8 +2,12 @@
 #include <cmath>
 #include <vector> // std::vector()
 #include "../FFTConvolver/FFTConvolver.h"
-#include "ir_cave.h"
-#include "ir_church.h"
+#include "../FFTConvolver/TwoStageFFTConvolver.h"
+#include "ir/ir_cement.h"
+#include "ir/ir_sanctuary.h"
+#include "ir/ir_drum.h"
+#include "ir/ir_cave.h"
+#include "ir/ir_church.h"
 
 /*
 This should a power of 2 no larger than 128 @ sample_rate = 48kHz:
@@ -29,28 +33,39 @@ class plugin : public effect
 {
 public:
 	plugin(unsigned int rate) :
-	in_buf(CONV_BUFFER_LENGTH),
 	conv_buf1(CONV_BUFFER_LENGTH),
 	conv_buf2(CONV_BUFFER_LENGTH),
-	tail(0.5),
+	in_buf(CONV_BUFFER_LENGTH),
+	in_buf_copy(CONV_BUFFER_LENGTH),
+	new_val(0.0),
+	type(0.0),
 	size(0.5),
 	drywet(0.5),
 	level(0.5)
 	{
-		conv1.init(CONV_BUFFER_LENGTH,&ir_cave[0],ir_cave.size());
-		conv2.init(CONV_BUFFER_LENGTH,&ir_church[0],ir_church.size());
+		conv1.init(32,1024,&ir_cement[0],16384);
+		conv2.init(128,2048,&ir_sanctuary[0],65536);
 	}
 
 	float operator()(float in) override
 	{
 		in_buf[buf_idx++] = in;
+		if(new_val != type)
+		{
+			type = new_val;
+			change_convolvers();
+		}
 		if (buf_idx == CONV_BUFFER_LENGTH)
 		{
 			buf_idx = 0;
-			conv1.process(&in_buf[0],&conv_buf1[0],CONV_BUFFER_LENGTH);
+			in_buf_copy = in_buf;
+			conv1.process(&in_buf_copy[0],&conv_buf1[0],CONV_BUFFER_LENGTH);
 			conv2.process(&in_buf[0],&conv_buf2[0],CONV_BUFFER_LENGTH);
+
 		}
-		float out = (conv_buf2[buf_idx]*size) + (conv_buf1[buf_idx]*(1-size));
+		float out = 0.0;
+//		float out = conv_buf1[buf_idx]*size;
+		out = (conv_buf1[buf_idx]*(1-size)) + (conv_buf2[buf_idx]*size);
 		out = (out * drywet) + (in_buf[buf_idx] * (1-drywet));
 		return out * level;
 	}
@@ -59,7 +74,7 @@ public:
 	{
 		if(p == PARAM_A)
 		{
-			tail = v;
+			new_val = (float)((int)(v*6))/5.0;
 		}
 		else if(p == PARAM_B)
 		{
@@ -83,7 +98,7 @@ public:
 	std::string paramname(param p) override
 	{
 		if(p == PARAM_A)
-			return "Tail";
+			return "Type";
 		else if(p == PARAM_B)
 			return "Size";
 		else if(p == PARAM_C)
@@ -95,7 +110,7 @@ public:
 	float paramval(param p) override
 	{
 		if(p == PARAM_A)
-			return tail;
+			return type;
 		else if(p == PARAM_B)
 			return size;
 		else if(p == PARAM_C)
@@ -111,18 +126,33 @@ public:
 	}
 
 private:
-	fftconvolver::FFTConvolver conv1;
-	fftconvolver::FFTConvolver conv2;
+	void change_convolvers()
+	{
+		int type_int = round(type*6);
+		switch(type_int)
+		{
+			case 0:	conv1.init(32,1024,&ir_cement[0],16384);
+				conv2.init(128,2048,&ir_sanctuary[0],65536);
+				break;
+			default:conv1.init(32,1024,&ir_drum[0],16384);
+				conv2.init(128,2048,&ir_cave[0],16384);
+		}
+	}
 
-	std::vector<float> in_buf;
 	std::vector<float> conv_buf1;
 	std::vector<float> conv_buf2;
+	std::vector<float> in_buf;
+	std::vector<float> in_buf_copy;
 	unsigned int buf_idx = 0;
 
-	float tail;
+	float new_val;
+	float type;
 	float size;
 	float drywet;
 	float level;
+
+	fftconvolver::TwoStageFFTConvolver conv1;
+	fftconvolver::TwoStageFFTConvolver conv2;
 };
 
 PLUGIN_API
