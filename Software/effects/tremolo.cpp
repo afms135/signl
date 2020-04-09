@@ -10,8 +10,11 @@ public:
 	float operator()(float in) override
 	{
 		if(index++ > 24000)
+		{
+			index %= 48000; 
 			return 0.0;
-		index %= 48000; 
+		}
+		
 		return in;
 	}
 
