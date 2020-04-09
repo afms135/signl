@@ -3,21 +3,21 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : gain(1)
+	plugin(unsigned int rate) : index(0)
 	{
 	}
 
 	float operator()(float in) override
 	{
-		
-
+		if(index++ > 24000)
+			return 0.0;
+		index %= 48000; 
 		return in;
 	}
 
 	void paramset(param p, float v) override
 	{
-		if(p == PARAM_A)
-			gain = v;
+
 	}
 
 	std::string name() override
@@ -27,15 +27,11 @@ public:
 
 	std::string paramname(param p) override
 	{
-		if(p == PARAM_A)
-			return "Gain";
 		return "";
 	}
 
 	float paramval(param p) override
 	{
-		if(p == PARAM_A)
-			return gain;
 		return -1;
 	}
 
@@ -45,7 +41,8 @@ public:
 	}
 
 private:
-	float gain;
+
+	unsigned int index;
 };
 
 PLUGIN_API
