@@ -3,7 +3,7 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5), cut(1), fade(0.1)
+	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5), cut(1), fade(0.1), level(1)
 	{
 	}
 
@@ -27,7 +27,7 @@ public:
 		
 		index++;
 		index %= 2 * noofsamples;
-		return in * multiplier;
+		return in * multiplier * level;
 	}
 
 	void paramset(param p, float v) override
@@ -40,6 +40,9 @@ public:
 			cut = v;
 		else if(p == PARAM_C)
 			fade = v;
+		else if(p == PARAM_D)
+			level = v;
+			
 
 
 	}
@@ -57,6 +60,8 @@ public:
 			return "Cut";
 		else if(p == PARAM_C)
 			return "Fade";
+		else if(p == PARAM_D)
+			return "Level";
 		return "";
 	}
 
@@ -68,6 +73,8 @@ public:
 			return cut;
 		else if(p == PARAM_C)
 			return fade;
+		else if(p == PARAM_D)
+			return level;
 		return -1;
 	}
 
@@ -83,6 +90,7 @@ private:
 	float period;
 	float cut;
 	float fade;
+	float level;
 };
 
 PLUGIN_API
