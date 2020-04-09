@@ -12,18 +12,18 @@ public:
 		float multiplier = 0.0;
 		if(index < noofsamples * fade)
 		{
-			multiplier = (1-(1-cut)) / (noofsamples * fade);
-			multiplier = multiplier * index;
+			multiplier = (1-(1-cut)) / ((float)noofsamples * fade);
+			multiplier = multiplier * (float)index;
 			multiplier = multiplier + (1 - cut);
 		} else if(index < noofsamples) 
 			multiplier = 1;
 		else if(index < (noofsamples * (1 + fade)))
 		{
-			multiplier = ((1-cut)-1) / (noofsamples * fade);
-			multiplier = multiplier * index;
-			multiplier++;
+			multiplier = ((1-cut)-1) / ((float)noofsamples * fade);
+			multiplier = multiplier * ((float)index - (float)noofsamples);
+			multiplier = multiplier + 1;
 		} else if(index < (2 * noofsamples))
-			multiplier = cut;
+			multiplier = 1-cut;
 		
 		index++;
 		index %= 2 * noofsamples;
