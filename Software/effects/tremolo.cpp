@@ -3,7 +3,8 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5), cut(1), fade(0.1), level(1)
+	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5), cut(1), fade(0.1), level(1) 
+				//period(0.5)=0/25sec=(noofsamples(13200) + offset)
 	{
 	}
 
@@ -12,21 +13,21 @@ public:
 		float multiplier = 0.0;
 		if(index < noofsamples * fade)
 		{
-			multiplier = (1-(1-cut)) / ((float)noofsamples * fade);
+			multiplier = (1-(1-cut)) / ((float)noofsamples * fade); //Fade in
 			multiplier = multiplier * (float)index;
 			multiplier = multiplier + (1 - cut);
 		} else if(index < noofsamples) 
-			multiplier = 1;
+			multiplier = 1;						//Unaffected signal
 		else if(index < (noofsamples * (1 + fade)))
 		{
-			multiplier = ((1-cut)-1) / ((float)noofsamples * fade);
+			multiplier = ((1-cut)-1) / ((float)noofsamples * fade);	//Fade out
 			multiplier = multiplier * ((float)index - (float)noofsamples);
 			multiplier = multiplier + 1;
 		} else if(index < (2 * noofsamples))
-			multiplier = 1-cut;
+			multiplier = 1-cut;					//Signal being cut
 		
 		index++;
-		index %= 2 * noofsamples;
+		index %= 2 * noofsamples;					//Loop back to 0
 		return in * multiplier * level;
 	}
 
@@ -86,7 +87,7 @@ public:
 private:
 
 	unsigned int index;
-	unsigned int noofsamples;
+	unsigned int noofsamples; //Represent period in samples
 	float period;
 	float cut;
 	float fade;
