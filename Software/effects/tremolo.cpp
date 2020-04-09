@@ -3,7 +3,7 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : index(0), noofsamples(12012), period(0.5)
+	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5)
 	{
 	}
 
@@ -23,7 +23,7 @@ public:
 		if(p == PARAM_A)
 		{	
 			period = v;
-			noofsamples = (period * 24000) + 12;
+			noofsamples = (period * 24000) + 2400;
 		}
 
 	}
