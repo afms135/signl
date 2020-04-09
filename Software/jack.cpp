@@ -15,7 +15,7 @@ jack_client::jack_client(std::string name)
 	if(input_port == nullptr)
 		throw std::runtime_error("jack_port_register(): Could not create input port");
 
-	//Create output port		
+	//Create output port
 	output_port = jack_port_register(client, "output", JACK_DEFAULT_AUDIO_TYPE, JackPortIsOutput, 0);
 	if(output_port == nullptr)
 		throw std::runtime_error("jack_port_register(): Could not create output port");
