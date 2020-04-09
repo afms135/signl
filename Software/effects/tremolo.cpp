@@ -3,15 +3,15 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : index(0)
+	plugin(unsigned int rate) : index(0), noofsamples(12012), period(0.5)
 	{
 	}
 
 	float operator()(float in) override
 	{
-		if(index++ > 24000)
+		if(index++ > noofsamples)
 		{
-			index %= 48000; 
+			index %= noofsamples * 2; 
 			return 0.0;
 		}
 		
@@ -20,6 +20,11 @@ public:
 
 	void paramset(param p, float v) override
 	{
+		if(p == PARAM_A)
+		{	
+			period = v;
+			noofsamples = (period * 24000) + 12;
+		}
 
 	}
 
@@ -30,11 +35,15 @@ public:
 
 	std::string paramname(param p) override
 	{
+		if(p == PARAM_A)
+			return "Period";
 		return "";
 	}
 
 	float paramval(param p) override
 	{
+		if(p == PARAM_A)
+			return period;
 		return -1;
 	}
 
@@ -46,6 +55,8 @@ public:
 private:
 
 	unsigned int index;
+	unsigned int noofsamples;
+	float period;
 };
 
 PLUGIN_API
