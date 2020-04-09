@@ -22,6 +22,6 @@ The list of current effects is available at [this page](https://github.com/afms1
 ## Social Media
 
 - [Twitter](https://twitter.com/signlHW)
-- [Youtube]()
+- [Youtube](https://www.youtube.com/channel/UChTp4nFLsnpuzNy29fdVIeA)
 
 ## Authors and Individual Contributions
