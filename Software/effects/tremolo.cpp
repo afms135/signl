@@ -3,7 +3,7 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5)
+	plugin(unsigned int rate) : index(0), noofsamples(13200), period(0.5), cut(1)
 	{
 	}
 
@@ -12,7 +12,7 @@ public:
 		if(index++ > noofsamples)
 		{
 			index %= noofsamples * 2; 
-			return 0.0;
+			return in * (1-cut);
 		}
 		
 		return in;
@@ -24,7 +24,8 @@ public:
 		{	
 			period = v;
 			noofsamples = (period * 24000) + 2400;
-		}
+		} else if(p == PARAM_B)
+			cut = v;
 
 	}
 
@@ -37,6 +38,8 @@ public:
 	{
 		if(p == PARAM_A)
 			return "Period";
+		else if(p == PARAM_B)
+			return "Cut";
 		return "";
 	}
 
@@ -44,6 +47,8 @@ public:
 	{
 		if(p == PARAM_A)
 			return period;
+		else if(p == PARAM_B)
+			return cut;
 		return -1;
 	}
 
@@ -57,6 +62,7 @@ private:
 	unsigned int index;
 	unsigned int noofsamples;
 	float period;
+	float cut;
 };
 
 PLUGIN_API
