@@ -56,6 +56,13 @@ void jack_client::activate()
 	free(ports);
 }
 
+void jack_client::deactivate()
+{
+	//Deactivate client, removes all ports
+	if(jack_deactivate(client))
+		throw std::runtime_error("jack_deactivate(): Could not deactivate client");
+}
+
 jack_nframes_t jack_client::rate()
 {
 	return jack_get_sample_rate(client);

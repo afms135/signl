@@ -90,6 +90,19 @@ public:
 	void activate();
 
 	/**
+	 * \brief Deactivate JACK client.
+	 *
+	 * This deactivates the JACK client, disconnecting the input port from the
+	 * default capture device and the output port from the default playback
+	 * device.
+	 *
+	 * Audio proccessing is stopped after this function is called.
+	 *
+	 * \exception std::runtime_error If deactivating the JACK client failed.
+	 */
+	void deactivate();
+
+	/**
 	 * \brief Return JACK server sample rate.
 	 *
 	 * Returns the current sample rate of the JACK server.
