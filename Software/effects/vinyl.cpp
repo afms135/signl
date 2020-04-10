@@ -7,7 +7,7 @@ class plugin : public effect
 {
 public:
 	plugin(unsigned int rate) :
-	noise(0.05),
+	noise(0.02),
 	scratches(0.5),
 	filter(0.5),
 	drywet(1.0),
@@ -21,12 +21,13 @@ public:
 	{
 		// Initialise the random number generator for the noise
 		srand(time(NULL));
-		b0 = 0.03780475;
+		// coeffs made by eq.py for bandpass 300-600
+		b0 = 0.01925927;
 		b1 = 0.0;
-		b2 = -0.03780475;
+		b2 = -0.01925927;
 		a0 = 1.0;
-		a1 = -1.91779609;
-		a2 = 0.92439049;
+		a1 = -1.95845699;
+		a2 = 0.96148145;
 
 	}
 
@@ -67,8 +68,9 @@ public:
 		xn1 = in;
 		yn2 = yn1;
 		yn1 = filtered_in;
-
-		return (filtered_in*(1-noise)) + noise_fx;
+		filtered_in *= filter;
+		filtered_in += (in*(1-filter));
+		return ((filtered_in*(1-noise)) + noise_fx)*drywet + (in*(1-drywet));
 	}
 
 	void paramset(param p, float v) override
