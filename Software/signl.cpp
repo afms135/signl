@@ -188,6 +188,7 @@ void signl::start()
 			display.flip();
 		}
 	}
+	deactivate();
 	std::cout << "Stopping..." << std::endl;
 }
 
