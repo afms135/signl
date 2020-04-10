@@ -10,6 +10,8 @@
 
 The main features are:
 
+* Mic or Line level in
+* Line and Headphone out
 * Up to five serial audio effects
 * Real time parameter control of each effect
 * Easy to understand GUI
