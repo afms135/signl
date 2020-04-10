@@ -11,7 +11,7 @@
 class plugin : public effect
 {
 public:
-	plugin(unsigned int rate) : rate(rate), low(0.5), lowmid(0.5), highmid(0.5), high(0.5)
+	plugin(unsigned int rate) : low(0.5), lowmid(0.5), highmid(0.5), high(0.5)
 	// Filter params produced by scipy.signal.iirfilter
 	{
 	b0[0] = 9.50600294e-05;
@@ -125,8 +125,6 @@ public:
 	}
 
 private:
-	unsigned int rate;
-
 	float low;
 	float lowmid;
 	float highmid;
