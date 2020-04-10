@@ -185,7 +185,7 @@ public:
 
 	std::string name() override
 	{
-		return "Null";
+		return "";
 	}
 
 	std::string paramname(param p) override
