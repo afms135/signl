@@ -24,3 +24,5 @@ echo -e "${RED}Enable WM8731 sound card...${NC}"
 if [ $(grep -c audioinjector-wm8731-audio /boot/config.txt) -eq "0" ]; then
 	echo "dtoverlay=audioinjector-wm8731-audio" >> /boot/config.txt
 fi
+echo -e "${RED}Enable spidev...${NC}"
+sed -i "s:#dtparam=spi=on:dtparam=spi=on:" /boot/config.txt
