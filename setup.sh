@@ -26,3 +26,7 @@ if [ $(grep -c audioinjector-wm8731-audio /boot/config.txt) -eq "0" ]; then
 fi
 echo -e "${RED}Enable spidev...${NC}"
 sed -i "s:#dtparam=spi=on:dtparam=spi=on:" /boot/config.txt
+
+#Download git submodules
+echo -e "${RED}Downloading submodules...${NC}"
+git submodule update --init
