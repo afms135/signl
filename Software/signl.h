@@ -9,6 +9,8 @@
 #include <vector>
 #include <signal.h>
 
+constexpr auto NUM_EFFECTS = 5;
+
 class signl : jack_client
 {
 public:

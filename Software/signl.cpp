@@ -4,7 +4,6 @@
 #include <cstring> //strerror()
 #include <cmath>   //std::abs()
 
-constexpr auto NUM_EFFECTS = 5;
 //Device names
 const std::string GPIO = "/dev/gpiochip0";
 const std::string SPI_ADC = "/dev/spidev0.0";
