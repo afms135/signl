@@ -30,3 +30,7 @@ sed -i "s:#dtparam=spi=on:dtparam=spi=on:" /boot/config.txt
 #Download git submodules
 echo -e "${RED}Downloading submodules...${NC}"
 git submodule update --init
+
+#Build software
+echo -e "${RED}Building software...${NC}"
+make -C ./Software/
