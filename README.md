@@ -21,7 +21,7 @@ The README and Wiki are still under construction.
 
 ## Documentation
 
-The list of current effects is available at [this page](https://github.com/afms135/signl/wiki/List-of-Current-Effects). See our [Github wiki](https://github.com/afms135/signl/wiki) for detailed instructions on how to reproduce the system. Detailed software documentation can be found in the [Doxygen documentation]().
+The list of current effects is available at [this page](https://github.com/afms135/signl/wiki/List-of-Current-Effects). See our [Github wiki](https://github.com/afms135/signl/wiki) for detailed instructions on how to reproduce the system. Detailed software documentation can be found in the [Doxygen documentation](https://afms135.github.io/signl/).
 
 ## Social Media
 
