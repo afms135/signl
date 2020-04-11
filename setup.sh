@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Check if script is running as root
 if ![ $(id -u) = 0 ]; then
