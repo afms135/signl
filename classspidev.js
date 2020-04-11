@@ -1,0 +1,35 @@
+var classspidev =
+[
+    [ "modes", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42e", [
+      [ "CPHA", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea51f2eb4eb410052fc85bd21acd5b887a", null ],
+      [ "CPOL", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea06d8625ea0371a1ebd183e264f60232b", null ],
+      [ "MODE0", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea2829288f3418a2dde07d250ae529ad66", null ],
+      [ "MODE1", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea9eae4701138db8768c3cf2a18512c862", null ],
+      [ "MODE2", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea84c246c2caa1c062feb36d586c9691b8", null ],
+      [ "MODE3", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea3369e137db7500737bc074dc090114f0", null ],
+      [ "CS_HIGH", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42eab5b4fdeb7aeab400dbdae6f1eab5d3ac", null ],
+      [ "LSB_FIRST", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea11a203b7625a8744dbdd846421a72563", null ],
+      [ "THREE_WIRE", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42eaee834cc242a64d4e1bc295c4a45a4a12", null ],
+      [ "LOOP", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea7c043e36a51dbf7465c127e357cf8636", null ],
+      [ "NO_CS", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea0d61a80a23f5df5b44033772c7a17f56", null ],
+      [ "READY", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea9b15a7ac8982784dd2ca59c2a67c01af", null ],
+      [ "TX_DUAL", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42eaddce9e27da50feea106a7f00b27cd74e", null ],
+      [ "TX_QUAD", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea473d83b13a8440c444c4d89c789630ba", null ],
+      [ "RX_DUAL", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea668e12532d87b2b3069a9b47ec69deb5", null ],
+      [ "RX_QUAD", "classspidev.html#af1a6a3c0b073b7dd0ebee6c13fc0f42ea83cfdf1aedbeb2f60fd5f172e88d0c3a", null ]
+    ] ],
+    [ "spidev", "classspidev.html#a7ad8b85367c57b0605339d67da5b1c31", null ],
+    [ "spidev", "classspidev.html#acb03e9e81f32f075c11a048ebd3bc448", null ],
+    [ "spidev", "classspidev.html#a58ba5f3d882d518a938a9d9e6f59847e", null ],
+    [ "~spidev", "classspidev.html#a9185d79922bc061a1aeefd3f512c4612", null ],
+    [ "setmode", "classspidev.html#a6642d56c3e94703764393dc1b94d45c3", null ],
+    [ "setbpw", "classspidev.html#a7711b64a71aeeb22c754d1730b9f05d5", null ],
+    [ "setmaxspeed", "classspidev.html#afda73814ec0c229d45686eb827811f47", null ],
+    [ "xfer", "classspidev.html#a84b177ac894c81cb538db693c1a6e23d", null ],
+    [ "xfer", "classspidev.html#a10b2900b14541fee8f2c2c53d300b4c5", null ],
+    [ "send", "classspidev.html#a9f1ab820306a717b46551cf16e64c221", null ],
+    [ "recv", "classspidev.html#afc471e054db956251408430032f127fd", null ],
+    [ "operator=", "classspidev.html#a5a36f9c6fc058b5919f3ea594d9dda40", null ],
+    [ "operator=", "classspidev.html#a417cbe1deed86d1e80b5368b8944a64c", null ],
+    [ "fd", "classspidev.html#a990058ece58e3214fcbdaff7cdffbf38", null ]
+];

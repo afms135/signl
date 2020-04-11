@@ -1,0 +1,4 @@
+<map id="adc" name="adc">
+<area shape="rect" id="node1" title="Class representing the MCP3004 analogue to digital converter." alt="" coords="15,95,61,121"/>
+<area shape="rect" id="node2" href="$classspidev.html" title="Class representing a SPI device." alt="" coords="5,5,71,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="debounce" name="debounce">
+<area shape="rect" id="node1" title="Class representing a debounced GPIO input." alt="" coords="5,80,91,107"/>
+<area shape="rect" id="node2" href="$classgpioin.html" title="Class representing a GPIO input." alt="" coords="17,5,79,32"/>
+</map>
