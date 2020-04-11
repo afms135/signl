@@ -171,6 +171,12 @@ struct effect
 	virtual gui_icon icon() = 0;
 };
 
+/**
+ * \brief Identity plugin.
+ *
+ * This plugin is defined to do nothing and is guaranteed to always exist so at
+ * least one effect exists if no plugins were loaded.
+ */
 class null : public effect
 {
 public:
