@@ -33,6 +33,8 @@ signl::signl() :
 	effect_idx(0),
 	effect_chain_idx{0,0,0,0,0},
 	param_knobs{0.0,0.0,0.0,0.0},
+	sample_array(),
+	sample_array_idx(0),
 	in_level(1.0),
 	out_level(1.0),
 	state(EFFECT_CHAIN)
@@ -60,31 +62,26 @@ signl::signl() :
 	activate();
 }
 
-jack_client::sample_t sample_array[7][BUFFER_LENGTH] = {};
-unsigned int sample_array_idx[7] = {};
-
 jack_client::sample_t signl::process(sample_t in)
 {
-	unsigned int idx = 0;
+	//Input gain, save for level display
 	in *= in_level;
-	sample_array[idx][sample_array_idx[idx]++] = in;
-	sample_array_idx[idx] %= BUFFER_LENGTH;
-	idx++;
+	sample_array[0][sample_array_idx] = in;
 
-	for(const auto &e : effect_chain)
+	//Process sample through effect chain, save intermediate results for level
+	for(int i = 0; i < NUM_EFFECTS; i++)
 	{
-		//Process sample through effect number idx
-		in = (*e)(in);
-		//Add processed sample to sample_array[idx] at point sample_array_idx[idx]
-		sample_array[idx][sample_array_idx[idx]++] = in;
-		//Loop to start of sample_array if sample_array_idx has reached end
-		sample_array_idx[idx] %= BUFFER_LENGTH;
-		idx++;
+		in = (*effect_chain[i])(in);
+		sample_array[i+1][sample_array_idx] = in;
 	}
 
+	//Output gain, save for level display
 	float out = in * out_level;
-	sample_array[idx][sample_array_idx[idx]++] = out;
-	sample_array_idx[idx] %= BUFFER_LENGTH;
+	sample_array[6][sample_array_idx] = out;
+
+	//Loop array index (ring buffer)
+	sample_array_idx = (sample_array_idx + 1) % BUFFER_LENGTH;
+
 	return out;
 }
 

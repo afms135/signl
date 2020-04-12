@@ -36,6 +36,9 @@ private:
 	unsigned int effect_chain_idx[5];
 	float param_knobs[4];
 
+	jack_client::sample_t sample_array[7][BUFFER_LENGTH];
+	size_t sample_array_idx;
+
 	float in_level;
 	float out_level;
 	enum disp_state
