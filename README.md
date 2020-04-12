@@ -29,3 +29,7 @@ The list of current effects is available at [this page](https://github.com/afms1
 - [Youtube](https://www.youtube.com/channel/UChTp4nFLsnpuzNy29fdVIeA)
 
 ## Authors and Individual Contributions
+
+- Alexander Strachan (afms135, 2173868s)
+- Robert Norris (robnorr, 2198915n)
+- Simon Ridley (ithinkitssimon, 2187742r)
