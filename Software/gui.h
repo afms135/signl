@@ -55,9 +55,9 @@ private:
 	void putstring(std::string str, unsigned int x_origin, unsigned int y_origin);
 
 	/**
-	 * \brief Draw rectangle outline on lcd.
+	 * \brief Draw filled rectangle on lcd.
 	 *
-	 * Draw a rectange outline on lcd, inverts pixels currently in framebuffer.
+	 * Draw a filled rectange on lcd, inverts pixels currently in framebuffer.
 	 *
 	 * \param x_origin Horizontal co-ordinate (0 <= x_origin < #lcd.width).
 	 * \param y_origin Vertical co-ordinate (0 <= y_origin < #lcd.height).
