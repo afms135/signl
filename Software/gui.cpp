@@ -67,7 +67,6 @@ void gui::putstring(std::string str, unsigned int x_origin, unsigned int y_origi
 	}
 }
 
-// Puts a rectangle on top of the current fbuf (uses invpixel)
 void gui::putrect(unsigned int x_origin, unsigned int y_origin, unsigned int width, unsigned int height)
 {
 	for(unsigned y_index = y_origin; y_index < y_origin + height; ++y_index)
@@ -147,7 +146,6 @@ void gui::param_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_
 	current_val = effect_chain[effect_idx]->paramval(effect::PARAM_D)*60;
 	cursor_y = 54;
 	putrect(128 - current_val,cursor_y,current_val,10);
-
 }
 
 void gui::level_view(float in_level, float out_level, jack_client::sample_t sample_array[7][BUFFER_LENGTH])
@@ -171,7 +169,7 @@ void gui::level_view(float in_level, float out_level, jack_client::sample_t samp
 	{
 		max_dB[i] = 20*log10(*std::max_element(sample_array[i],sample_array[i]+BUFFER_LENGTH))+60;
 	}
-//	printf("%f\t%f\r\n",max_dB[0],max_dB[0]*34/60);
+
 	// Show dB bars
 	int i = 0;	// def should be a loop of i < 7
 	for(int x = 0; x < 128; x = x + 23)
@@ -179,6 +177,4 @@ void gui::level_view(float in_level, float out_level, jack_client::sample_t samp
 		int h = max_dB[i++]*34/60;
 		putrect(x+1,63-h,8,h);
 	}
-	//putrect(1,13,2*(in_max_dB+60),8);
-	//putrect(1,45,2*(out_max_dB+60),8);
 }
