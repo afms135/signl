@@ -17,11 +17,13 @@ const auto JOY_LEFT  = 22;
 const auto JOY_RIGHT = 25;
 const auto JOY_PUSH  = 23;
 const auto DEBOUNCE_TIME = 20;
-
+//Flag to shutdown software
 volatile sig_atomic_t signl::running = 0;
 
 signl::signl() :
+	//Base class
 	jack_client("signl"),
+	//Hardware
 	display(SPI_LCD, GPIO, LCD_A0, LCD_RES),
 	param(SPI_ADC),
 	joy_up(GPIO, JOY_UP, false, DEBOUNCE_TIME, "JOY_UP"),
@@ -29,15 +31,21 @@ signl::signl() :
 	joy_left(GPIO, JOY_LEFT, false, DEBOUNCE_TIME, "JOY_LEFT"),
 	joy_right(GPIO, JOY_RIGHT, false, DEBOUNCE_TIME, "JOY_RIGHT"),
 	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH"),
+	//Effect manager
 	effects("./effects"),
+	//Effect selection indexes
 	effect_idx(0),
 	effect_chain_idx{0,0,0,0,0},
+	//Array of previous samples
 	sample_array(),
 	sample_array_idx(0),
+	//Parameter values
 	param_val{0.0, 0.0, 0.0, 0.0},
 	param_updated{false, false, false, false},
+	//Input output gain
 	in_level(1.0),
 	out_level(1.0),
+	//UI state
 	state(EFFECT_CHAIN)
 {
 	//Register signal handlers
@@ -113,6 +121,8 @@ void signl::start()
 
 		//User interface loop
 		display.clear();
+
+		//GUI states
 		if(state == EFFECT_CHAIN)
 		{
 			//Change state
