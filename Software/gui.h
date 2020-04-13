@@ -7,14 +7,65 @@
 #include <string>
 #include <memory>
 
+/**
+ * \brief Class used to draw user interface.
+ *
+ * This class encapsulates the lcd drawing code used to display the various
+ * user interfaces on the lcd.
+ */
 class gui : public lcd
 {
 	using lcd::lcd;
 public:
+	///Number of previous samples to save, used in #level_view().
 	static const unsigned int BUFFER_LENGTH = 2048;
 
+	/**
+	 * \brief Draw effect chain view.
+	 *
+	 * Draw the effect chain on the upper portion of the lcd using the icons
+	 * returned by effect::icon().
+	 *
+	 * \param effect_chain Reference to effect chain to draw on lcd.
+	 */
 	void signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain);
+
+	/**
+	 * \brief Draw parameter view.
+	 *
+	 * Draw effect parameters on the lower portion of the lcd showing the
+	 * effect name returned by effect::name(), the effect parameter names
+	 * returned by effect::paramname() and shows the current value of each
+	 * parameter returned by effect::paramval().
+	 *
+	 * Additionally draws an arrow below the currently selected effect.
+	 *
+	 * \param effect_chain Reference to effect chain to draw parameters from.
+	 * \param effect_idx Index of effect to draw arrow under.
+	 */
 	void param_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain, unsigned int effect_idx);
+
+	/**
+	 * \brief Draw level view.
+	 *
+	 * Draw peak volume level bars for each position in the effect chain over
+	 * the last #BUFFER_LENGTH samples, also show the current input and output
+	 * gain.
+	 *
+	 * ```
+	 * sample_array[0] = input multiplied by input level
+	 * sample_array[1] = level after 1st effect
+	 * sample_array[2] = level after 2nd effect
+	 * sample_array[3] = level after 3rd effect
+	 * sample_array[4] = level after 4th effect
+	 * sample_array[5] = level after 5th effect
+	 * sample_array[6] = output multiplied by output level
+	 * ```
+	 *
+	 * \param in_level Input gain level (0<=in_level<=1.0).
+	 * \param out_level Output gain level (0<=out_level<=1.0).
+	 * \param sample_array Array of previous samples for each position in the effect chain.
+	 */
 	void level_view(float in_level, float out_level, jack_client::sample_t sample_array[7][BUFFER_LENGTH]);
 
 private:
