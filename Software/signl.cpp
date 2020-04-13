@@ -60,8 +60,8 @@ signl::signl() :
 
 	//Print list of loaded plugins
 	std::cout << "Loaded plugins:" << std::endl;
-	for(unsigned int i = 0; i < effects.size(); i++)
-		std::cout << '\t' << effects(i, rate())->name() << std::endl;
+	for(auto &e : effects.list(rate()))
+		std::cout << '\t' << e->name() << std::endl;
 
 	//Create blank effect chain
 	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
