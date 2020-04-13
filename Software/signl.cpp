@@ -133,7 +133,7 @@ void signl::start()
 			for(unsigned int i = 0; i < NUM_PARAMS; i++)
 			{
 				if(param_updated[i])
-					effect_chain[i]->paramset(static_cast<effect::param>(i), param_val[i]);
+					effect_chain[effect_idx]->paramset(static_cast<effect::param>(i), param_val[i]);
 			}
 
 			//Joystick input
