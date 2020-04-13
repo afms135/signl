@@ -8,7 +8,7 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float process(float in) override
 	{
 		float multiplier = 0.0;
 		if(index < noofsamples * fade)

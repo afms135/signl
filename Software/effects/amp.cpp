@@ -7,7 +7,7 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float process(float in) override
 	{
 		float out = in * gain;
 

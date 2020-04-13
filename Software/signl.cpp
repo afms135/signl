@@ -80,7 +80,7 @@ jack_client::sample_t signl::process(sample_t in)
 	//Process sample through effect chain, save intermediate results for level
 	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
 	{
-		in = (*effect_chain[i])(in);
+		in = effect_chain[i]->process(in);
 		sample_array[i+1][sample_array_idx] = in;
 	}
 

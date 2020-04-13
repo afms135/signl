@@ -31,7 +31,7 @@ public:
 
 	}
 
-	float operator()(float in) override
+	float process(float in) override
 	{
 		float noise_fx = 0.0;
 		// Are we currently making a click sound?
