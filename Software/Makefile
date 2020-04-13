@@ -61,4 +61,5 @@ help:
 
 clean:
 	$(RM) $(OBJS) $(DEPS) $(NAME)
+	$(RM) -r docs
 	@$(MAKE) --no-print-directory -C ./effects clean
