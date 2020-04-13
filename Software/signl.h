@@ -13,10 +13,12 @@ class signl : jack_client
 {
 public:
 	static const unsigned int NUM_EFFECTS = 5;
+	static const unsigned int NUM_PARAMS = 4;
 
 	signl();
 	sample_t process(sample_t in);
 	void shutdown();
+	void param_update();
 	void start();
 
 private:
@@ -34,10 +36,12 @@ private:
 
 	unsigned int effect_idx;
 	unsigned int effect_chain_idx[NUM_EFFECTS];
-	float param_knobs[4];
 
 	jack_client::sample_t sample_array[7][gui::BUFFER_LENGTH];
 	size_t sample_array_idx;
+
+	float param_val[NUM_PARAMS];
+	bool param_updated[NUM_PARAMS];
 
 	float in_level;
 	float out_level;

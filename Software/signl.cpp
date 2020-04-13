@@ -32,9 +32,10 @@ signl::signl() :
 	effects("./effects"),
 	effect_idx(0),
 	effect_chain_idx{0,0,0,0,0},
-	param_knobs{0.0,0.0,0.0,0.0},
 	sample_array(),
 	sample_array_idx(0),
+	param_val{0.0, 0.0, 0.0, 0.0},
+	param_updated{false, false, false, false},
 	in_level(1.0),
 	out_level(1.0),
 	state(EFFECT_CHAIN)
@@ -85,11 +86,31 @@ jack_client::sample_t signl::process(sample_t in)
 	return out;
 }
 
+void signl::param_update()
+{
+	//For each parameter check if it has moved enough
+	for(unsigned int i = 0; i < NUM_PARAMS; ++i)
+	{
+		//Read ADC
+		float in = param(static_cast<adc::channel>(i));
+
+		if(std::abs(in - param_val[i]) > 0.01)
+		{
+			//Save new value
+			param_val[i] = in;
+			param_updated[i] = true;
+		}
+	}
+}
+
 void signl::start()
 {
 	std::cout << "Starting..." << std::endl;
 	while(running)
 	{
+		//Update parameters
+		param_update();
+
 		//User interface loop
 		display.clear();
 		if(state == EFFECT_CHAIN)
@@ -98,20 +119,11 @@ void signl::start()
 			if(joy_push)
 				state = LEVEL_ADJ;
 
-			//Parameter input
-			float param_in[4];
-			param_in[0] = param(adc::CH0);
-			param_in[1] = param(adc::CH1);
-			param_in[2] = param(adc::CH2);
-			param_in[3] = param(adc::CH3);
-
-			for(unsigned int i = 0; i < 4; ++i)
+			//Update effect parameters
+			for(unsigned int i = 0; i < NUM_PARAMS; i++)
 			{
-				if(std::abs(param_in[i] - param_knobs[i]) > 0.01)
-				{
-					param_knobs[i] = param_in[i];
-					effect_chain[effect_idx]->paramset(static_cast<effect::param>(i),param_in[i]);
-				}
+				if(param_updated[i])
+					effect_chain[i]->paramset(static_cast<effect::param>(i), param_val[i]);
 			}
 
 			//Joystick input
@@ -149,33 +161,19 @@ void signl::start()
 			if(joy_push)
 				state = EFFECT_CHAIN;
 
-			//Parameter input
-			float param_in[4];
-			param_in[0] = param(adc::CH0);
-			param_in[1] = param(adc::CH1);
-			param_in[2] = param(adc::CH2);
-			param_in[3] = param(adc::CH3);
-
-			for(unsigned int i = 0; i < 4; ++i)
-			{
-				if(std::abs(param_in[i] - param_knobs[i]) > 0.01)
-				{
-					param_knobs[i] = param_in[i];
-					if (i == 0)
-					{
-						in_level = param_in[i];
-					}
-					else if(i == 3)
-					{
-						out_level = param_in[i];
-					}
-				}
-			}
+			//Update input/output levels
+			if(param_updated[0])
+				in_level = param_val[0];
+			if(param_updated[3])
+				out_level = param_val[3];
 
 			//Show sound level display
 			display.level_view(in_level,out_level,sample_array);
 		}
-		//Update display
+
+		//Reset param update flags, update display
+		for(unsigned int i = 0; i < NUM_PARAMS; i++)
+			param_updated[i] = false;
 		display.signl_view(effect_chain);
 		display.flip();
 	}
