@@ -90,13 +90,13 @@ void signl::start()
 	std::cout << "Starting..." << std::endl;
 	while(running)
 	{
+		//User interface loop
+		display.clear();
 		if(state == EFFECT_CHAIN)
 		{
 			//Change state
 			if(joy_push)
-			{
 				state = LEVEL_ADJ;
-			}
 
 			//Parameter input
 			float param_in[4];
@@ -140,19 +140,14 @@ void signl::start()
 				effect_idx %= NUM_EFFECTS;
 			}
 
-			//Display update
-			display.clear();
-			display.signl_view(effect_chain);
+			//Show parameter modify display
 			display.param_view(effect_chain,effect_idx);
-			display.flip();
 		}
 		else if (state == LEVEL_ADJ)
 		{
 			//State change
 			if(joy_push)
-			{
 				state = EFFECT_CHAIN;
-			}
 
 			//Parameter input
 			float param_in[4];
@@ -177,12 +172,12 @@ void signl::start()
 				}
 			}
 
-			//Display update
-			display.clear();
-			display.signl_view(effect_chain);
+			//Show sound level display
 			display.level_view(in_level,out_level,sample_array);
-			display.flip();
 		}
+		//Update display
+		display.signl_view(effect_chain);
+		display.flip();
 	}
 	deactivate();
 	std::cout << "Stopping..." << std::endl;
