@@ -32,7 +32,7 @@ struct effect_list
 	void operator--()
 	{
 		idx--;
-		idx %= list.size();
+		if(idx >= list.size()) idx = list.size()-1;
 	}
 
 	///Return currently selected effect
