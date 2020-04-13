@@ -7,12 +7,12 @@
 #include <string>
 #include <memory>
 
-constexpr auto BUFFER_LENGTH = 2048;
-
 class gui : public lcd
 {
 	using lcd::lcd;
 public:
+	static const unsigned int BUFFER_LENGTH = 2048;
+
 	void signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain);
 	void param_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain, unsigned int effect_idx);
 	void level_view(float in_level, float out_level, jack_client::sample_t sample_array[7][BUFFER_LENGTH]);

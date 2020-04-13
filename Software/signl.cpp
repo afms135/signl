@@ -55,7 +55,7 @@ signl::signl() :
 		std::cout << '\t' << effects(i, rate())->name() << std::endl;
 
 	//Create blank effect chain
-	for(int i = 0; i < NUM_EFFECTS; i++)
+	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
 		effect_chain.push_back(effects(effects.EFFECT_NULL, rate()));
 
 	running = 1;
@@ -69,7 +69,7 @@ jack_client::sample_t signl::process(sample_t in)
 	sample_array[0][sample_array_idx] = in;
 
 	//Process sample through effect chain, save intermediate results for level
-	for(int i = 0; i < NUM_EFFECTS; i++)
+	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
 	{
 		in = (*effect_chain[i])(in);
 		sample_array[i+1][sample_array_idx] = in;
@@ -80,7 +80,7 @@ jack_client::sample_t signl::process(sample_t in)
 	sample_array[6][sample_array_idx] = out;
 
 	//Loop array index (ring buffer)
-	sample_array_idx = (sample_array_idx + 1) % BUFFER_LENGTH;
+	sample_array_idx = (sample_array_idx + 1) % gui::BUFFER_LENGTH;
 
 	return out;
 }

@@ -9,11 +9,11 @@
 #include <vector>
 #include <signal.h>
 
-constexpr auto NUM_EFFECTS = 5;
-
 class signl : jack_client
 {
 public:
+	static const unsigned int NUM_EFFECTS = 5;
+
 	signl();
 	sample_t process(sample_t in);
 	void shutdown();
@@ -33,10 +33,10 @@ private:
 	static volatile sig_atomic_t running;
 
 	unsigned int effect_idx;
-	unsigned int effect_chain_idx[5];
+	unsigned int effect_chain_idx[NUM_EFFECTS];
 	float param_knobs[4];
 
-	jack_client::sample_t sample_array[7][BUFFER_LENGTH];
+	jack_client::sample_t sample_array[7][gui::BUFFER_LENGTH];
 	size_t sample_array_idx;
 
 	float in_level;
