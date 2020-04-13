@@ -1,5 +1,5 @@
 <map id="gui" name="gui">
-<area shape="rect" id="node1" title=" " alt="" coords="153,200,195,227"/>
+<area shape="rect" id="node1" title="Class used to draw user interface." alt="" coords="153,200,195,227"/>
 <area shape="rect" id="node2" href="$classlcd.html" title="Class representing a DOGM128 128x64 LCD display." alt="" coords="153,124,195,151"/>
 <area shape="rect" id="node3" href="$classgpioout.html" title="Class representing a GPIO output." alt="" coords="5,13,76,39"/>
 <area shape="rect" id="node4" title=" " alt="" coords="100,5,248,47"/>

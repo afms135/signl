@@ -1,4 +1,4 @@
 <map id="jack_client" name="jack_client">
 <area shape="rect" id="node1" title="Abstract class representing a mono JACK client." alt="" coords="5,5,97,32"/>
-<area shape="rect" id="node2" href="$classsignl.html" title=" " alt="" coords="25,80,78,107"/>
+<area shape="rect" id="node2" href="$classsignl.html" title="Main application class." alt="" coords="25,80,78,107"/>
 </map>

@@ -60,18 +60,24 @@ $(document).ready(function(){initNavTree('classgui.html',''); initResizable(); }
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classgui-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">gui Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class used to draw user interface.  
+ <a href="classgui.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="gui_8h_source.html">gui.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for gui:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgui__inherit__graph.png" border="0" usemap="#gui_inherit__map" alt="Inheritance graph"/></div>
 <map name="gui_inherit__map" id="gui_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,48,107"/>
+<area shape="rect" title="Class used to draw user interface." alt="" coords="5,80,48,107"/>
 <area shape="rect" href="classlcd.html" title="Class representing a DOGM128 128x64 LCD display." alt="" coords="6,5,47,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -80,7 +86,7 @@ Collaboration diagram for gui:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgui__coll__graph.png" border="0" usemap="#gui_coll__map" alt="Collaboration graph"/></div>
 <map name="gui_coll__map" id="gui_coll__map">
-<area shape="rect" title=" " alt="" coords="153,200,195,227"/>
+<area shape="rect" title="Class used to draw user interface." alt="" coords="153,200,195,227"/>
 <area shape="rect" href="classlcd.html" title="Class representing a DOGM128 128x64 LCD display." alt="" coords="153,124,195,151"/>
 <area shape="rect" href="classgpioout.html" title="Class representing a GPIO output." alt="" coords="5,13,76,39"/>
 <area shape="rect" title=" " alt="" coords="100,5,248,47"/>
@@ -90,14 +96,14 @@ Collaboration diagram for gui:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a200671a9cea95f6081ec11569d7a156c"><td class="memItemLeft" align="right" valign="top"><a id="a200671a9cea95f6081ec11569d7a156c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>signl_view</b> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;effect_chain)</td></tr>
+<tr class="memitem:a200671a9cea95f6081ec11569d7a156c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a200671a9cea95f6081ec11569d7a156c">signl_view</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;effect_chain)</td></tr>
+<tr class="memdesc:a200671a9cea95f6081ec11569d7a156c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw effect chain view.  <a href="classgui.html#a200671a9cea95f6081ec11569d7a156c">More...</a><br /></td></tr>
 <tr class="separator:a200671a9cea95f6081ec11569d7a156c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab64fbc481568a2b402b5912447a6d7ff"><td class="memItemLeft" align="right" valign="top"><a id="ab64fbc481568a2b402b5912447a6d7ff"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>param_view</b> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;effect_chain, unsigned int effect_idx)</td></tr>
+<tr class="memitem:ab64fbc481568a2b402b5912447a6d7ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#ab64fbc481568a2b402b5912447a6d7ff">param_view</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;effect_chain, unsigned int effect_idx)</td></tr>
+<tr class="memdesc:ab64fbc481568a2b402b5912447a6d7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw parameter view.  <a href="classgui.html#ab64fbc481568a2b402b5912447a6d7ff">More...</a><br /></td></tr>
 <tr class="separator:ab64fbc481568a2b402b5912447a6d7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a105b20ec0fcf5f22318ecab49ab86376"><td class="memItemLeft" align="right" valign="top"><a id="a105b20ec0fcf5f22318ecab49ab86376"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>level_view</b> (float in_level, float out_level, <a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a> sample_array[7][BUFFER_LENGTH])</td></tr>
+<tr class="memitem:a105b20ec0fcf5f22318ecab49ab86376"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376">level_view</a> (float in_level, float out_level, <a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a> sample_array[7][<a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168">BUFFER_LENGTH</a>])</td></tr>
+<tr class="memdesc:a105b20ec0fcf5f22318ecab49ab86376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw level view.  <a href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376">More...</a><br /></td></tr>
 <tr class="separator:a105b20ec0fcf5f22318ecab49ab86376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classlcd"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classlcd')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classlcd.html">lcd</a></td></tr>
 <tr class="memitem:a2e83af2a19fa02a3c1126ba012173769 inherit pub_methods_classlcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlcd.html#a2e83af2a19fa02a3c1126ba012173769">lcd</a> (std::string <a class="el" href="classspidev.html">spidev</a>, std::string gpiochip, int A0_pin, int res_pin)</td></tr>
@@ -119,26 +125,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>level_view</b> (float
 <tr class="memdesc:ab19be52e1814f432e265a4197ee959d0 inherit pub_methods_classlcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Invert pixel in framebuffer.  <a href="classlcd.html#ab19be52e1814f432e265a4197ee959d0">More...</a><br /></td></tr>
 <tr class="separator:ab19be52e1814f432e265a4197ee959d0 inherit pub_methods_classlcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a377889b1e986fde167ee8cf8fbb3f4e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a377889b1e986fde167ee8cf8fbb3f4e3">putsprite</a> (<a class="el" href="struct_sprite.html">Sprite</a> sprite, unsigned int x_origin, unsigned int y_origin, bool inv=false)</td></tr>
-<tr class="memdesc:a377889b1e986fde167ee8cf8fbb3f4e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw <a class="el" href="struct_sprite.html" title="Sprite definition.">Sprite</a> on lcd.  <a href="classgui.html#a377889b1e986fde167ee8cf8fbb3f4e3">More...</a><br /></td></tr>
-<tr class="separator:a377889b1e986fde167ee8cf8fbb3f4e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5251dba0822074e37f69184f6eabccea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a5251dba0822074e37f69184f6eabccea">putchar</a> (char ch, unsigned int x_origin, unsigned int y_origin)</td></tr>
-<tr class="memdesc:a5251dba0822074e37f69184f6eabccea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw character on lcd.  <a href="classgui.html#a5251dba0822074e37f69184f6eabccea">More...</a><br /></td></tr>
-<tr class="separator:a5251dba0822074e37f69184f6eabccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a129ec4d40793981f8cea7196c2f772db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a129ec4d40793981f8cea7196c2f772db">putstring</a> (std::string str, unsigned int x_origin, unsigned int y_origin)</td></tr>
-<tr class="memdesc:a129ec4d40793981f8cea7196c2f772db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw string on lcd.  <a href="classgui.html#a129ec4d40793981f8cea7196c2f772db">More...</a><br /></td></tr>
-<tr class="separator:a129ec4d40793981f8cea7196c2f772db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab476ec0dd8c97ecc7c55e18886459fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#aab476ec0dd8c97ecc7c55e18886459fb">putrect</a> (unsigned int x_origin, unsigned int y_origin, unsigned int <a class="el" href="classlcd.html#ae21714bda62bbc47ef16213b0b8669fa">width</a>, unsigned int <a class="el" href="classlcd.html#afe07ec6426ba10cbbb86d8beae4b310b">height</a>)</td></tr>
-<tr class="memdesc:aab476ec0dd8c97ecc7c55e18886459fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw rectangle outline on lcd.  <a href="classgui.html#aab476ec0dd8c97ecc7c55e18886459fb">More...</a><br /></td></tr>
-<tr class="separator:aab476ec0dd8c97ecc7c55e18886459fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e83af2a19fa02a3c1126ba012173769"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a2e83af2a19fa02a3c1126ba012173769">lcd</a> (std::string <a class="el" href="classspidev.html">spidev</a>, std::string gpiochip, int A0_pin, int res_pin)</td></tr>
-<tr class="memdesc:a2e83af2a19fa02a3c1126ba012173769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of an LCD display.  <a href="classgui.html#a2e83af2a19fa02a3c1126ba012173769">More...</a><br /></td></tr>
-<tr class="separator:a2e83af2a19fa02a3c1126ba012173769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:acb8232bb61ed666f7c9503f44ef55168"><td class="memItemLeft" align="right" valign="top"><a id="acb8232bb61ed666f7c9503f44ef55168"></a>
+static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168">BUFFER_LENGTH</a> = 2048</td></tr>
+<tr class="memdesc:acb8232bb61ed666f7c9503f44ef55168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of previous samples to save, used in <a class="el" href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376" title="Draw level view.">level_view()</a>. <br /></td></tr>
+<tr class="separator:acb8232bb61ed666f7c9503f44ef55168"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_classlcd"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classlcd')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classlcd.html">lcd</a></td></tr>
 <tr class="memitem:a64f10b4f3a1daf4c52f14f52cacac5f3 inherit pub_static_attribs_classlcd"><td class="memItemLeft" align="right" valign="top"><a id="a64f10b4f3a1daf4c52f14f52cacac5f3"></a>
 static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlcd.html#a64f10b4f3a1daf4c52f14f52cacac5f3">pages</a> = 8</td></tr>
@@ -152,8 +144,140 @@ static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a 
 static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlcd.html#afe07ec6426ba10cbbb86d8beae4b310b">height</a> = <a class="el" href="classlcd.html#a64f10b4f3a1daf4c52f14f52cacac5f3">pages</a> * 8</td></tr>
 <tr class="memdesc:afe07ec6426ba10cbbb86d8beae4b310b inherit pub_static_attribs_classlcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of LCD in pixels. <br /></td></tr>
 <tr class="separator:afe07ec6426ba10cbbb86d8beae4b310b inherit pub_static_attribs_classlcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a377889b1e986fde167ee8cf8fbb3f4e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a377889b1e986fde167ee8cf8fbb3f4e3">putsprite</a> (<a class="el" href="struct_sprite.html">Sprite</a> sprite, unsigned int x_origin, unsigned int y_origin, bool inv=false)</td></tr>
+<tr class="memdesc:a377889b1e986fde167ee8cf8fbb3f4e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw <a class="el" href="struct_sprite.html" title="Sprite definition.">Sprite</a> on lcd.  <a href="classgui.html#a377889b1e986fde167ee8cf8fbb3f4e3">More...</a><br /></td></tr>
+<tr class="separator:a377889b1e986fde167ee8cf8fbb3f4e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5251dba0822074e37f69184f6eabccea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a5251dba0822074e37f69184f6eabccea">putchar</a> (char ch, unsigned int x_origin, unsigned int y_origin)</td></tr>
+<tr class="memdesc:a5251dba0822074e37f69184f6eabccea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw character on lcd.  <a href="classgui.html#a5251dba0822074e37f69184f6eabccea">More...</a><br /></td></tr>
+<tr class="separator:a5251dba0822074e37f69184f6eabccea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a129ec4d40793981f8cea7196c2f772db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a129ec4d40793981f8cea7196c2f772db">putstring</a> (std::string str, unsigned int x_origin, unsigned int y_origin)</td></tr>
+<tr class="memdesc:a129ec4d40793981f8cea7196c2f772db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw string on lcd.  <a href="classgui.html#a129ec4d40793981f8cea7196c2f772db">More...</a><br /></td></tr>
+<tr class="separator:a129ec4d40793981f8cea7196c2f772db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab476ec0dd8c97ecc7c55e18886459fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#aab476ec0dd8c97ecc7c55e18886459fb">putrect</a> (unsigned int x_origin, unsigned int y_origin, unsigned int <a class="el" href="classlcd.html#ae21714bda62bbc47ef16213b0b8669fa">width</a>, unsigned int <a class="el" href="classlcd.html#afe07ec6426ba10cbbb86d8beae4b310b">height</a>)</td></tr>
+<tr class="memdesc:aab476ec0dd8c97ecc7c55e18886459fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw filled rectangle on lcd.  <a href="classgui.html#aab476ec0dd8c97ecc7c55e18886459fb">More...</a><br /></td></tr>
+<tr class="separator:aab476ec0dd8c97ecc7c55e18886459fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e83af2a19fa02a3c1126ba012173769"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a2e83af2a19fa02a3c1126ba012173769">lcd</a> (std::string <a class="el" href="classspidev.html">spidev</a>, std::string gpiochip, int A0_pin, int res_pin)</td></tr>
+<tr class="memdesc:a2e83af2a19fa02a3c1126ba012173769"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of an LCD display.  <a href="classgui.html#a2e83af2a19fa02a3c1126ba012173769">More...</a><br /></td></tr>
+<tr class="separator:a2e83af2a19fa02a3c1126ba012173769"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class encapsulates the lcd drawing code used to display the various user interfaces on the lcd. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a200671a9cea95f6081ec11569d7a156c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a200671a9cea95f6081ec11569d7a156c">&#9670;&nbsp;</a></span>signl_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gui::signl_view </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>effect_chain</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Draw the effect chain on the upper portion of the lcd using the icons returned by <a class="el" href="structeffect.html#aaacba192f511ab5196849733adf78144" title="Get effect icon.">effect::icon()</a>.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effect_chain</td><td>Reference to effect chain to draw on lcd. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab64fbc481568a2b402b5912447a6d7ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab64fbc481568a2b402b5912447a6d7ff">&#9670;&nbsp;</a></span>param_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gui::param_view </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>effect_chain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>effect_idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Draw effect parameters on the lower portion of the lcd showing the effect name returned by <a class="el" href="structeffect.html#a19794f9d926426ab0aa4d82bd7880680" title="Effect name.">effect::name()</a>, the effect parameter names returned by <a class="el" href="structeffect.html#ab89e5ed1bcc5229da7911bfbbc3eac41" title="Name of parameter.">effect::paramname()</a> and shows the current value of each parameter returned by <a class="el" href="structeffect.html#ac868b195e02d24a22f77a0ca9ff258b4" title="Get an effect parameter value.">effect::paramval()</a>.</p>
+<p>Additionally draws an arrow below the currently selected effect.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">effect_chain</td><td>Reference to effect chain to draw parameters from. </td></tr>
+    <tr><td class="paramname">effect_idx</td><td>Index of effect to draw arrow under. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a105b20ec0fcf5f22318ecab49ab86376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105b20ec0fcf5f22318ecab49ab86376">&#9670;&nbsp;</a></span>level_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gui::level_view </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>in_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>out_level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a>&#160;</td>
+          <td class="paramname"><em>sample_array</em>[7][BUFFER_LENGTH]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Draw peak volume level bars for each position in the effect chain over the last <a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168" title="Number of previous samples to save, used in level_view().">BUFFER_LENGTH</a> samples, also show the current input and output gain.</p>
+<div class="fragment"><div class="line">sample_array[0] = input multiplied by input level</div>
+<div class="line">sample_array[1] = level after 1st <a class="code" href="structeffect.html">effect</a></div>
+<div class="line">sample_array[2] = level after 2nd <a class="code" href="structeffect.html">effect</a></div>
+<div class="line">sample_array[3] = level after 3rd <a class="code" href="structeffect.html">effect</a></div>
+<div class="line">sample_array[4] = level after 4th <a class="code" href="structeffect.html">effect</a></div>
+<div class="line">sample_array[5] = level after 5th <a class="code" href="structeffect.html">effect</a></div>
+<div class="line">sample_array[6] = output multiplied by output level</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">in_level</td><td>Input gain level (0&lt;=in_level&lt;=1.0). </td></tr>
+    <tr><td class="paramname">out_level</td><td>Output gain level (0&lt;=out_level&lt;=1.0). </td></tr>
+    <tr><td class="paramname">sample_array</td><td>Array of previous samples for each position in the effect chain. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a377889b1e986fde167ee8cf8fbb3f4e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a377889b1e986fde167ee8cf8fbb3f4e3">&#9670;&nbsp;</a></span>putsprite()</h2>
 
@@ -360,7 +484,7 @@ static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a 
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Draw a rectange outline on lcd, inverts pixels currently in framebuffer.</p>
+<p>Draw a filled rectange on lcd, inverts pixels currently in framebuffer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x_origin</td><td>Horizontal co-ordinate (0 &lt;= x_origin &lt; <a class="el" href="classlcd.html#ae21714bda62bbc47ef16213b0b8669fa" title="Width of LCD in pixels.">lcd.width</a>). </td></tr>
@@ -410,6 +534,7 @@ static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a 
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="astructeffect_html"><div class="ttname"><a href="structeffect.html">effect</a></div><div class="ttdoc">Abstract class representing a audio effect.</div><div class="ttdef"><b>Definition:</b> effect.h:72</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

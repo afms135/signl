@@ -60,6 +60,7 @@ $(document).ready(function(){initNavTree('classsignl.html',''); initResizable();
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
@@ -69,12 +70,17 @@ $(document).ready(function(){initNavTree('classsignl.html',''); initResizable();
 <div class="title">signl Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main application class.  
+ <a href="classsignl.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="signl_8h_source.html">signl.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for signl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classsignl__inherit__graph.png" border="0" usemap="#signl_inherit__map" alt="Inheritance graph"/></div>
 <map name="signl_inherit__map" id="signl_inherit__map">
-<area shape="rect" title=" " alt="" coords="25,80,78,107"/>
+<area shape="rect" title="Main application class." alt="" coords="25,80,78,107"/>
 <area shape="rect" href="classjack__client.html" title="Abstract class representing a mono JACK client." alt="" coords="5,5,97,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -83,7 +89,7 @@ Collaboration diagram for signl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classsignl__coll__graph.png" border="0" usemap="#signl_coll__map" alt="Collaboration graph"/></div>
 <map name="signl_coll__map" id="signl_coll__map">
-<area shape="rect" title=" " alt="" coords="1145,167,1199,193"/>
+<area shape="rect" title="Main application class." alt="" coords="1145,167,1199,193"/>
 <area shape="rect" href="classjack__client.html" title="Abstract class representing a mono JACK client." alt="" coords="927,5,1019,32"/>
 <area shape="rect" href="classdebounce.html" title="Class representing a debounced GPIO input." alt="" coords="930,76,1015,103"/>
 <area shape="rect" href="classgpioin.html" title="Class representing a GPIO input." alt="" coords="513,71,576,97"/>
@@ -93,7 +99,7 @@ Collaboration diagram for signl:</div>
 <area shape="rect" href="structeffect.html" title="Abstract class representing a audio effect." alt="" coords="5,159,64,185"/>
 <area shape="rect" title=" " alt="" coords="161,181,336,222"/>
 <area shape="rect" title=" " alt="" coords="664,181,887,222"/>
-<area shape="rect" href="classgui.html" title=" " alt="" coords="951,263,994,289"/>
+<area shape="rect" href="classgui.html" title="Class used to draw user interface." alt="" coords="951,263,994,289"/>
 <area shape="rect" href="classlcd.html" title="Class representing a DOGM128 128x64 LCD display." alt="" coords="524,285,565,312"/>
 <area shape="rect" href="classgpioout.html" title="Class representing a GPIO output." alt="" coords="213,248,284,275"/>
 <area shape="rect" title=" " alt="" coords="175,299,323,341"/>
@@ -104,21 +110,39 @@ Collaboration diagram for signl:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a665f3e26e0bb8e3b4bf4b0dc23ae285e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a665f3e26e0bb8e3b4bf4b0dc23ae285e">signl</a> ()</td></tr>
+<tr class="memdesc:a665f3e26e0bb8e3b4bf4b0dc23ae285e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of the main program.  <a href="classsignl.html#a665f3e26e0bb8e3b4bf4b0dc23ae285e">More...</a><br /></td></tr>
+<tr class="separator:a665f3e26e0bb8e3b4bf4b0dc23ae285e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b647f66903845f38c2713099154fd8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">sample_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a5b647f66903845f38c2713099154fd8a">process</a> (<a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">sample_t</a> in)</td></tr>
-<tr class="memdesc:a5b647f66903845f38c2713099154fd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">JACK processing callback.  <a href="classsignl.html#a5b647f66903845f38c2713099154fd8a">More...</a><br /></td></tr>
+<tr class="memdesc:a5b647f66903845f38c2713099154fd8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">JACK sample processing callback.  <a href="classsignl.html#a5b647f66903845f38c2713099154fd8a">More...</a><br /></td></tr>
 <tr class="separator:a5b647f66903845f38c2713099154fd8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3da9a6e5a0de9b336ae3a8d334cbc0e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a3da9a6e5a0de9b336ae3a8d334cbc0e4">shutdown</a> ()</td></tr>
 <tr class="memdesc:a3da9a6e5a0de9b336ae3a8d334cbc0e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">JACK shutdown callback.  <a href="classsignl.html#a3da9a6e5a0de9b336ae3a8d334cbc0e4">More...</a><br /></td></tr>
 <tr class="separator:a3da9a6e5a0de9b336ae3a8d334cbc0e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac71d0e21c28379d9cacb7174de7627ea"><td class="memItemLeft" align="right" valign="top"><a id="ac71d0e21c28379d9cacb7174de7627ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="memitem:ae058add93d1968d71c35b17e0622c6ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ae058add93d1968d71c35b17e0622c6ad">param_update</a> ()</td></tr>
+<tr class="memdesc:ae058add93d1968d71c35b17e0622c6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update parameters.  <a href="classsignl.html#ae058add93d1968d71c35b17e0622c6ad">More...</a><br /></td></tr>
+<tr class="separator:ae058add93d1968d71c35b17e0622c6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac71d0e21c28379d9cacb7174de7627ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ac71d0e21c28379d9cacb7174de7627ea">start</a> ()</td></tr>
+<tr class="memdesc:ac71d0e21c28379d9cacb7174de7627ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main application loop.  <a href="classsignl.html#ac71d0e21c28379d9cacb7174de7627ea">More...</a><br /></td></tr>
 <tr class="separator:ac71d0e21c28379d9cacb7174de7627ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a3a70e39f2ad5b537091726589e2d3f87"><td class="memItemLeft" align="right" valign="top"><a id="a3a70e39f2ad5b537091726589e2d3f87"></a>
+static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a3a70e39f2ad5b537091726589e2d3f87">NUM_EFFECTS</a> = 5</td></tr>
+<tr class="memdesc:a3a70e39f2ad5b537091726589e2d3f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of effects in the effect chain. <br /></td></tr>
+<tr class="separator:a3a70e39f2ad5b537091726589e2d3f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b60ce11a30e8a33c42d1b92bba4dadb"><td class="memItemLeft" align="right" valign="top"><a id="a6b60ce11a30e8a33c42d1b92bba4dadb"></a>
+static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a6b60ce11a30e8a33c42d1b92bba4dadb">NUM_PARAMS</a> = 4</td></tr>
+<tr class="memdesc:a6b60ce11a30e8a33c42d1b92bba4dadb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of configurable parameters that each effect has. <br /></td></tr>
+<tr class="separator:a6b60ce11a30e8a33c42d1b92bba4dadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
-<tr class="memitem:a8b28e4ba17e063fffde49d4ba639b10d"><td class="memItemLeft" align="right" valign="top"><a id="a8b28e4ba17e063fffde49d4ba639b10d"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>disp_state</b> { <b>EFFECT_CHAIN</b>, 
-<b>LEVEL_ADJ</b>
+<tr class="memitem:a8b28e4ba17e063fffde49d4ba639b10d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d">disp_state</a> { <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366">EFFECT_CHAIN</a>, 
+<a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3">LEVEL_ADJ</a>
  }</td></tr>
+<tr class="memdesc:a8b28e4ba17e063fffde49d4ba639b10d"><td class="mdescLeft">&#160;</td><td class="mdescRight">GUI states.  <a href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d">More...</a><br /></td></tr>
 <tr class="separator:a8b28e4ba17e063fffde49d4ba639b10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classjack__client"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classjack__client')"><img src="closed.png" alt="-"/>&#160;Private Types inherited from <a class="el" href="classjack__client.html">jack_client</a></td></tr>
 <tr class="memitem:a1986d97bdda962fa3338591bf238d24d inherit pub_types_classjack__client"><td class="memItemLeft" align="right" valign="top"><a id="a1986d97bdda962fa3338591bf238d24d"></a>
@@ -128,62 +152,90 @@ typedef jack_default_audio_sample_t&#160;</td><td class="memItemRight" valign="b
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
-<tr class="memitem:a07b72ede820b0a45da846a8d0712a7ed"><td class="memItemLeft" align="right" valign="top"><a id="a07b72ede820b0a45da846a8d0712a7ed"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><b>sigterm_handler</b> (int sig)</td></tr>
+<tr class="memitem:a07b72ede820b0a45da846a8d0712a7ed"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a07b72ede820b0a45da846a8d0712a7ed">sigterm_handler</a> (int sig)</td></tr>
+<tr class="memdesc:a07b72ede820b0a45da846a8d0712a7ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal handler.  <a href="classsignl.html#a07b72ede820b0a45da846a8d0712a7ed">More...</a><br /></td></tr>
 <tr class="separator:a07b72ede820b0a45da846a8d0712a7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a4f2a016e2038ab8fb7fa8d82b38b4f07"><td class="memItemLeft" align="right" valign="top"><a id="a4f2a016e2038ab8fb7fa8d82b38b4f07"></a>
-<a class="el" href="classgui.html">gui</a>&#160;</td><td class="memItemRight" valign="bottom"><b>display</b></td></tr>
+<a class="el" href="classgui.html">gui</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a4f2a016e2038ab8fb7fa8d82b38b4f07">display</a></td></tr>
+<tr class="memdesc:a4f2a016e2038ab8fb7fa8d82b38b4f07"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD display output. <br /></td></tr>
 <tr class="separator:a4f2a016e2038ab8fb7fa8d82b38b4f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6637f1f60ed5a0468f7d90fae7080780"><td class="memItemLeft" align="right" valign="top"><a id="a6637f1f60ed5a0468f7d90fae7080780"></a>
-<a class="el" href="classadc.html">adc</a>&#160;</td><td class="memItemRight" valign="bottom"><b>param</b></td></tr>
+<a class="el" href="classadc.html">adc</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a6637f1f60ed5a0468f7d90fae7080780">param</a></td></tr>
+<tr class="memdesc:a6637f1f60ed5a0468f7d90fae7080780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analogue-to-digital converter parameter inputs. <br /></td></tr>
 <tr class="separator:a6637f1f60ed5a0468f7d90fae7080780"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d6e4cddfe8489efdb4a9845356289f0"><td class="memItemLeft" align="right" valign="top"><a id="a4d6e4cddfe8489efdb4a9845356289f0"></a>
-<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><b>joy_up</b></td></tr>
+<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a4d6e4cddfe8489efdb4a9845356289f0">joy_up</a></td></tr>
+<tr class="memdesc:a4d6e4cddfe8489efdb4a9845356289f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debounced joystick up input. <br /></td></tr>
 <tr class="separator:a4d6e4cddfe8489efdb4a9845356289f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a22892902038b1c67fb4a6d756416a923"><td class="memItemLeft" align="right" valign="top"><a id="a22892902038b1c67fb4a6d756416a923"></a>
-<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><b>joy_down</b></td></tr>
+<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a22892902038b1c67fb4a6d756416a923">joy_down</a></td></tr>
+<tr class="memdesc:a22892902038b1c67fb4a6d756416a923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debounced joystick down input. <br /></td></tr>
 <tr class="separator:a22892902038b1c67fb4a6d756416a923"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a413d50bf4cab605949932463ffbb9b53"><td class="memItemLeft" align="right" valign="top"><a id="a413d50bf4cab605949932463ffbb9b53"></a>
-<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><b>joy_left</b></td></tr>
+<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a413d50bf4cab605949932463ffbb9b53">joy_left</a></td></tr>
+<tr class="memdesc:a413d50bf4cab605949932463ffbb9b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debounced joystick left input. <br /></td></tr>
 <tr class="separator:a413d50bf4cab605949932463ffbb9b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8631dccde31406dc530f06133c90bcee"><td class="memItemLeft" align="right" valign="top"><a id="a8631dccde31406dc530f06133c90bcee"></a>
-<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><b>joy_right</b></td></tr>
+<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a8631dccde31406dc530f06133c90bcee">joy_right</a></td></tr>
+<tr class="memdesc:a8631dccde31406dc530f06133c90bcee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debounced joystick right input. <br /></td></tr>
 <tr class="separator:a8631dccde31406dc530f06133c90bcee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1012de41fd9ee1b4e9ca77132f7f1bbc"><td class="memItemLeft" align="right" valign="top"><a id="a1012de41fd9ee1b4e9ca77132f7f1bbc"></a>
-<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><b>joy_push</b></td></tr>
+<a class="el" href="classdebounce.html">debounce</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a1012de41fd9ee1b4e9ca77132f7f1bbc">joy_push</a></td></tr>
+<tr class="memdesc:a1012de41fd9ee1b4e9ca77132f7f1bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Debounced joystick push button input. <br /></td></tr>
 <tr class="separator:a1012de41fd9ee1b4e9ca77132f7f1bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afecfdb1be2b37fe46fecf066c12e0d55"><td class="memItemLeft" align="right" valign="top"><a id="afecfdb1be2b37fe46fecf066c12e0d55"></a>
-<a class="el" href="classeffect__manager.html">effect_manager</a>&#160;</td><td class="memItemRight" valign="bottom"><b>effects</b></td></tr>
+<a class="el" href="classeffect__manager.html">effect_manager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#afecfdb1be2b37fe46fecf066c12e0d55">effects</a></td></tr>
+<tr class="memdesc:afecfdb1be2b37fe46fecf066c12e0d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effect manager, maintains loaded plugins. <br /></td></tr>
 <tr class="separator:afecfdb1be2b37fe46fecf066c12e0d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad843bb59acc7da5dffb20f319f18e6bf"><td class="memItemLeft" align="right" valign="top"><a id="ad843bb59acc7da5dffb20f319f18e6bf"></a>
-std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>effect_chain</b></td></tr>
+std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ad843bb59acc7da5dffb20f319f18e6bf">effect_chain</a></td></tr>
+<tr class="memdesc:ad843bb59acc7da5dffb20f319f18e6bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Effect chain, list of effects to apply to audio stream. <br /></td></tr>
 <tr class="separator:ad843bb59acc7da5dffb20f319f18e6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8ec7ed1deca3d220d4edcd327ad0df3"><td class="memItemLeft" align="right" valign="top"><a id="ab8ec7ed1deca3d220d4edcd327ad0df3"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>effect_idx</b></td></tr>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ab8ec7ed1deca3d220d4edcd327ad0df3">effect_idx</a></td></tr>
+<tr class="memdesc:ab8ec7ed1deca3d220d4edcd327ad0df3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of currently selected effect position (0-&gt;<a class="el" href="classsignl.html#a3a70e39f2ad5b537091726589e2d3f87" title="Number of effects in the effect chain.">NUM_EFFECTS</a>). <br /></td></tr>
 <tr class="separator:ab8ec7ed1deca3d220d4edcd327ad0df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a32170d4ac7aa43d15135553b356171"><td class="memItemLeft" align="right" valign="top"><a id="a0a32170d4ac7aa43d15135553b356171"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>effect_chain_idx</b> [5]</td></tr>
-<tr class="separator:a0a32170d4ac7aa43d15135553b356171"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a9d3c9aa843b8aefa7b3cc189000ae6"><td class="memItemLeft" align="right" valign="top"><a id="a3a9d3c9aa843b8aefa7b3cc189000ae6"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>param_knobs</b> [4]</td></tr>
-<tr class="separator:a3a9d3c9aa843b8aefa7b3cc189000ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a484b3f0b3ad34ec49ad0921a8d783479"><td class="memItemLeft" align="right" valign="top"><a id="a484b3f0b3ad34ec49ad0921a8d783479"></a>
+unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a484b3f0b3ad34ec49ad0921a8d783479">effect_chain_idx</a> [<a class="el" href="classsignl.html#a3a70e39f2ad5b537091726589e2d3f87">NUM_EFFECTS</a>]</td></tr>
+<tr class="memdesc:a484b3f0b3ad34ec49ad0921a8d783479"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index of currently selected effect for each effect position (0-&gt;<a class="el" href="classeffect__manager.html#a356319edbab2dbf47baba524e477060b" title="Number of loaded plugins.">effect_manager::size()</a>) <br /></td></tr>
+<tr class="separator:a484b3f0b3ad34ec49ad0921a8d783479"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61cfe1d1edc5b0d411817696364024f"><td class="memItemLeft" align="right" valign="top"><a id="ab61cfe1d1edc5b0d411817696364024f"></a>
+<a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ab61cfe1d1edc5b0d411817696364024f">sample_array</a> [7][<a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168">gui::BUFFER_LENGTH</a>]</td></tr>
+<tr class="memdesc:ab61cfe1d1edc5b0d411817696364024f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ring buffer of <a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168" title="Number of previous samples to save, used in level_view().">gui::BUFFER_LENGTH</a> samples for each part of the effect chain (see <a class="el" href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376" title="Draw level view.">gui::level_view()</a>). <br /></td></tr>
+<tr class="separator:ab61cfe1d1edc5b0d411817696364024f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ae4271c41f86d200c6271cfac597d24"><td class="memItemLeft" align="right" valign="top"><a id="a3ae4271c41f86d200c6271cfac597d24"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a3ae4271c41f86d200c6271cfac597d24">sample_array_idx</a></td></tr>
+<tr class="memdesc:a3ae4271c41f86d200c6271cfac597d24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current array index in sample_array. <br /></td></tr>
+<tr class="separator:a3ae4271c41f86d200c6271cfac597d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c76138a1368b361fb661355ff5cd8cb"><td class="memItemLeft" align="right" valign="top"><a id="a7c76138a1368b361fb661355ff5cd8cb"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a7c76138a1368b361fb661355ff5cd8cb">param_val</a> [<a class="el" href="classsignl.html#a6b60ce11a30e8a33c42d1b92bba4dadb">NUM_PARAMS</a>]</td></tr>
+<tr class="memdesc:a7c76138a1368b361fb661355ff5cd8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current value of each parameter. <br /></td></tr>
+<tr class="separator:a7c76138a1368b361fb661355ff5cd8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e0e9784824a5aeaa4cc0223935b417e"><td class="memItemLeft" align="right" valign="top"><a id="a4e0e9784824a5aeaa4cc0223935b417e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a4e0e9784824a5aeaa4cc0223935b417e">param_updated</a> [<a class="el" href="classsignl.html#a6b60ce11a30e8a33c42d1b92bba4dadb">NUM_PARAMS</a>]</td></tr>
+<tr class="memdesc:a4e0e9784824a5aeaa4cc0223935b417e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parameter updated flag, true if given parameter has been updated. <br /></td></tr>
+<tr class="separator:a4e0e9784824a5aeaa4cc0223935b417e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b00459b4810918eaf0245fbbcb0e862"><td class="memItemLeft" align="right" valign="top"><a id="a6b00459b4810918eaf0245fbbcb0e862"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>in_level</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a6b00459b4810918eaf0245fbbcb0e862">in_level</a></td></tr>
+<tr class="memdesc:a6b00459b4810918eaf0245fbbcb0e862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input gain level (0.0-&gt;1.0). <br /></td></tr>
 <tr class="separator:a6b00459b4810918eaf0245fbbcb0e862"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a929d9ebd448ef5e904dfb13da448d870"><td class="memItemLeft" align="right" valign="top"><a id="a929d9ebd448ef5e904dfb13da448d870"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>out_level</b></td></tr>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a929d9ebd448ef5e904dfb13da448d870">out_level</a></td></tr>
+<tr class="memdesc:a929d9ebd448ef5e904dfb13da448d870"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output gain level (0.0-&gt;1.0). <br /></td></tr>
 <tr class="separator:a929d9ebd448ef5e904dfb13da448d870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa7091a461c240a65add3b46fb3ef038"><td class="memItemLeft" align="right" valign="top"><a id="afa7091a461c240a65add3b46fb3ef038"></a>
-disp_state&#160;</td><td class="memItemRight" valign="bottom"><b>state</b></td></tr>
+<a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d">disp_state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#afa7091a461c240a65add3b46fb3ef038">state</a></td></tr>
+<tr class="memdesc:afa7091a461c240a65add3b46fb3ef038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current GUI state. <br /></td></tr>
 <tr class="separator:afa7091a461c240a65add3b46fb3ef038"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a70e50c1b8219b6291e24ff07b4160757"><td class="memItemLeft" align="right" valign="top"><a id="a70e50c1b8219b6291e24ff07b4160757"></a>
-static volatile sig_atomic_t&#160;</td><td class="memItemRight" valign="bottom"><b>running</b> = 0</td></tr>
+static volatile sig_atomic_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a70e50c1b8219b6291e24ff07b4160757">running</a> = 0</td></tr>
+<tr class="memdesc:a70e50c1b8219b6291e24ff07b4160757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Running flag, program exits when set to zero. <br /></td></tr>
 <tr class="separator:a70e50c1b8219b6291e24ff07b4160757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -205,6 +257,64 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memdesc:a60e36454855defb613e54b696a2ade45 inherit pub_methods_classjack__client"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return JACK server sample rate.  <a href="classjack__client.html#a60e36454855defb613e54b696a2ade45">More...</a><br /></td></tr>
 <tr class="separator:a60e36454855defb613e54b696a2ade45 inherit pub_methods_classjack__client"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This class contains the main application.</p>
+<p>The main loop is contained in the <a class="el" href="classsignl.html#ac71d0e21c28379d9cacb7174de7627ea" title="Main application loop.">start()</a> function.</p>
+<p>Audio processing occurs in the <a class="el" href="classsignl.html#a5b647f66903845f38c2713099154fd8a" title="JACK sample processing callback.">process()</a> function in a seperate thread. </p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a8b28e4ba17e063fffde49d4ba639b10d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b28e4ba17e063fffde49d4ba639b10d">&#9670;&nbsp;</a></span>disp_state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d">signl::disp_state</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366"></a>EFFECT_CHAIN&#160;</td><td class="fielddoc"><p>Display effect chain allowing parameter configuration for each effect. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3"></a>LEVEL_ADJ&#160;</td><td class="fielddoc"><p>Display volume and gain levels at each part of the effect chain. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a665f3e26e0bb8e3b4bf4b0dc23ae285e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a665f3e26e0bb8e3b4bf4b0dc23ae285e">&#9670;&nbsp;</a></span>signl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">signl::signl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Initialises class members, registers <a class="el" href="classsignl.html#a07b72ede820b0a45da846a8d0712a7ed" title="Signal handler.">sigterm_handler()</a> with the <code>SIGINT</code> and <code>SIGTERM</code> signals, prints list of loaded effects to stdout, fills <a class="el" href="classsignl.html#ad843bb59acc7da5dffb20f319f18e6bf" title="Effect chain, list of effects to apply to audio stream.">effect_chain</a> with the <a class="el" href="classnull.html" title="Identity plugin.">null</a> effect and calls <a class="el" href="classjack__client.html#acb22c6b921db8a3addf85a702a2ad3da" title="Activate JACK client.">activate()</a> to start the JACK callback.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>If setting the SIGTERM or SIGINT handler failed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a5b647f66903845f38c2713099154fd8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5b647f66903845f38c2713099154fd8a">&#9670;&nbsp;</a></span>process()</h2>
@@ -229,11 +339,11 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called when the JACK server has samples to process.</p>
-<dl class="section warning"><dt>Warning</dt><dd>This function is called from a realtime priority thread, avoid blocking/long running function calls.</dd></dl>
+<p>Passes the input sample through the effect chain (<a class="el" href="classsignl.html#ad843bb59acc7da5dffb20f319f18e6bf" title="Effect chain, list of effects to apply to audio stream.">effect_chain</a>), saves the intermediary samples in <a class="el" href="classsignl.html#ab61cfe1d1edc5b0d411817696364024f" title="Ring buffer of gui::BUFFER_LENGTH samples for each part of the effect chain (see gui::level_view()).">sample_array</a> and updates <a class="el" href="classsignl.html#a3ae4271c41f86d200c6271cfac597d24" title="Current array index in sample_array.">sample_array_idx</a> wrapping at <a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168" title="Number of previous samples to save, used in level_view().">gui::BUFFER_LENGTH</a> forming a ring buffer.</p>
+<dl class="section note"><dt>Note</dt><dd>Runs in a seperate high priority thread. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">in</td><td>Sample to be processed. </td></tr>
+    <tr><td class="paramname">in</td><td>Input sample to process. </td></tr>
   </table>
   </dd>
 </dl>
@@ -270,10 +380,77 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Called when the JACK server terminates.</p>
-<p>The inherited class should terminate gracefully when this is called. </p>
+<p>Called when the JACK server exits, sets <a class="el" href="classsignl.html#a70e50c1b8219b6291e24ff07b4160757" title="Running flag, program exits when set to zero.">running</a> to zero. </p>
 
 <p>Implements <a class="el" href="classjack__client.html#ada0eaa943668a39ddade68b302d65d1a">jack_client</a>.</p>
+
+</div>
+</div>
+<a id="ae058add93d1968d71c35b17e0622c6ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae058add93d1968d71c35b17e0622c6ad">&#9670;&nbsp;</a></span>param_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void signl::param_update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reads the four inputs from the analogue-to-digital converter (<a class="el" href="classsignl.html#a6637f1f60ed5a0468f7d90fae7080780" title="Analogue-to-digital converter parameter inputs.">param</a>), checks if any of the inputs have changed significantly.</p>
+<p>If this is the case sets <a class="el" href="classsignl.html#a4e0e9784824a5aeaa4cc0223935b417e" title="Parameter updated flag, true if given parameter has been updated.">param_updated</a> to <code>true</code> and saves the new value in <a class="el" href="classsignl.html#a7c76138a1368b361fb661355ff5cd8cb" title="Current value of each parameter.">param_val</a>. </p>
+
+</div>
+</div>
+<a id="ac71d0e21c28379d9cacb7174de7627ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac71d0e21c28379d9cacb7174de7627ea">&#9670;&nbsp;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void signl::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Main application loop, runs until <a class="el" href="classsignl.html#a70e50c1b8219b6291e24ff07b4160757" title="Running flag, program exits when set to zero.">running</a> is zero.</p>
+<p>Reads and sets parameters, clears and updates <a class="el" href="classsignl.html#a4f2a016e2038ab8fb7fa8d82b38b4f07" title="LCD display output.">display</a> and selects and switches effects and states using joystick input.</p>
+<p>In the <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366" title="Display effect chain allowing parameter configuration for each effect.">EFFECT_CHAIN</a> state the parameters of each effect can be changed and each effect can be switched out for other effects.</p>
+<p>In the <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3" title="Display volume and gain levels at each part of the effect chain.">LEVEL_ADJ</a> state the input and output levels can be adjusted (<a class="el" href="classsignl.html#a6b00459b4810918eaf0245fbbcb0e862" title="Input gain level (0.0-&gt;1.0).">in_level</a> <a class="el" href="classsignl.html#a929d9ebd448ef5e904dfb13da448d870" title="Output gain level (0.0-&gt;1.0).">out_level</a>) and the current volume level for each stage in the effect chain is shown.</p>
+<p>When <a class="el" href="classsignl.html#a70e50c1b8219b6291e24ff07b4160757" title="Running flag, program exits when set to zero.">running</a> is set to zero <a class="el" href="classjack__client.html#af7f7abc59c225b9fb7d0d0c6730dbb77" title="Deactivate JACK client.">deactivate()</a> is called, ceasing audio processing. </p>
+
+</div>
+</div>
+<a id="a07b72ede820b0a45da846a8d0712a7ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07b72ede820b0a45da846a8d0712a7ed">&#9670;&nbsp;</a></span>sigterm_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void signl::sigterm_handler </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>sig</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Called when process recieves a <code>SIGTERM</code> or <code>SIGINT</code> signal, sets <a class="el" href="classsignl.html#a70e50c1b8219b6291e24ff07b4160757" title="Running flag, program exits when set to zero.">running</a> to zero. </p>
 
 </div>
 </div>

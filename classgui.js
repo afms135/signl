@@ -7,5 +7,6 @@ var classgui =
     [ "putchar", "classgui.html#a5251dba0822074e37f69184f6eabccea", null ],
     [ "putstring", "classgui.html#a129ec4d40793981f8cea7196c2f772db", null ],
     [ "putrect", "classgui.html#aab476ec0dd8c97ecc7c55e18886459fb", null ],
-    [ "lcd", "classgui.html#a2e83af2a19fa02a3c1126ba012173769", null ]
+    [ "lcd", "classgui.html#a2e83af2a19fa02a3c1126ba012173769", null ],
+    [ "BUFFER_LENGTH", "classgui.html#acb8232bb61ed666f7c9503f44ef55168", null ]
 ];
