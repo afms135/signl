@@ -34,3 +34,6 @@ git submodule update --init
 #Build software
 echo -e "${RED}Building software...${NC}"
 make -C ./Software/
+
+#Ask to reboot
+echo -e "${RED}Reboot for changes to take effect.${NC}"
