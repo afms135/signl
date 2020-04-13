@@ -173,9 +173,9 @@ void signl::start()
 
 			//Update input/output levels
 			if(param_updated[0])
-				in_level = param_val[0];
+				in_level = 4*pow(param_val[0],2);
 			if(param_updated[3])
-				out_level = param_val[3];
+				out_level = 4*pow(param_val[3],2);
 
 			//Show sound level display
 			display.level_view(in_level,out_level,sample_array);
