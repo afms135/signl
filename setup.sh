@@ -19,7 +19,7 @@ fi
 #Sound card/HW setup
 echo -e "${RED}Configuring Hardware...${NC}"
 echo -e "${RED}Disabling internal sound card...${NC}"
-sed -i "s:dtparam=audio:#dtparam=audio:" /boot/config.txt
+sed -i "s:dtparam=audio=on:#dtparam=audio=on:" /boot/config.txt
 echo -e "${RED}Enable WM8731 sound card...${NC}"
 if [ $(grep -c audioinjector-wm8731-audio /boot/config.txt) -eq "0" ]; then
 	echo "dtoverlay=audioinjector-wm8731-audio" >> /boot/config.txt
