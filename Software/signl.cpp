@@ -33,9 +33,8 @@ signl::signl() :
 	joy_push(GPIO, JOY_PUSH, false, DEBOUNCE_TIME, "JOY_PUSH"),
 	//Effect manager
 	effects("./effects"),
-	//Effect selection indexes
+	//Effect selection index
 	effect_idx(0),
-	effect_chain_idx{0,0,0,0,0},
 	//Array of previous samples
 	sample_array(),
 	sample_array_idx(0),
@@ -65,7 +64,10 @@ signl::signl() :
 
 	//Create blank effect chain
 	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
-		effect_chain.push_back(effects(effects.EFFECT_NULL, rate()));
+	{
+		effect_list lst(effects.list(rate()));
+		effect_chain.push_back(std::move(lst));
+	}
 
 	running = 1;
 	activate();
@@ -80,7 +82,7 @@ jack_client::sample_t signl::process(sample_t in)
 	//Process sample through effect chain, save intermediate results for level
 	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
 	{
-		in = effect_chain[i]->process(in);
+		in = effect_chain[i]()->process(in);
 		sample_array[i+1][sample_array_idx] = in;
 	}
 
@@ -133,23 +135,14 @@ void signl::start()
 			for(unsigned int i = 0; i < NUM_PARAMS; i++)
 			{
 				if(param_updated[i])
-					effect_chain[effect_idx]->paramset(static_cast<effect::param>(i), param_val[i]);
+					effect_chain[effect_idx]()->paramset(static_cast<effect::param>(i), param_val[i]);
 			}
 
 			//Joystick input
 			if(joy_up)
-			{
-				effect_chain_idx[effect_idx]--;
-				if(effect_chain_idx[effect_idx] >= effects.size())
-					effect_chain_idx[effect_idx] = effects.size() - 1;
-				effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
-			}
+				++effect_chain[effect_idx];
 			if(joy_down)
-			{
-				effect_chain_idx[effect_idx]++;
-				effect_chain_idx[effect_idx] %= effects.size();
-				effect_chain[effect_idx] = effects(effect_chain_idx[effect_idx], rate());
-			}
+				--effect_chain[effect_idx];
 			if(joy_left)
 			{
 				effect_idx--;

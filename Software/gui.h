@@ -1,6 +1,7 @@
 #ifndef GUI_H
 #define GUI_H
 #include "jack.h"
+#include "effect_list.h"
 #include "hw/lcd.h"
 #include "assets/assets.h"
 #include "effects/effect.h"
@@ -28,7 +29,7 @@ public:
 	 *
 	 * \param effect_chain Reference to effect chain to draw on lcd.
 	 */
-	void signl_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain);
+	void signl_view(std::vector<effect_list> &effect_chain);
 
 	/**
 	 * \brief Draw parameter view.
@@ -43,7 +44,7 @@ public:
 	 * \param effect_chain Reference to effect chain to draw parameters from.
 	 * \param effect_idx Index of effect to draw arrow under.
 	 */
-	void param_view(std::vector<std::unique_ptr<effect,plugin_dtor_t>> &effect_chain, unsigned int effect_idx);
+	void param_view(std::vector<effect_list> &effect_chain, unsigned int effect_idx);
 
 	/**
 	 * \brief Draw level view.
