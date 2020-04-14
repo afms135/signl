@@ -3,6 +3,7 @@ var annotated_dup =
     [ "adc", "classadc.html", "classadc" ],
     [ "debounce", "classdebounce.html", "classdebounce" ],
     [ "effect", "structeffect.html", "structeffect" ],
+    [ "effect_list", "structeffect__list.html", "structeffect__list" ],
     [ "effect_manager", "classeffect__manager.html", "classeffect__manager" ],
     [ "gpioin", "classgpioin.html", "classgpioin" ],
     [ "gpioout", "classgpioout.html", "classgpioout" ],

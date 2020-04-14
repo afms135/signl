@@ -22,7 +22,7 @@ var structeffect =
       [ "ICON_DELAY", "structeffect.html#ab322f460614baa3652f868179325f5daa5344a9002be2208c1b8a266978d3902b", null ]
     ] ],
     [ "~effect", "structeffect.html#ae966b85f1ea0827e02215d87d10ebb19", null ],
-    [ "operator()", "structeffect.html#af66b22ee5cf6324cff9e253e7dd470d1", null ],
+    [ "process", "structeffect.html#aae7d28289681794f8198aa8c359bb169", null ],
     [ "paramset", "structeffect.html#ac6eef15c007547213a85045063f4c283", null ],
     [ "name", "structeffect.html#a19794f9d926426ab0aa4d82bd7880680", null ],
     [ "paramname", "structeffect.html#ab89e5ed1bcc5229da7911bfbbc3eac41", null ],

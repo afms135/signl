@@ -102,6 +102,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a356319edbab2dbf47baba524e477060b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classeffect__manager.html#a356319edbab2dbf47baba524e477060b">size</a> ()</td></tr>
 <tr class="memdesc:a356319edbab2dbf47baba524e477060b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of loaded plugins.  <a href="classeffect__manager.html#a356319edbab2dbf47baba524e477060b">More...</a><br /></td></tr>
 <tr class="separator:a356319edbab2dbf47baba524e477060b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9095a96cca07823f9ad9cbccc6fcaf7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classeffect__manager.html#ad9095a96cca07823f9ad9cbccc6fcaf7">list</a> (unsigned int rate)</td></tr>
+<tr class="memdesc:ad9095a96cca07823f9ad9cbccc6fcaf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create vector of all loaded plugins.  <a href="classeffect__manager.html#ad9095a96cca07823f9ad9cbccc6fcaf7">More...</a><br /></td></tr>
+<tr class="separator:ad9095a96cca07823f9ad9cbccc6fcaf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97bb91feb7280486e462851695a369b2"><td class="memItemLeft" align="right" valign="top"><a id="a97bb91feb7280486e462851695a369b2"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classeffect__manager.html#a97bb91feb7280486e462851695a369b2">effect_manager</a> (const <a class="el" href="classeffect__manager.html">effect_manager</a> &amp;other)=delete</td></tr>
 <tr class="memdesc:a97bb91feb7280486e462851695a369b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted copy constructor, class can only be moved. <br /></td></tr>
@@ -253,6 +256,32 @@ Example:</p>
 <dl class="retval"><dt>Return values</dt><dd>
   <table class="retval">
     <tr><td class="paramname">uint</td><td>Number of effects. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad9095a96cca07823f9ad9cbccc6fcaf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9095a96cca07823f9ad9cbccc6fcaf7">&#9670;&nbsp;</a></span>list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt; &gt; effect_manager::list </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>rate</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns a vector containing an instance of all loaded effects.</p>
+<dl class="section note"><dt>Note</dt><dd>Each effect instance is wrapped in a <code>unique_ptr</code> with a custom destructor ensuring RAII semantics so that all the effects are deleted when the vector falls out of scope.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rate</td><td>Sample rate to pass to effects. </td></tr>
   </table>
   </dd>
 </dl>

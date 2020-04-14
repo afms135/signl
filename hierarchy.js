@@ -4,6 +4,7 @@ var hierarchy =
     [ "effect", "structeffect.html", [
       [ "null", "classnull.html", null ]
     ] ],
+    [ "effect_list", "structeffect__list.html", null ],
     [ "effect_manager", "classeffect__manager.html", null ],
     [ "gpioin", "classgpioin.html", [
       [ "debounce", "classdebounce.html", null ]

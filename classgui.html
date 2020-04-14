@@ -96,12 +96,12 @@ Collaboration diagram for gui:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a200671a9cea95f6081ec11569d7a156c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a200671a9cea95f6081ec11569d7a156c">signl_view</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;effect_chain)</td></tr>
-<tr class="memdesc:a200671a9cea95f6081ec11569d7a156c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw effect chain view.  <a href="classgui.html#a200671a9cea95f6081ec11569d7a156c">More...</a><br /></td></tr>
-<tr class="separator:a200671a9cea95f6081ec11569d7a156c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab64fbc481568a2b402b5912447a6d7ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#ab64fbc481568a2b402b5912447a6d7ff">param_view</a> (std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;effect_chain, unsigned int effect_idx)</td></tr>
-<tr class="memdesc:ab64fbc481568a2b402b5912447a6d7ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw parameter view.  <a href="classgui.html#ab64fbc481568a2b402b5912447a6d7ff">More...</a><br /></td></tr>
-<tr class="separator:ab64fbc481568a2b402b5912447a6d7ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25550677e7958a07cd85b4b750d20437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a25550677e7958a07cd85b4b750d20437">signl_view</a> (std::vector&lt; <a class="el" href="structeffect__list.html">effect_list</a> &gt; &amp;effect_chain)</td></tr>
+<tr class="memdesc:a25550677e7958a07cd85b4b750d20437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw effect chain view.  <a href="classgui.html#a25550677e7958a07cd85b4b750d20437">More...</a><br /></td></tr>
+<tr class="separator:a25550677e7958a07cd85b4b750d20437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7247530f7a35e502cae4a7df1b8b033"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#ab7247530f7a35e502cae4a7df1b8b033">param_view</a> (std::vector&lt; <a class="el" href="structeffect__list.html">effect_list</a> &gt; &amp;effect_chain, unsigned int effect_idx)</td></tr>
+<tr class="memdesc:ab7247530f7a35e502cae4a7df1b8b033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw parameter view.  <a href="classgui.html#ab7247530f7a35e502cae4a7df1b8b033">More...</a><br /></td></tr>
+<tr class="separator:ab7247530f7a35e502cae4a7df1b8b033"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a105b20ec0fcf5f22318ecab49ab86376"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376">level_view</a> (float in_level, float out_level, <a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a> sample_array[7][<a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168">BUFFER_LENGTH</a>])</td></tr>
 <tr class="memdesc:a105b20ec0fcf5f22318ecab49ab86376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw level view.  <a href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376">More...</a><br /></td></tr>
 <tr class="separator:a105b20ec0fcf5f22318ecab49ab86376"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,8 +166,8 @@ Private Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class encapsulates the lcd drawing code used to display the various user interfaces on the lcd. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a200671a9cea95f6081ec11569d7a156c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a200671a9cea95f6081ec11569d7a156c">&#9670;&nbsp;</a></span>signl_view()</h2>
+<a id="a25550677e7958a07cd85b4b750d20437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25550677e7958a07cd85b4b750d20437">&#9670;&nbsp;</a></span>signl_view()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +175,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void gui::signl_view </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structeffect__list.html">effect_list</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>effect_chain</em></td><td>)</td>
           <td></td>
         </tr>
@@ -191,8 +191,8 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab64fbc481568a2b402b5912447a6d7ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab64fbc481568a2b402b5912447a6d7ff">&#9670;&nbsp;</a></span>param_view()</h2>
+<a id="ab7247530f7a35e502cae4a7df1b8b033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7247530f7a35e502cae4a7df1b8b033">&#9670;&nbsp;</a></span>param_view()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -200,7 +200,7 @@ Private Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void gui::param_view </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::unique_ptr&lt; <a class="el" href="structeffect.html">effect</a>, plugin_dtor_t &gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="structeffect__list.html">effect_list</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>effect_chain</em>, </td>
         </tr>
         <tr>

@@ -1,0 +1,6 @@
+<map id="effect_list" name="effect_list">
+<area shape="rect" id="node1" title="Utility class representing a list of effects." alt="" coords="73,303,160,329"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,199,228,240"/>
+<area shape="rect" id="node3" title=" " alt="" coords="29,95,204,136"/>
+<area shape="rect" id="node4" href="$structeffect.html" title="Abstract class representing a audio effect." alt="" coords="87,5,146,32"/>
+</map>

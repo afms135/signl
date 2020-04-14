@@ -1,7 +1,7 @@
 var classgui =
 [
-    [ "signl_view", "classgui.html#a200671a9cea95f6081ec11569d7a156c", null ],
-    [ "param_view", "classgui.html#ab64fbc481568a2b402b5912447a6d7ff", null ],
+    [ "signl_view", "classgui.html#a25550677e7958a07cd85b4b750d20437", null ],
+    [ "param_view", "classgui.html#ab7247530f7a35e502cae4a7df1b8b033", null ],
     [ "level_view", "classgui.html#a105b20ec0fcf5f22318ecab49ab86376", null ],
     [ "putsprite", "classgui.html#a377889b1e986fde167ee8cf8fbb3f4e3", null ],
     [ "putchar", "classgui.html#a5251dba0822074e37f69184f6eabccea", null ],

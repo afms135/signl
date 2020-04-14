@@ -1,4 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classgpioin.html" title="Class representing a GPIO input." alt="" coords="5,5,68,32"/>
-<area shape="rect" id="node2" href="$classdebounce.html" title="Class representing a debounced GPIO input." alt="" coords="116,5,201,32"/>
+<area shape="rect" id="node1" href="$structeffect__manager_1_1plugin.html" title="Structure representing a loaded external plugin." alt="" coords="5,5,177,32"/>
 </map>

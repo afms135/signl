@@ -117,9 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae966b85f1ea0827e02215d87d10ebb19"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structeffect.html#ae966b85f1ea0827e02215d87d10ebb19">~effect</a> ()</td></tr>
 <tr class="memdesc:ae966b85f1ea0827e02215d87d10ebb19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="structeffect.html#ae966b85f1ea0827e02215d87d10ebb19">More...</a><br /></td></tr>
 <tr class="separator:ae966b85f1ea0827e02215d87d10ebb19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66b22ee5cf6324cff9e253e7dd470d1"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structeffect.html#af66b22ee5cf6324cff9e253e7dd470d1">operator()</a> (float in)=0</td></tr>
-<tr class="memdesc:af66b22ee5cf6324cff9e253e7dd470d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process an audio sample.  <a href="structeffect.html#af66b22ee5cf6324cff9e253e7dd470d1">More...</a><br /></td></tr>
-<tr class="separator:af66b22ee5cf6324cff9e253e7dd470d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae7d28289681794f8198aa8c359bb169"><td class="memItemLeft" align="right" valign="top">virtual float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structeffect.html#aae7d28289681794f8198aa8c359bb169">process</a> (float in)=0</td></tr>
+<tr class="memdesc:aae7d28289681794f8198aa8c359bb169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process an audio sample.  <a href="structeffect.html#aae7d28289681794f8198aa8c359bb169">More...</a><br /></td></tr>
+<tr class="separator:aae7d28289681794f8198aa8c359bb169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6eef15c007547213a85045063f4c283"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structeffect.html#ac6eef15c007547213a85045063f4c283">paramset</a> (<a class="el" href="structeffect.html#af4af15e46c0cc56d20d3322419c50149">param</a> p, float v)=0</td></tr>
 <tr class="memdesc:ac6eef15c007547213a85045063f4c283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a effect parameter.  <a href="structeffect.html#ac6eef15c007547213a85045063f4c283">More...</a><br /></td></tr>
 <tr class="separator:ac6eef15c007547213a85045063f4c283"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,7 +148,7 @@ Public Member Functions</h2></td></tr>
 <div class="line">    {</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordtype">float</span> <a class="code" href="structeffect.html#af66b22ee5cf6324cff9e253e7dd470d1">operator()</a>(<span class="keywordtype">float</span> in)<span class="keyword"> override</span></div>
+<div class="line">    <span class="keywordtype">float</span> <a class="code" href="structeffect.html#aae7d28289681794f8198aa8c359bb169">process</a>(<span class="keywordtype">float</span> in)<span class="keyword"> override</span></div>
 <div class="line"><span class="keyword">    </span>{</div>
 <div class="line">        <span class="keywordtype">float</span> out = in * gain;</div>
 <div class="line"> </div>
@@ -289,8 +289,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af66b22ee5cf6324cff9e253e7dd470d1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af66b22ee5cf6324cff9e253e7dd470d1">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="aae7d28289681794f8198aa8c359bb169"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7d28289681794f8198aa8c359bb169">&#9670;&nbsp;</a></span>process()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +299,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual float effect::operator() </td>
+          <td class="memname">virtual float effect::process </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>in</em></td><td>)</td>
@@ -327,7 +327,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classnull.html#a54dd3e6e7ac2e60f115175d1162cf6c2">null</a>.</p>
+<p>Implemented in <a class="el" href="classnull.html#a894d79d39ad8116fb01bbc0e84fa2d1e">null</a>.</p>
 
 </div>
 </div>
@@ -535,8 +535,8 @@ Public Member Functions</h2></td></tr>
 </div><!-- doc-content -->
 <div class="ttc" id="astructeffect_html_af4af15e46c0cc56d20d3322419c50149a843cfe9d213f808af39e62520d075f14"><div class="ttname"><a href="structeffect.html#af4af15e46c0cc56d20d3322419c50149a843cfe9d213f808af39e62520d075f14">effect::PARAM_A</a></div><div class="ttdeci">@ PARAM_A</div><div class="ttdoc">Parameter A.</div><div class="ttdef"><b>Definition:</b> effect.h:77</div></div>
 <div class="ttc" id="astructeffect_html_a19794f9d926426ab0aa4d82bd7880680"><div class="ttname"><a href="structeffect.html#a19794f9d926426ab0aa4d82bd7880680">effect::name</a></div><div class="ttdeci">virtual std::string name()=0</div><div class="ttdoc">Effect name.</div></div>
+<div class="ttc" id="astructeffect_html_aae7d28289681794f8198aa8c359bb169"><div class="ttname"><a href="structeffect.html#aae7d28289681794f8198aa8c359bb169">effect::process</a></div><div class="ttdeci">virtual float process(float in)=0</div><div class="ttdoc">Process an audio sample.</div></div>
 <div class="ttc" id="astructeffect_html_ab89e5ed1bcc5229da7911bfbbc3eac41"><div class="ttname"><a href="structeffect.html#ab89e5ed1bcc5229da7911bfbbc3eac41">effect::paramname</a></div><div class="ttdeci">virtual std::string paramname(param p)=0</div><div class="ttdoc">Name of parameter.</div></div>
-<div class="ttc" id="astructeffect_html_af66b22ee5cf6324cff9e253e7dd470d1"><div class="ttname"><a href="structeffect.html#af66b22ee5cf6324cff9e253e7dd470d1">effect::operator()</a></div><div class="ttdeci">virtual float operator()(float in)=0</div><div class="ttdoc">Process an audio sample.</div></div>
 <div class="ttc" id="astructeffect_html_af4af15e46c0cc56d20d3322419c50149"><div class="ttname"><a href="structeffect.html#af4af15e46c0cc56d20d3322419c50149">effect::param</a></div><div class="ttdeci">param</div><div class="ttdoc">Parameter types.</div><div class="ttdef"><b>Definition:</b> effect.h:75</div></div>
 <div class="ttc" id="astructeffect_html_ac868b195e02d24a22f77a0ca9ff258b4"><div class="ttname"><a href="structeffect.html#ac868b195e02d24a22f77a0ca9ff258b4">effect::paramval</a></div><div class="ttdeci">virtual float paramval(param p)=0</div><div class="ttdoc">Get an effect parameter value.</div></div>
 <div class="ttc" id="astructeffect_html_ac6eef15c007547213a85045063f4c283"><div class="ttname"><a href="structeffect.html#ac6eef15c007547213a85045063f4c283">effect::paramset</a></div><div class="ttdeci">virtual void paramset(param p, float v)=0</div><div class="ttdoc">Set a effect parameter.</div></div>
