@@ -22,17 +22,18 @@ struct effect_list
 	}
 
 	///Increment index, selects next effect in list, wraps around
-	void operator++()
+	void operator++(int)
 	{
 		idx++;
 		idx %= list.size();
 	}
 
 	///Increment index, selects previous effect in list, wraps around
-	void operator--()
+	void operator--(int)
 	{
 		idx--;
-		if(idx >= list.size()) idx = list.size()-1;
+		if(idx >= list.size())
+			idx = list.size()-1;
 	}
 
 	///Return currently selected effect

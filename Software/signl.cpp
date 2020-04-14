@@ -140,9 +140,9 @@ void signl::start()
 
 			//Joystick input
 			if(joy_up)
-				--effect_chain[effect_idx];
+				effect_chain[effect_idx]--;
 			if(joy_down)
-				++effect_chain[effect_idx];
+				effect_chain[effect_idx]++;
 			if(joy_left)
 			{
 				effect_idx--;
