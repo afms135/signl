@@ -81,6 +81,19 @@ public:
 	 */
 	unsigned int size();
 
+	/**
+	 * \brief Create vector of all loaded plugins.
+	 *
+	 * Returns a vector containing an instance of all loaded effects.
+	 *
+	 * \note Each effect instance is wrapped in a \c unique_ptr with a custom
+	 * destructor ensuring RAII semantics so that all the effects are deleted
+	 * when the vector falls out of scope.
+	 *
+	 * \param rate Sample rate to pass to effects.
+	 */
+	std::vector<std::unique_ptr<effect, plugin_dtor_t>> list(unsigned int rate);
+
 	///Deleted copy constructor, class can only be moved.
 	effect_manager(const effect_manager& other) = delete;
 	///Deleted copy assignment operator, class can only be moved.

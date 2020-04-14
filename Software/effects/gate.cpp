@@ -18,7 +18,7 @@ public:
 	{
 	}
 
-	float operator()(float in) override
+	float process(float in) override
 	{
 		float abs_in = std::abs(in);
 

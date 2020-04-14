@@ -52,7 +52,7 @@ public:
 		conv2.init(128,2048,&ir_sanctuary[0],65536);
 	}
 
-	float operator()(float in) override
+	float process(float in) override
 	{
 		in_buf[buf_idx++] = in;
 		if(new_val != type)

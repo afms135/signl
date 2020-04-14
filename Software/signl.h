@@ -3,6 +3,7 @@
 #include "jack.h"
 #include "gui.h"
 #include "effect_manager.h"
+#include "effect_list.h"
 #include "hw/adc.h"
 #include "hw/debounce.h"
 #include <memory>
@@ -119,12 +120,10 @@ private:
 	effect_manager effects;
 
 	///Effect chain, list of effects to apply to audio stream.
-	std::vector<std::unique_ptr<effect, plugin_dtor_t>> effect_chain;
+	std::vector<effect_list> effect_chain;
 
 	///Index of currently selected effect position (0->#NUM_EFFECTS).
 	unsigned int effect_idx;
-	///Index of currently selected effect for each effect position (0->effect_manager::size())
-	unsigned int effect_chain_idx[NUM_EFFECTS];
 
 	///Ring buffer of gui::BUFFER_LENGTH samples for each part of the effect chain (see gui::level_view()).
 	jack_client::sample_t sample_array[7][gui::BUFFER_LENGTH];

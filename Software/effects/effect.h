@@ -21,7 +21,7 @@
  * 	{
  * 	}
  *
- * 	float operator()(float in) override
+ * 	float process(float in) override
  * 	{
  * 		float out = in * gain;
  *
@@ -116,7 +116,7 @@ struct effect
 	 * \param in Audio sample to process.
 	 * \retval float Processed audio sample.
 	 */
-	virtual float operator()(float in) = 0;
+	virtual float process(float in) = 0;
 
 	/**
 	 * \brief Set a effect parameter.
@@ -180,7 +180,7 @@ struct effect
 class null : public effect
 {
 public:
-	float operator()(float in) override
+	float process(float in) override
 	{
 		return in;
 	}
