@@ -6,7 +6,7 @@
 #include <memory>
 
 /**
- * \brief Utility class for a list of effects.
+ * \brief Utility class representing a list of effects.
  */
 struct effect_list
 {
