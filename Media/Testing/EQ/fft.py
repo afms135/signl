@@ -14,10 +14,8 @@ data = data[:144000]
 freq = np.fft.fft(data)
 #convert to dB
 freq = 20*np.log10(abs(freq))
-#Keep only the local maxima
-#maxima,_ = find_peaks(freq)
 #smooth
-freq = np.convolve(freq,np.ones(48)/48)
+freq = np.convolve(freq,np.ones(32)/32)
 #Generate the x axis
 frqLabel = np.fft.rfftfreq(data.size, d=1./fs)
 
