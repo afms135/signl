@@ -70,7 +70,7 @@ public:
 		yn1 = filtered_in;
 		filtered_in *= filter;
 		filtered_in += (in*(1-filter));
-		return ((filtered_in*(1-noise)) + noise_fx)*drywet + (in*(1-drywet));
+		return ((filtered_in*(1-noise)) + (noise_fx*noise))*drywet + (in*(1-drywet));
 	}
 
 	void paramset(param p, float v) override
