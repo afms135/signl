@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/afms135/signl/master/Media/logo_transparent.png">
+  <img src="https://raw.githubusercontent.com/afms135/signl/master/Media/Photo.jpg" width=50%>
 </p>
 
 # signl - An Open Source Real-Time Audio Effects Processor running on Raspberry Pi
