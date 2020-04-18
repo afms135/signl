@@ -131,11 +131,15 @@ private:
 	///Current array index in sample_array.
 	size_t sample_array_idx;
 
-	// Buffers for holding FFT result for Tuner view.
+	///Ring buffer of gui::TUNER_BUFFER_LENGTH samples for the input (see gui::tuner_view()).
 	jack_client::sample_t tuner_array[gui::TUNER_BUFFER_LENGTH];
+	///Current array index in tuner_array.
 	size_t tuner_array_idx;
+	///Vector for holding real part of FFT result.
 	std::vector<float> fft_re;
+	///Vector for holding imaginary part of FFT result.
 	std::vector<float> fft_im;
+	///AudioFFT object for determining the frequency response of the current tuner_array.
 	audiofft::AudioFFT fft;
 
 	///Current value of each parameter.

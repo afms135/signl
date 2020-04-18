@@ -72,6 +72,15 @@ public:
 	 */
 	void level_view(float in_level, float out_level, jack_client::sample_t sample_array[7][BUFFER_LENGTH]);
 
+	/**
+	 * \brief Draw tuner view.
+	 *
+	 * Draw the note (in equal temperment) closest to the current frequency
+	 * with highest intensity, and a bar to show how close it is to the exact
+	 * frequency.
+	 *
+	 * \param fft_data Array of the absolute values of the FFT performed on the tuner_buffer.
+	 */
 	void tuner_view(float fft_data[TUNER_BUFFER_LENGTH]);
 
 private:

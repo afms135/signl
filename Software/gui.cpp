@@ -1,6 +1,7 @@
 #include "gui.h"
 #include <algorithm>
 #include <cmath>
+#include <iterator>
 
 void gui::putsprite(Sprite sprite, unsigned int x_origin, unsigned int y_origin, bool inv)
 {
@@ -38,6 +39,9 @@ void gui::putchar(char ch, unsigned int x_origin, unsigned int y_origin)
 			case '-':  font_index = 44; break;
 			case '+':  font_index = 45; break;
 			case '=':  font_index = 46; break;
+			case '#':  font_index = 47; break;
+			case '\\': font_index = 48; break;
+			case '/':  font_index = 49; break;
 			default: return;
 		}
 	}
@@ -182,4 +186,44 @@ void gui::level_view(float in_level, float out_level, jack_client::sample_t samp
 		}
 		putrect(x+1,63-h,8,h);
 	}
+}
+
+void gui::tuner_view(float fft_data[TUNER_BUFFER_LENGTH])
+{
+	//Find the peak of the fft
+	float* max_fft = std::max_element(fft_data,fft_data+TUNER_BUFFER_LENGTH);
+	//Find its frequency in Hz
+	float freq = std::distance(fft_data,max_fft) * 48000.0f / TUNER_BUFFER_LENGTH;
+	//Find how many semitones from A4 = 440Hz it is (equal temperment)
+	float steps = log(freq/440)/log(pow(2,1.0f/12.0f));
+	//Find the closest note
+	std::string note = " ";
+	int closest_note = ((int)round(steps)) % 12;
+	//Find how far from the closest note we are
+	float distance = fmod(steps,12) - closest_note;
+	//Get string representatino of closest note
+	if (closest_note < 0)
+		 closest_note += 12;
+	switch(closest_note)
+	{
+		case 0:  note = "A"; break;
+		case 1:  note = "A#/B\\"; break;	// the '\' symbol is used for the flat 'b' in font.cpp
+		case 2:  note = "B"; break;
+		case 3:  note = "C"; break;
+		case 4:  note = "C#/D\\"; break;
+		case 5:  note = "D"; break;
+		case 6:  note = "D#/E\\"; break;
+		case 7:  note = "E"; break;
+		case 8:  note = "F"; break;
+		case 9:  note = "F#/G\\"; break;
+		case 10: note = "G"; break;
+		case 11: note = "G#/A\\"; break;
+		case 12: note = "A"; break;
+	}
+	//Print the closest note
+	putstring(note,61-(7*(note.length()-1)/2),26);
+	//Print a bar for how far from note (left for flat, right for sharp)
+	putrect(0,40,128,20);
+	putrect(60,41,8,18);
+	putrect((int)round((distance*126.0f)+62),43,4,15);
 }
