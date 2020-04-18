@@ -192,16 +192,19 @@ void gui::tuner_view(float fft_data[TUNER_BUFFER_LENGTH])
 {
 	//Find the peak of the fft
 	float* max_fft = std::max_element(fft_data,fft_data+TUNER_BUFFER_LENGTH);
-	//Find its frequency in Hz
-	float freq = std::distance(fft_data,max_fft) * 48000.0f / TUNER_BUFFER_LENGTH;
+	//Find its frequency in Hz (using Gaussian interpolation)
+	unsigned int km = std::distance(fft_data,max_fft);
+	float delta_m = log(fft_data[km+1]/fft_data[km-1]) / (2*log(pow(fft_data[km],2)/(fft_data[km-1]*fft_data[km+1])));
+	float freq = (km + delta_m) * 48000.0f / 32768.0f;
 	//Find how many semitones from A4 = 440Hz it is (equal temperment)
 	float steps = log(freq/440)/log(pow(2,1.0f/12.0f));
 	//Find the closest note
 	std::string note = " ";
-	int closest_note = ((int)round(steps)) % 12;
+	int closest_note = (int)round(steps);
 	//Find how far from the closest note we are
-	float distance = fmod(steps,12) - closest_note;
-	//Get string representatino of closest note
+	float distance = steps - closest_note;
+	//Get string representation of closest note
+	closest_note %= 12;
 	if (closest_note < 0)
 		 closest_note += 12;
 	switch(closest_note)
@@ -224,6 +227,6 @@ void gui::tuner_view(float fft_data[TUNER_BUFFER_LENGTH])
 	putstring(note,61-(7*(note.length()-1)/2),26);
 	//Print a bar for how far from note (left for flat, right for sharp)
 	putrect(0,40,128,20);
-	putrect(60,41,8,18);
-	putrect((int)round((distance*126.0f)+62),43,4,15);
+	putrect(56,41,16,18);
+	putrect((int)round((distance*126.0f)+61),43,6,15);
 }
