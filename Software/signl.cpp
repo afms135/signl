@@ -190,7 +190,7 @@ void signl::start()
 
 			//FFT the input sample buffer
 			fft.init(gui::TUNER_BUFFER_LENGTH);
-			fft.fft(sample_array[1], fft_re.data(), fft_im.data());
+			fft.fft(tuner_array, fft_re.data(), fft_im.data());
 
 			// find abs (store in re)
 			for(unsigned int i = 0; i < fft_re.size(); ++i)
