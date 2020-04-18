@@ -135,6 +135,8 @@ private:
 	jack_client::sample_t tuner_array[gui::TUNER_BUFFER_LENGTH];
 	///Current array index in tuner_array.
 	size_t tuner_array_idx;
+	///Gausian window for tuner array
+	std::vector<float> gauss;
 	///Vector for holding real part of FFT result.
 	std::vector<float> fft_re;
 	///Vector for holding imaginary part of FFT result.

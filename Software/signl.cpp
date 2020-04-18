@@ -74,6 +74,12 @@ signl::signl() :
 		effect_chain.push_back(std::move(lst));
 	}
 
+	//Initialise gaussian window
+	for(unsigned int i = 0; i < gui::TUNER_BUFFER_LENGTH; ++i)
+	{
+		gauss.push_back(exp(-0.5*pow(1.0*(i- ((gui::TUNER_BUFFER_LENGTH/2.0f)-1))/((gui::TUNER_BUFFER_LENGTH/2.0f)-1) ,2)));
+	}
+
 	running = 1;
 	activate();
 }
@@ -187,6 +193,10 @@ void signl::start()
 			//State change
 			if(joy_push)
 				state = EFFECT_CHAIN;
+
+			//Gaussian window the current tuner_array
+			for(unsigned int i = 0; i < gui::TUNER_BUFFER_LENGTH; ++i)
+				tuner_array[(tuner_array_idx + i) % gui::TUNER_BUFFER_LENGTH] *= gauss[i];
 
 			//FFT the input sample buffer
 			fft.init(gui::TUNER_BUFFER_LENGTH);
