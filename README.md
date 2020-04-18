@@ -34,6 +34,6 @@ The list of current effects is available at [this page](https://github.com/afms1
 
 ## Authors and Individual Contributions
 
-- Alexander Strachan (afms135, 2173868s)
+- Alexander Strachan (afms135, 2173868s) - Software Architect:  wrote hardware/JACK interface code, effect plugin system and two effects (amplifier, overdrive).
 - Robert Norris (robnorr, 2198915n)
 - Simon Ridley (ithinkitssimon, 2187742r)
