@@ -77,7 +77,7 @@ signl::signl() :
 	//Initialise gaussian window
 	for(unsigned int i = 0; i < gui::TUNER_BUFFER_LENGTH; ++i)
 	{
-		gauss.push_back(exp(-0.5*pow(1.0*(i- ((gui::TUNER_BUFFER_LENGTH/2.0f)-1))/((gui::TUNER_BUFFER_LENGTH/2.0f)-1) ,2)));
+		gauss.push_back(exp(-0.5*pow(0.4f*(i- ((gui::TUNER_BUFFER_LENGTH/2.0f)-1))/((gui::TUNER_BUFFER_LENGTH/2.0f)-1) ,2)));
 	}
 
 	running = 1;
