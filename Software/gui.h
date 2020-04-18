@@ -21,6 +21,9 @@ public:
 	///Number of previous samples to save, used in #level_view().
 	static const unsigned int BUFFER_LENGTH = 2048;
 
+	///Number of input samples to save for the Tuner, used in #tuner_view().
+	static const unsigned int TUNER_BUFFER_LENGTH = 32768;
+
 	/**
 	 * \brief Draw effect chain view.
 	 *
@@ -68,6 +71,8 @@ public:
 	 * \param sample_array Array of previous samples for each position in the effect chain.
 	 */
 	void level_view(float in_level, float out_level, jack_client::sample_t sample_array[7][BUFFER_LENGTH]);
+
+	void tuner_view(float fft_data[TUNER_BUFFER_LENGTH]);
 
 private:
 	/**
