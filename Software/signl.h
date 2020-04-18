@@ -9,6 +9,7 @@
 #include <memory>
 #include <vector>
 #include <signal.h>
+#include "effects/FFTConvolver/AudioFFT.h"
 
 /**
  * \brief Main application class.
@@ -130,6 +131,13 @@ private:
 	///Current array index in sample_array.
 	size_t sample_array_idx;
 
+	// Buffers for holding FFT result for Tuner view.
+	jack_client::sample_t tuner_array[gui::TUNER_BUFFER_LENGTH];
+	size_t tuner_array_idx;
+	std::vector<float> fft_re;
+	std::vector<float> fft_im;
+	audiofft::AudioFFT fft;
+
 	///Current value of each parameter.
 	float param_val[NUM_PARAMS];
 	///Parameter updated flag, true if given parameter has been updated.
@@ -144,7 +152,8 @@ private:
 	enum disp_state
 	{
 		EFFECT_CHAIN, ///<Display effect chain allowing parameter configuration for each effect.
-		LEVEL_ADJ     ///<Display volume and gain levels at each part of the effect chain.
+		LEVEL_ADJ,    ///<Display volume and gain levels at each part of the effect chain.
+		TUNER         ///<Display the pitch of the current note, and how sharp or flat it is.
 	};
 	///Current GUI state.
 	disp_state state;
