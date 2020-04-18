@@ -36,8 +36,8 @@ The list of current effects is available at [this page](https://github.com/afms1
 
 - Alexander Strachan (afms135, 2173868s) - Software Architect:  wrote hardware/JACK interface code, effect plugin system and two effects (amplifier, overdrive).
 - Robert Norris (robnorr, 2198915n)
-- Simon Ridley (ithinkitssimon, 2187742r)
+- Simon Ridley (ithinkitssimon, 2187742r) - Hardware: Designed electronics and mechanical aspects of project, wrote tremolo plugin, documented relevant aspects and contributed to social media of project.
 
 ## COVID-19
 
-The project hardware was completed before the 15th of March, so this did not prevent completion of the project, however the full project enclosure could not be completed.
+The project hardware was completed before the 15th of March, so this did not prevent completion of the project, however the full project enclosure could not be manufactured. The designs for this enclosure have been included.
