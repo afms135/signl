@@ -17,15 +17,13 @@ The main features are:
 * Easy to understand GUI
 * Half rack size
 
-The README and Wiki are still under construction.
-
 ## Video Walkthrough
 
 [![Walkthrough](https://github.com/afms135/signl/blob/master/Media/walthrough_icon.jpg)](https://youtu.be/WcyoIrp74zg)
 
 ## Documentation
 
-The list of current effects is available at [this page](https://github.com/afms135/signl/wiki/List-of-Current-Effects). See our [Github wiki](https://github.com/afms135/signl/wiki) for detailed instructions on how to reproduce the system, as well as information about the design of the system. Detailed software documentation can be found in the [Doxygen documentation](https://afms135.github.io/signl/).
+See our [Github wiki](https://github.com/afms135/signl/wiki) for detailed instructions on how to reproduce the system, as well as information about the design of the system. Detailed software documentation can be found in the [Doxygen documentation](https://afms135.github.io/signl/).
 
 ## Social Media
 
