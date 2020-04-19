@@ -38,6 +38,11 @@ signl::signl() :
 	//Array of previous samples
 	sample_array(),
 	sample_array_idx(0),
+	//FFT buffers
+	tuner_array(),
+	tuner_array_idx(0),
+	fft_re(audiofft::AudioFFT::ComplexSize(gui::TUNER_BUFFER_LENGTH)),
+	fft_im(audiofft::AudioFFT::ComplexSize(gui::TUNER_BUFFER_LENGTH)),
 	//Parameter values
 	param_val{0.0, 0.0, 0.0, 0.0},
 	param_updated{false, false, false, false},
@@ -69,6 +74,12 @@ signl::signl() :
 		effect_chain.push_back(std::move(lst));
 	}
 
+	//Initialise gaussian window
+	for(unsigned int i = 0; i < gui::TUNER_BUFFER_LENGTH; ++i)
+	{
+		gauss.push_back(exp(-0.5*pow(0.4f*(i- ((gui::TUNER_BUFFER_LENGTH/2.0f)-1))/((gui::TUNER_BUFFER_LENGTH/2.0f)-1) ,2)));
+	}
+
 	running = 1;
 	activate();
 }
@@ -78,6 +89,10 @@ jack_client::sample_t signl::process(sample_t in)
 	//Input gain, save for level display
 	in *= in_level;
 	sample_array[0][sample_array_idx] = in;
+
+	//Store the input buffer for the tuner
+	tuner_array[tuner_array_idx] = in;
+	tuner_array_idx = (tuner_array_idx + 1) % gui::TUNER_BUFFER_LENGTH;
 
 	//Process sample through effect chain, save intermediate results for level
 	for(unsigned int i = 0; i < NUM_EFFECTS; i++)
@@ -162,7 +177,7 @@ void signl::start()
 		{
 			//State change
 			if(joy_push)
-				state = EFFECT_CHAIN;
+				state = TUNER;
 
 			//Update input/output levels
 			if(param_updated[0])
@@ -172,6 +187,27 @@ void signl::start()
 
 			//Show sound level display
 			display.level_view(in_level,out_level,sample_array);
+		}
+		else if (state == TUNER)
+		{
+			//State change
+			if(joy_push)
+				state = EFFECT_CHAIN;
+
+			//Gaussian window the current tuner_array
+			for(unsigned int i = 0; i < gui::TUNER_BUFFER_LENGTH; ++i)
+				tuner_array[(tuner_array_idx + i) % gui::TUNER_BUFFER_LENGTH] *= gauss[i];
+
+			//FFT the input sample buffer
+			fft.init(gui::TUNER_BUFFER_LENGTH);
+			fft.fft(tuner_array, fft_re.data(), fft_im.data());
+
+			// find abs (store in re)
+			for(unsigned int i = 0; i < fft_re.size(); ++i)
+				fft_re[i] = sqrt(pow(fft_re[i],2)+pow(fft_im[i],2));
+
+			// Show the tuner view
+			display.tuner_view(fft_re.data());
 		}
 
 		//Reset param update flags, update display
