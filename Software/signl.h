@@ -86,6 +86,10 @@ public:
 	 * (#in_level #out_level) and the current volume level for each stage in
 	 * the effect chain is shown.
 	 *
+	 * In the #TUNER state the note (in equal temperment) closest to the current
+	 * frequency with the highest intensity is shown including a bar showing how
+	 * close the measured frequency is to the ideal frequency for that note.
+	 *
 	 * When #running is set to zero #deactivate() is called, ceasing audio
 	 * processing.
 	 */

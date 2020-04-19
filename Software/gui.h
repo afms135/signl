@@ -101,7 +101,7 @@ private:
 	 *
 	 * Draw a ASCII character on the lcd using Sprites defined in \c assets/font.cpp.
 	 *
-	 * \note Supported characters are A-Z 0-9 . , ; : \ ! " ? - + =
+	 * \note Supported characters are A-Z 0-9 . , ; : \ ! " ? - + = # / b(as \)
 	 *
 	 * \param ch ASCII character to draw.
 	 * \param x_origin Horizontal co-ordinate (0 <= x_origin < #lcd.width).
