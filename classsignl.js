@@ -2,7 +2,8 @@ var classsignl =
 [
     [ "disp_state", "classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d", [
       [ "EFFECT_CHAIN", "classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366", null ],
-      [ "LEVEL_ADJ", "classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3", null ]
+      [ "LEVEL_ADJ", "classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3", null ],
+      [ "TUNER", "classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dae7b5ead2b3a2d95e2b27479d110bbd64", null ]
     ] ],
     [ "signl", "classsignl.html#a665f3e26e0bb8e3b4bf4b0dc23ae285e", null ],
     [ "process", "classsignl.html#a5b647f66903845f38c2713099154fd8a", null ],
@@ -25,6 +26,12 @@ var classsignl =
     [ "effect_idx", "classsignl.html#ab8ec7ed1deca3d220d4edcd327ad0df3", null ],
     [ "sample_array", "classsignl.html#ab61cfe1d1edc5b0d411817696364024f", null ],
     [ "sample_array_idx", "classsignl.html#a3ae4271c41f86d200c6271cfac597d24", null ],
+    [ "tuner_array", "classsignl.html#a0d1c61595be9554c1b37be2cb1c419b2", null ],
+    [ "tuner_array_idx", "classsignl.html#af9d1c18bd96a8b9a2c6b2468d532e1be", null ],
+    [ "gauss", "classsignl.html#ac127ad81b49d670a78560cf85aeedf64", null ],
+    [ "fft_re", "classsignl.html#a3a348d1421cb337c838a695cd8b3cb31", null ],
+    [ "fft_im", "classsignl.html#ab9ffde2d7371888251615ea02e0acc84", null ],
+    [ "fft", "classsignl.html#ad670f55371dc490454ec399c03af963a", null ],
     [ "param_val", "classsignl.html#a7c76138a1368b361fb661355ff5cd8cb", null ],
     [ "param_updated", "classsignl.html#a4e0e9784824a5aeaa4cc0223935b417e", null ],
     [ "in_level", "classsignl.html#a6b00459b4810918eaf0245fbbcb0e862", null ],

@@ -105,6 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a105b20ec0fcf5f22318ecab49ab86376"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376">level_view</a> (float in_level, float out_level, <a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a> sample_array[7][<a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168">BUFFER_LENGTH</a>])</td></tr>
 <tr class="memdesc:a105b20ec0fcf5f22318ecab49ab86376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw level view.  <a href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376">More...</a><br /></td></tr>
 <tr class="separator:a105b20ec0fcf5f22318ecab49ab86376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94cd25b0b8baf550051769064dc9659b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a94cd25b0b8baf550051769064dc9659b">tuner_view</a> (float fft_data[<a class="el" href="classgui.html#a48cf24e3e48fb5e834e2e57b20f0ff4b">TUNER_BUFFER_LENGTH</a>])</td></tr>
+<tr class="memdesc:a94cd25b0b8baf550051769064dc9659b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw tuner view.  <a href="classgui.html#a94cd25b0b8baf550051769064dc9659b">More...</a><br /></td></tr>
+<tr class="separator:a94cd25b0b8baf550051769064dc9659b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classlcd"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classlcd')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classlcd.html">lcd</a></td></tr>
 <tr class="memitem:a2e83af2a19fa02a3c1126ba012173769 inherit pub_methods_classlcd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlcd.html#a2e83af2a19fa02a3c1126ba012173769">lcd</a> (std::string <a class="el" href="classspidev.html">spidev</a>, std::string gpiochip, int A0_pin, int res_pin)</td></tr>
 <tr class="memdesc:a2e83af2a19fa02a3c1126ba012173769 inherit pub_methods_classlcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an instance of an LCD display.  <a href="classlcd.html#a2e83af2a19fa02a3c1126ba012173769">More...</a><br /></td></tr>
@@ -131,6 +134,10 @@ Static Public Attributes</h2></td></tr>
 static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#acb8232bb61ed666f7c9503f44ef55168">BUFFER_LENGTH</a> = 2048</td></tr>
 <tr class="memdesc:acb8232bb61ed666f7c9503f44ef55168"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of previous samples to save, used in <a class="el" href="classgui.html#a105b20ec0fcf5f22318ecab49ab86376" title="Draw level view.">level_view()</a>. <br /></td></tr>
 <tr class="separator:acb8232bb61ed666f7c9503f44ef55168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48cf24e3e48fb5e834e2e57b20f0ff4b"><td class="memItemLeft" align="right" valign="top"><a id="a48cf24e3e48fb5e834e2e57b20f0ff4b"></a>
+static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgui.html#a48cf24e3e48fb5e834e2e57b20f0ff4b">TUNER_BUFFER_LENGTH</a> = 32768</td></tr>
+<tr class="memdesc:a48cf24e3e48fb5e834e2e57b20f0ff4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of input samples to save for the Tuner, used in <a class="el" href="classgui.html#a94cd25b0b8baf550051769064dc9659b" title="Draw tuner view.">tuner_view()</a>. <br /></td></tr>
+<tr class="separator:a48cf24e3e48fb5e834e2e57b20f0ff4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_attribs_classlcd"><td colspan="2" onclick="javascript:toggleInherit('pub_static_attribs_classlcd')"><img src="closed.png" alt="-"/>&#160;Static Public Attributes inherited from <a class="el" href="classlcd.html">lcd</a></td></tr>
 <tr class="memitem:a64f10b4f3a1daf4c52f14f52cacac5f3 inherit pub_static_attribs_classlcd"><td class="memItemLeft" align="right" valign="top"><a id="a64f10b4f3a1daf4c52f14f52cacac5f3"></a>
 static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classlcd.html#a64f10b4f3a1daf4c52f14f52cacac5f3">pages</a> = 8</td></tr>
@@ -278,6 +285,31 @@ Private Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a94cd25b0b8baf550051769064dc9659b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94cd25b0b8baf550051769064dc9659b">&#9670;&nbsp;</a></span>tuner_view()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gui::tuner_view </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>fft_data</em>[TUNER_BUFFER_LENGTH]</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Draw the note (in equal temperment) closest to the current frequency with highest intensity, and a bar to show how close it is to the exact frequency.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fft_data</td><td>Array of the absolute values of the FFT performed on the tuner_buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a377889b1e986fde167ee8cf8fbb3f4e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a377889b1e986fde167ee8cf8fbb3f4e3">&#9670;&nbsp;</a></span>putsprite()</h2>
 
@@ -376,7 +408,7 @@ Private Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Draw a ASCII character on the lcd using Sprites defined in <code>assets/font.cpp</code>.</p>
-<dl class="section note"><dt>Note</dt><dd>Supported characters are A-Z 0-9 . , ; : \ ! " ? - + =</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Supported characters are A-Z 0-9 . , ; : \ ! " ? - + = # / b(as )</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ch</td><td>ASCII character to draw. </td></tr>

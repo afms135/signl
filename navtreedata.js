@@ -24,9 +24,11 @@ var NAVTREE =
 [
   [ "signl", "index.html", [
     [ "signl - An Open Source Real-Time Audio Effects Processor running on Raspberry Pi", "index.html#autotoc_md0", [
-      [ "Documentation", "index.html#autotoc_md1", null ],
-      [ "Social Media", "index.html#autotoc_md2", null ],
-      [ "Authors and Individual Contributions", "index.html#autotoc_md3", null ]
+      [ "Video Walkthrough", "index.html#autotoc_md1", null ],
+      [ "Documentation", "index.html#autotoc_md2", null ],
+      [ "Social Media", "index.html#autotoc_md3", null ],
+      [ "Authors and Individual Contributions", "index.html#autotoc_md4", null ],
+      [ "COVID-19", "index.html#autotoc_md5", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

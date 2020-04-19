@@ -89,22 +89,23 @@ Collaboration diagram for signl:</div>
 <div class="dyncontent">
 <div class="center"><img src="classsignl__coll__graph.png" border="0" usemap="#signl_coll__map" alt="Collaboration graph"/></div>
 <map name="signl_coll__map" id="signl_coll__map">
-<area shape="rect" title="Main application class." alt="" coords="1305,160,1359,187"/>
-<area shape="rect" href="classjack__client.html" title="Abstract class representing a mono JACK client." alt="" coords="1056,5,1148,32"/>
-<area shape="rect" href="classdebounce.html" title="Class representing a debounced GPIO input." alt="" coords="1059,91,1145,117"/>
+<area shape="rect" title="Main application class." alt="" coords="1313,212,1367,239"/>
+<area shape="rect" href="classjack__client.html" title="Abstract class representing a mono JACK client." alt="" coords="1060,5,1152,32"/>
+<area shape="rect" href="classdebounce.html" title="Class representing a debounced GPIO input." alt="" coords="1063,91,1149,117"/>
 <area shape="rect" href="classgpioin.html" title="Class representing a GPIO input." alt="" coords="784,91,847,117"/>
 <area shape="rect" href="classeffect__manager.html" title="Class used to load external effect plugins." alt="" coords="883,141,1007,168"/>
 <area shape="rect" title=" " alt="" coords="465,118,656,159"/>
 <area shape="rect" href="structeffect__manager_1_1plugin.html" title="Structure representing a loaded external plugin." alt="" coords="163,127,335,153"/>
 <area shape="rect" href="structeffect.html" title="Abstract class representing a audio effect." alt="" coords="5,157,64,184"/>
 <area shape="rect" title=" " alt="" coords="161,179,336,221"/>
-<area shape="rect" href="classgui.html" title="Class used to draw user interface." alt="" coords="1081,279,1123,305"/>
-<area shape="rect" href="classlcd.html" title="Class representing a DOGM128 128x64 LCD display." alt="" coords="795,291,836,317"/>
+<area shape="rect" href="classgui.html" title="Class used to draw user interface." alt="" coords="1085,271,1127,297"/>
+<area shape="rect" href="classlcd.html" title="Class representing a DOGM128 128x64 LCD display." alt="" coords="795,289,836,316"/>
 <area shape="rect" href="classgpioout.html" title="Class representing a GPIO output." alt="" coords="525,249,596,276"/>
 <area shape="rect" title=" " alt="" coords="487,301,635,342"/>
 <area shape="rect" href="classspidev.html" title="Class representing a SPI device." alt="" coords="528,376,593,403"/>
-<area shape="rect" href="classadc.html" title="Class representing the MCP3004 analogue to digital converter." alt="" coords="922,357,967,384"/>
-<area shape="rect" title=" " alt="" coords="1031,205,1173,246"/>
+<area shape="rect" href="classadc.html" title="Class representing the MCP3004 analogue to digital converter." alt="" coords="922,339,967,365"/>
+<area shape="rect" title=" " alt="" coords="1031,387,1181,413"/>
+<area shape="rect" title=" " alt="" coords="1035,205,1177,246"/>
 <area shape="rect" href="structeffect__list.html" title="Utility class representing a list of effects." alt="" coords="772,201,859,228"/>
 <area shape="rect" title=" " alt="" coords="449,183,672,225"/>
 </map>
@@ -142,7 +143,8 @@ static const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a 
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
 Private Types</h2></td></tr>
 <tr class="memitem:a8b28e4ba17e063fffde49d4ba639b10d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d">disp_state</a> { <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366">EFFECT_CHAIN</a>, 
-<a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3">LEVEL_ADJ</a>
+<a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3">LEVEL_ADJ</a>, 
+<a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dae7b5ead2b3a2d95e2b27479d110bbd64">TUNER</a>
  }</td></tr>
 <tr class="memdesc:a8b28e4ba17e063fffde49d4ba639b10d"><td class="mdescLeft">&#160;</td><td class="mdescRight">GUI states.  <a href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10d">More...</a><br /></td></tr>
 <tr class="separator:a8b28e4ba17e063fffde49d4ba639b10d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -208,6 +210,30 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a3ae4271c41f86d200c6271cfac597d24">sample_array_idx</a></td></tr>
 <tr class="memdesc:a3ae4271c41f86d200c6271cfac597d24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current array index in sample_array. <br /></td></tr>
 <tr class="separator:a3ae4271c41f86d200c6271cfac597d24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d1c61595be9554c1b37be2cb1c419b2"><td class="memItemLeft" align="right" valign="top"><a id="a0d1c61595be9554c1b37be2cb1c419b2"></a>
+<a class="el" href="classjack__client.html#a1986d97bdda962fa3338591bf238d24d">jack_client::sample_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a0d1c61595be9554c1b37be2cb1c419b2">tuner_array</a> [<a class="el" href="classgui.html#a48cf24e3e48fb5e834e2e57b20f0ff4b">gui::TUNER_BUFFER_LENGTH</a>]</td></tr>
+<tr class="memdesc:a0d1c61595be9554c1b37be2cb1c419b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ring buffer of <a class="el" href="classgui.html#a48cf24e3e48fb5e834e2e57b20f0ff4b" title="Number of input samples to save for the Tuner, used in tuner_view().">gui::TUNER_BUFFER_LENGTH</a> samples for the input (see <a class="el" href="classgui.html#a94cd25b0b8baf550051769064dc9659b" title="Draw tuner view.">gui::tuner_view()</a>). <br /></td></tr>
+<tr class="separator:a0d1c61595be9554c1b37be2cb1c419b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9d1c18bd96a8b9a2c6b2468d532e1be"><td class="memItemLeft" align="right" valign="top"><a id="af9d1c18bd96a8b9a2c6b2468d532e1be"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#af9d1c18bd96a8b9a2c6b2468d532e1be">tuner_array_idx</a></td></tr>
+<tr class="memdesc:af9d1c18bd96a8b9a2c6b2468d532e1be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current array index in tuner_array. <br /></td></tr>
+<tr class="separator:af9d1c18bd96a8b9a2c6b2468d532e1be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac127ad81b49d670a78560cf85aeedf64"><td class="memItemLeft" align="right" valign="top"><a id="ac127ad81b49d670a78560cf85aeedf64"></a>
+std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ac127ad81b49d670a78560cf85aeedf64">gauss</a></td></tr>
+<tr class="memdesc:ac127ad81b49d670a78560cf85aeedf64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gausian window for tuner array. <br /></td></tr>
+<tr class="separator:ac127ad81b49d670a78560cf85aeedf64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a348d1421cb337c838a695cd8b3cb31"><td class="memItemLeft" align="right" valign="top"><a id="a3a348d1421cb337c838a695cd8b3cb31"></a>
+std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a3a348d1421cb337c838a695cd8b3cb31">fft_re</a></td></tr>
+<tr class="memdesc:a3a348d1421cb337c838a695cd8b3cb31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector for holding real part of FFT result. <br /></td></tr>
+<tr class="separator:a3a348d1421cb337c838a695cd8b3cb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ffde2d7371888251615ea02e0acc84"><td class="memItemLeft" align="right" valign="top"><a id="ab9ffde2d7371888251615ea02e0acc84"></a>
+std::vector&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ab9ffde2d7371888251615ea02e0acc84">fft_im</a></td></tr>
+<tr class="memdesc:ab9ffde2d7371888251615ea02e0acc84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector for holding imaginary part of FFT result. <br /></td></tr>
+<tr class="separator:ab9ffde2d7371888251615ea02e0acc84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad670f55371dc490454ec399c03af963a"><td class="memItemLeft" align="right" valign="top"><a id="ad670f55371dc490454ec399c03af963a"></a>
+audiofft::AudioFFT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#ad670f55371dc490454ec399c03af963a">fft</a></td></tr>
+<tr class="memdesc:ad670f55371dc490454ec399c03af963a"><td class="mdescLeft">&#160;</td><td class="mdescRight">AudioFFT object for determining the frequency response of the current tuner_array. <br /></td></tr>
+<tr class="separator:ad670f55371dc490454ec399c03af963a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c76138a1368b361fb661355ff5cd8cb"><td class="memItemLeft" align="right" valign="top"><a id="a7c76138a1368b361fb661355ff5cd8cb"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsignl.html#a7c76138a1368b361fb661355ff5cd8cb">param_val</a> [<a class="el" href="classsignl.html#a6b60ce11a30e8a33c42d1b92bba4dadb">NUM_PARAMS</a>]</td></tr>
 <tr class="memdesc:a7c76138a1368b361fb661355ff5cd8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current value of each parameter. <br /></td></tr>
@@ -283,6 +309,8 @@ Additional Inherited Members</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366"></a>EFFECT_CHAIN&#160;</td><td class="fielddoc"><p>Display effect chain allowing parameter configuration for each effect. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3"></a>LEVEL_ADJ&#160;</td><td class="fielddoc"><p>Display volume and gain levels at each part of the effect chain. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a8b28e4ba17e063fffde49d4ba639b10dae7b5ead2b3a2d95e2b27479d110bbd64"></a>TUNER&#160;</td><td class="fielddoc"><p>Display the pitch of the current note, and how sharp or flat it is. </p>
 </td></tr>
 </table>
 
@@ -421,6 +449,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Reads and sets parameters, clears and updates <a class="el" href="classsignl.html#a4f2a016e2038ab8fb7fa8d82b38b4f07" title="LCD display output.">display</a> and selects and switches effects and states using joystick input.</p>
 <p>In the <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dad18154c88497eacb6e055bb944e45366" title="Display effect chain allowing parameter configuration for each effect.">EFFECT_CHAIN</a> state the parameters of each effect can be changed and each effect can be switched out for other effects.</p>
 <p>In the <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10daa5761a011a5fdfa5749dd7c66c72ffe3" title="Display volume and gain levels at each part of the effect chain.">LEVEL_ADJ</a> state the input and output levels can be adjusted (<a class="el" href="classsignl.html#a6b00459b4810918eaf0245fbbcb0e862" title="Input gain level (0.0-&gt;1.0).">in_level</a> <a class="el" href="classsignl.html#a929d9ebd448ef5e904dfb13da448d870" title="Output gain level (0.0-&gt;1.0).">out_level</a>) and the current volume level for each stage in the effect chain is shown.</p>
+<p>In the <a class="el" href="classsignl.html#a8b28e4ba17e063fffde49d4ba639b10dae7b5ead2b3a2d95e2b27479d110bbd64" title="Display the pitch of the current note, and how sharp or flat it is.">TUNER</a> state the note (in equal temperment) closest to the current frequency with the highest intensity is shown including a bar showing how close the measured frequency is to the ideal frequency for that note.</p>
 <p>When <a class="el" href="classsignl.html#a70e50c1b8219b6291e24ff07b4160757" title="Running flag, program exits when set to zero.">running</a> is set to zero <a class="el" href="classjack__client.html#af7f7abc59c225b9fb7d0d0c6730dbb77" title="Deactivate JACK client.">deactivate()</a> is called, ceasing audio processing. </p>
 
 </div>
