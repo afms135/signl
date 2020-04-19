@@ -19,7 +19,11 @@ The main features are:
 
 ## Video Walkthrough
 
-[![Walkthrough](https://github.com/afms135/signl/blob/master/Media/walthrough_icon.jpg)](https://youtu.be/WcyoIrp74zg)
+<p align="center">
+  <a href="https://youtu.be/WcyoIrp74zg">
+  <img src="https://github.com/afms135/signl/blob/master/Media/Video%20Thumbnails/walkthrough.png" width=25%>
+  </a>
+</p>
 
 ## Documentation
 
