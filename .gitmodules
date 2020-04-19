@@ -1,3 +1,4 @@
 [submodule "Software/FFTConvolver"]
 	path = Software/effects/FFTConvolver
 	url = https://github.com/HiFi-LoFi/FFTConvolver.git
+	ignore = dirty
